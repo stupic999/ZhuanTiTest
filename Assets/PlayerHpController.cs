@@ -39,14 +39,7 @@ public class PlayerHpController : MonoBehaviour
 
     void Update()
     {
-        timer+= Time.deltaTime;
-        if (timer >= 1)
-        {
-            timer = 0;
-            DamagePlayer(1);
-            playerHp.SetHealth(playerStat.currentHp, playerStat.maxHp);
-            ChangePlayerHpBarColor(playerStat.currentHp, playerHealthbarRect);
-        }        
+        PerSecReduceOneHp();
     }
 
     void FixedUpdate()
@@ -90,6 +83,32 @@ public class PlayerHpController : MonoBehaviour
         else
         {
             playerHpBar.color = Color.red;
+        }
+    }
+
+    public void PerSecReduceOneHp()
+    {
+        timer += Time.deltaTime;
+        if (timer >= 1)
+        {
+            timer = 0;
+            DamagePlayer(1);
+            playerHp.SetHealth(playerStat.currentHp, playerStat.maxHp);
+            ChangePlayerHpBarColor(playerStat.currentHp, playerHealthbarRect);
+        }
+    }
+
+    private void OnTriggerEnter(Collider Food)
+    {
+        if (Food.transform.tag == "GoodFood")
+        {
+            HealPlayer(2);
+            Destroy(Food.gameObject);
+        }
+        if (Food.transform.tag == "BadFood")
+        {
+            DamagePlayer(5);
+            Destroy(Food.gameObject);
         }
     }
 }
