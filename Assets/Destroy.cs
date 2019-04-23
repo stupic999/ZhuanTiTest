@@ -14,23 +14,29 @@ public class Destroy : MonoBehaviour {
 	void Start () {
         me = GetComponent<Rigidbody>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        // 移动
-        movement.Set(0, 0, 1);
-        movement = movement * spd *Time.deltaTime;
-        me.MovePosition(transform.position + movement);
 
+    // Update is called once per frame
+    void Update()
+    {        
+        if (GameController.isGameOver != true)
+        {
+            // 移动
+            movement.Set(0, 0, 1);
+            movement = movement * spd * Time.deltaTime;
+            me.MovePosition(transform.position + movement);
+        }
 	}
 
     public void OnTriggerStay(Collider destroyer)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameController.isGameOver != true)
         {
-            if (destroyer.tag == "Destroyer")
+            if (Input.GetMouseButtonDown(0))
             {
-                Destroy(gameObject);
+                if (destroyer.tag == "Destroyer")
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
