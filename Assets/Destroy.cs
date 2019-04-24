@@ -21,7 +21,7 @@ public class Destroy : MonoBehaviour {
         if (GameController.isGameOver != true)
         {
             // 移动
-            movement.Set(0, 0, 1);
+            movement.Set(1, 0, 0);
             movement = movement * spd * Time.deltaTime;
             me.MovePosition(transform.position + movement);
         }
