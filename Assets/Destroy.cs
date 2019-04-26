@@ -5,10 +5,8 @@ using UnityEngine;
 public class Destroy : MonoBehaviour {
 
     // 能量条增减
-
-    float spd=1;
     Rigidbody me;
-    Vector3 movement;
+    float moveSpeed=2.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,10 +18,7 @@ public class Destroy : MonoBehaviour {
     {        
         if (GameController.isGameOver != true)
         {
-            // 移动
-            movement.Set(1, 0, 0);
-            movement = movement * spd * Time.deltaTime;
-            me.MovePosition(transform.position + movement);
+            transform.Translate(Vector3.right * Time.deltaTime * moveSpeed, Space.Self);
         }
 	}
 
