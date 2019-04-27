@@ -5,12 +5,24 @@ using UnityEngine;
 public class SpawnFood : MonoBehaviour {
 
     public GameObject food;
-    public  GameObject spawnPointSelf;
-    float foodSpawnTimer;    
-
+    public GameObject spawnPointSelf;
+    float foodSpawnTimer;
+    int force;
     // Use this for initialization
     void Start () {
-        spawnPointSelf.transform.Translate(Vector3.left *10);
+        if (spawnPointSelf.name == "CubeM")
+        {
+            force = 13;
+        }
+        else if (spawnPointSelf.name == "CubeL1" || spawnPointSelf.name == "CubeR1")
+        {
+            force = 15;
+        }
+        else
+        {
+            force = 25;
+        }
+        spawnPointSelf.transform.Translate(Vector3.left * force);
     }
 	
 	// Update is called once per frame

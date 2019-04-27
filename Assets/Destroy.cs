@@ -5,13 +5,7 @@ using UnityEngine;
 public class Destroy : MonoBehaviour {
 
     // 能量条增减
-    Rigidbody me;
     float moveSpeed=2.5f;
-
-	// Use this for initialization
-	void Start () {
-        me = GetComponent<Rigidbody>();
-	}
 
     // Update is called once per frame
     void Update()
