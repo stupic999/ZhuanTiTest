@@ -8,9 +8,11 @@ public class GameController : MonoBehaviour {
     public GameObject GameOverText;
     public static bool isWin;
     public GameObject WinText;
+    public static bool isLoadingScene;
+    public static string LoadingSceneName;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         GameOverText.SetActive(false);
         WinText.SetActive(false);
 	}
