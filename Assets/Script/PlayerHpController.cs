@@ -39,7 +39,7 @@ public class PlayerHpController : MonoBehaviour
 
     void Update()
     {
-        if (GameController.isGameOver != true) 
+        if (GameControllerFood.isGameOver != true) 
         PerSecReduceOneHp();
     }
 
@@ -60,7 +60,7 @@ public class PlayerHpController : MonoBehaviour
         if (playerStat.currentHp <= 0)
         {
             // GameOver
-            GameController.isGameOver = true;
+            GameControllerFood.isGameOver = true;
         }
         playerHp.SetHealth(playerStat.currentHp, playerStat.maxHp);
     }

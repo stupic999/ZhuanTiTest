@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (GameController.isWin != true)
+        if (GameControllerFood.isWin != true)
         {
             SkyTimerCount();
             Sky.transform.eulerAngles = new Vector3(0, 0, skyRotate);
@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour {
         }
         else
         {
-            GameController.isWin = true;
+            GameControllerFood.isWin = true;
             Sky.transform.eulerAngles = new Vector3(0, 0, 0);
         }
 	}

@@ -10,7 +10,7 @@ public class Destroy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {        
-        if (GameController.isGameOver != true)
+        if (GameControllerFood.isGameOver != true)
         {
             transform.Translate(Vector3.right * Time.deltaTime * moveSpeed, Space.Self);
         }
@@ -18,7 +18,7 @@ public class Destroy : MonoBehaviour {
 
     public void OnTriggerStay(Collider destroyer)
     {
-        if (GameController.isGameOver != true)
+        if (GameControllerFood.isGameOver != true)
         {
             if (Input.GetMouseButtonDown(0))
             {

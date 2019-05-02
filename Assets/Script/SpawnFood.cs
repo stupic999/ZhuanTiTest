@@ -27,7 +27,7 @@ public class SpawnFood : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameController.isWin != true && GameController.isGameOver != true) 
+        if (GameControllerFood.isWin != true && GameControllerFood.isGameOver != true) 
         // 计算时间，时间到了，产生食物
         foodSpawnTimer += Time.deltaTime;
         if (foodSpawnTimer > 5)
