@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
+    public static bool isOpenNewsPaper;
 
     public static bool isGameOver;
     public GameObject GameOverText;
