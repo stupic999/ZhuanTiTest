@@ -2,20 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerItem : MonoBehaviour {
-
-    public GameObject ClickMeBtn;
-
-    private void Start()
-    {
-        ClickMeBtn.SetActive(false);
-    }
+public class HospitalDoorTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && GameController.isTalkWithBoy == true)
         {
-            ClickMeBtn.SetActive(true);
+            GameController.btnEvent = "HospitalDoor";
         }
     }
 
@@ -23,7 +16,7 @@ public class TriggerItem : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            ClickMeBtn.SetActive(false);
+            GameController.btnEvent = "";
         }
     }
 }

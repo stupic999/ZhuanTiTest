@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BtnEvent : MonoBehaviour {
 
-    public void OpenNewsPaper()
+    public void isBtnEvent()
     {
-        GameController.isOpenNewsPaper = true;
+        GameController.isBtnClick = true;
     }
 }
