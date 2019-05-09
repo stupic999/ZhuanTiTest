@@ -15,11 +15,7 @@ public class PaperTrigger : MonoBehaviour {
 
     public void Update()
     {
-        if (GameController.isSeePaper != false && ShowMap != true) 
-        {
-            Map.SetActive(true);
-            ShowMap = true;
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)

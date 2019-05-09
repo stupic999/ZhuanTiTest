@@ -6,7 +6,7 @@ public class BoyTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isTalkWithBoy!=true)
+        if (other.transform.tag == "Player")
         {
             GameController.btnEvent = "Boy";
         }

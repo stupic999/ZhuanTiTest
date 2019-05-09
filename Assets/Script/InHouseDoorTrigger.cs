@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolTrigger : MonoBehaviour {
+public class InHouseDoorTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isCheckPool != true)
+        if (other.transform.tag == "Player" && GameController.isOpenDoor != true)
         {
-            GameController.btnEvent = "Pool";
+            GameController.btnEvent = "InHouseDoor";
         }
     }
 

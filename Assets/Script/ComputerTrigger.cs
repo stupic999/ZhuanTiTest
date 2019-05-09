@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolTrigger : MonoBehaviour {
+public class ComputerTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isCheckPool != true)
+        if (other.transform.tag == "Player" && GameController.isCheckComputer != true)
         {
-            GameController.btnEvent = "Pool";
+            GameController.btnEvent = "Computer";
         }
     }
 

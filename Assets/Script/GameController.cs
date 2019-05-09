@@ -4,10 +4,47 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public GameObject Map;
     public GameObject Player;
     public GameObject HospitalDoor;
     public GameObject ParkDoor;
     public GameObject PaperUI;
+    public GameObject InHouseDoorBlock;
+    public GameObject FishBait;
+
+    public Dialogue BoyDoneDialogue;
+    public Dialogue BoyFailDialogue;
+    public Dialogue DigDialogue;
+    public Dialogue FishBaitFailDialogue;
+    public Dialogue FishBaitDoneDialogue;
+    public Dialogue PoolFailDialogue;
+    public Dialogue PoolDoneDialogue;
+    public Dialogue Grass1Dialogue;
+    public Dialogue Grass2Dialogue;
+    public Dialogue Grass3Dialogue;
+    public Dialogue GrassDoneDialogue;
+    public Dialogue LightCloseDialogue;
+    public Dialogue LightOnDialogue;
+    public Dialogue VaseFailDialogue;
+    public Dialogue VaseDoneDialogue;
+    public Dialogue LadderFailDialogue;
+    public Dialogue CupBoardDoneDialogue;
+    public Dialogue CupBoardFailDialogue;
+    public Dialogue PuzzleDoneDialogue;
+    public Dialogue PuzzleFailDialogue;
+    public Dialogue PuzzleStartDialogue;
+    public Dialogue ShoesDoneDialogue;
+    public Dialogue ShoesFailDialogue;
+    public Dialogue InHouseDoorFailDialogue;
+    public Dialogue InHouseDoorDoneDialogue;
+    public Dialogue BoardDoneDialogue;
+    public Dialogue BoardFailDialogue;
+    public Dialogue ComputerFailDialogue;
+    public Dialogue ComputerDoneDialogue;
+    public Dialogue ComputerStartDialogue;
+    public Dialogue PhotoDialogue;
+    public Dialogue PaperDoneDialogue;
+    public Dialogue PaperFailDialogue;
 
     public bool isOpenHospitalDoor;
     public bool isOpenParkDoor;
@@ -25,6 +62,14 @@ public class GameController : MonoBehaviour {
     public static bool isCheckPool;
     public static bool isDigTreasure;
     public static bool isCheckGrass;
+    public static bool isCloseLight;
+    public static bool isCheckVase;
+    public static bool isCheckCupBoard;
+    public static bool isDonePuzzle;
+    public static bool isCheckShoes;
+    public static bool isOpenDoor;
+    public static bool isCheckBoard;
+    public static bool isCheckComputer;
 
     public GameObject Btn;
 
@@ -44,10 +89,6 @@ public class GameController : MonoBehaviour {
 
         // 按鈕點擊觸發事件
         BtnEvent();
-
-        // 传送
-        GoToPark();
-        GoToHospital();
     }
 
     public void ShowBtn()
@@ -74,6 +115,16 @@ public class GameController : MonoBehaviour {
             PoolEvent();
             DigEvent();
             GrassEvent();
+            LightEvent();
+            VaseEvent();
+            CupBoardEvent();
+            PuzzleEvent();
+            ShoesEvent();
+            InHouseDoorEvent();
+            BoardEvent();
+            ComputerEvent();
+            PhotoEvent();
+            LadderEvent();
 
             btnEvent = "";
             isBtnClick = false;
@@ -85,8 +136,17 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Boy")
         {
-            isTalkWithBoy = true;
-            Debug.Log("BoyDone");
+            if (isTalkWithBoy != true)
+            {
+                isTalkWithBoy = true;
+                Debug.Log("BoyDone");
+                TriggerDialogue(BoyDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("BoyFail");
+                TriggerDialogue(BoyFailDialogue);
+            }
         }
     }
 
@@ -94,8 +154,23 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Paper")
         {
-            isSeePaper = true;
-            Debug.Log("PaperDone");
+            if (isSeePaper != true)
+            {
+                isSeePaper = true;
+                Map.SetActive(true);
+                Debug.Log("PaperDone");
+                TriggerDialogue(PaperDoneDialogue);
+            }
+            else if (isCheckPool != true)
+            {
+                Map.SetActive(true);
+                Debug.Log("ShowMap");
+            }
+            else
+            {
+                TriggerDialogue(PaperFailDialogue);
+                Debug.Log("PaperFail");
+            }
         }
     }
 
@@ -103,8 +178,18 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "FishBait")
         {
-            isTakeFishBait = true;
-            Debug.Log("FishBaitDone");
+            if (isSeePaper != false)
+            {
+                isTakeFishBait = true;
+                Debug.Log("FishBaitDone");
+                Destroy(FishBait);
+                TriggerDialogue(FishBaitDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("FishBaitFail");
+                TriggerDialogue(FishBaitFailDialogue);
+            }
         }        
     }
 
@@ -112,17 +197,27 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Pool")
         {
-            isCheckPool = true;
-            Debug.Log("PoolDone");
+            if (isTakeFishBait != false)
+            {
+                isCheckPool = true;
+                Debug.Log("PoolDone");
+                TriggerDialogue(PoolDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("PoolFail");
+                TriggerDialogue(PoolFailDialogue);
+            }
         }
     }
 
     public void DigEvent()
     {
         if (btnEvent == "Dig")
-        {
+        {            
             isDigTreasure = true;
             Debug.Log("DigDone");
+            TriggerDialogue(DigDialogue);
         }
     }
 
@@ -133,13 +228,203 @@ public class GameController : MonoBehaviour {
             if (grassNum < 3)
             {
                 grassNum++;
-                Debug.Log("GrassNum "+grassNum);
+                Debug.Log("GrassNum " + grassNum);
+                if (grassNum == 1)
+                {
+                    TriggerDialogue(Grass1Dialogue);
+                }
+                else if (grassNum == 2)
+                {
+                    TriggerDialogue(Grass2Dialogue);
+                }
+                else
+                {
+                    TriggerDialogue(Grass3Dialogue);
+                }
             }
             else
             {
                 isCheckGrass = true;
                 Debug.Log("GrassDone");
+                TriggerDialogue(GrassDoneDialogue);
             }
+        }
+    }
+
+    public void LightEvent()
+    {
+        if (btnEvent == "Light")
+        {
+            isCloseLight = !isCloseLight;
+            if (isCloseLight != false)
+            {
+                Debug.Log("LightOn");
+                TriggerDialogue(LightOnDialogue);
+            }
+            else
+            {
+                Debug.Log("LightClose");
+                TriggerDialogue(LightCloseDialogue);
+            }            
+        }
+    }
+
+    public void VaseEvent()
+    {
+        if (btnEvent == "Vase")
+        {
+            if (isCheckVase != true)
+            {
+                isCheckVase = true;
+                Debug.Log("VaseDone");
+                TriggerDialogue(VaseDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("VaseFail");
+                TriggerDialogue(VaseFailDialogue);
+            }
+        }
+    }
+
+    public void CupBoardEvent()
+    {
+        if (btnEvent == "Cupboard")
+        {
+            if (isCheckCupBoard != true)
+            {
+                isCheckCupBoard = true;
+                Debug.Log("CupBoardDone");
+                TriggerDialogue(CupBoardDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("CupBoardFail");
+                TriggerDialogue(CupBoardFailDialogue);
+            }
+        }
+    }
+
+    public void PuzzleEvent()
+    {
+        if (btnEvent == "Puzzle")
+        {
+            if (isDonePuzzle != false)
+            {
+                Debug.Log("PuzzleFail");
+                TriggerDialogue(PuzzleFailDialogue);
+            }
+            if (isCheckCupBoard != false)
+            {
+                isDonePuzzle = true;
+                Debug.Log("PuzzleDone");
+                TriggerDialogue(PuzzleDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("PuzzleStart");
+                TriggerDialogue(PuzzleStartDialogue);
+            }
+        }
+    }
+
+    public void ShoesEvent()
+    {
+        if (btnEvent == "Shoes")
+        {
+            if (isCheckShoes != true)
+            {
+                isCheckShoes = true;
+                Debug.Log("ShoesDone");
+                TriggerDialogue(ShoesDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("ShoesFail");
+                TriggerDialogue(ShoesFailDialogue);
+            }
+
+        }
+    }
+
+    public void InHouseDoorEvent()
+    {
+        if (btnEvent == "InHouseDoor")
+        {
+            if (isCheckShoes != false)
+            {
+                isOpenDoor = true;
+                InHouseDoorBlock.SetActive(false);
+                Debug.Log("DoorDone");
+                TriggerDialogue(InHouseDoorDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("DoorFail");
+                TriggerDialogue(InHouseDoorFailDialogue);
+            }
+        }
+    }
+
+    public void BoardEvent()
+    {
+        if (btnEvent == "Board")
+        {
+            if (isCheckBoard != true)
+            {
+                isCheckBoard = true;
+                Debug.Log("BoardDone");
+                TriggerDialogue(BoardDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("BoardFail");
+                TriggerDialogue(BoardFailDialogue);
+            }
+        }
+    }
+
+    public void ComputerEvent()
+    {
+        if (btnEvent == "Computer")
+        {
+            if (isCheckComputer != true)
+            {
+                if (isCheckBoard != false)
+                {
+                    isCheckComputer = true;
+                    Debug.Log("ConputerDone");
+                    TriggerDialogue(ComputerDoneDialogue);
+                }
+                else
+                {
+                    Debug.Log("ComputerStart");
+                    TriggerDialogue(ComputerStartDialogue);
+                }
+            }
+            else
+            {
+                Debug.Log("ComputerFail");
+                TriggerDialogue(ComputerFailDialogue);
+            }            
+        }
+    }
+
+    public void PhotoEvent()
+    {
+        if (btnEvent == "Photo")
+        {
+            Debug.Log("PhotoDone");
+            TriggerDialogue(PhotoDialogue);
+        }
+    }
+
+    public void LadderEvent()
+    {
+        if (btnEvent == "Ladder")
+        {
+            Debug.Log("LadderDone");
+            TriggerDialogue(LadderFailDialogue);
         }
     }
 
@@ -147,8 +432,7 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "HospitalDoor")
         {
-            isOpenHospitalDoor = true;
-            Debug.Log("HospitalDoorDone");
+            Player.transform.position = new Vector3(ParkDoor.transform.position.x + 5, ParkDoor.transform.position.y, ParkDoor.transform.position.z);
         }
     }
 
@@ -156,27 +440,13 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "ParkDoor")
         {
-            isOpenParkDoor = true;
+            Player.transform.position = new Vector3(HospitalDoor.transform.position.x + 5, HospitalDoor.transform.position.y, HospitalDoor.transform.position.z);
             Debug.Log("ParkDoorDone");
         }
     }
 
-    // 传送
-    public void GoToPark()
+    public void TriggerDialogue(Dialogue dialogue)
     {
-        if (isOpenHospitalDoor != false)
-        {
-            isOpenHospitalDoor = false;
-            Player.transform.position = new Vector3(ParkDoor.transform.position.x + 5, ParkDoor.transform.position.y, ParkDoor.transform.position.z);            
-        }
-    }
-
-    public void GoToHospital()
-    {
-        if (isOpenParkDoor != false)
-        {
-            isOpenParkDoor = false;
-            Player.transform.position = new Vector3(HospitalDoor.transform.position.x + 5, HospitalDoor.transform.position.y, HospitalDoor.transform.position.z);
-        }
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }
