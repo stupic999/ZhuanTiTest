@@ -16,7 +16,7 @@ public class ButtonEffect : MonoBehaviour {
 
     public void StartBtn()
     {
-        GameController.LoadingSceneName = "SampleScene";
+        GameController.LoadingSceneName = "Hospital";
         SceneManager.LoadScene("LoadingScene");
     }
     public void SettingBtn()

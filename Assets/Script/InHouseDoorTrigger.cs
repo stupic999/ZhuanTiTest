@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class InHouseDoorTrigger : MonoBehaviour {
 
+    public GameObject doorOpened;
+    public GameObject doorClosed;
+
+    public void Start()
+    {
+        doorClosed.SetActive(true);
+        doorOpened.SetActive(false);
+    }
+
+    public void Update()
+    {
+        if (GameController.isOpenDoor != false)
+        {
+            doorClosed.SetActive(false);
+            doorOpened.SetActive(true);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player" && GameController.isOpenDoor != true)

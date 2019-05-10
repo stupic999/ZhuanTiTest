@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public static bool isPause;
+
+    public static int MapCount;
+
+    public GameObject Grass1;
+    public GameObject Grass2;
+    public GameObject Grass3;
     public GameObject Map;
     public GameObject Player;
     public GameObject HospitalDoor;
@@ -75,6 +82,7 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
+        isPause = false;
         isBtnClick = false;
         isLoadingScene = false;
         LoadingSceneName = "";
@@ -84,11 +92,14 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
-        // 顯示按鈕
-        ShowBtn();
 
-        // 按鈕點擊觸發事件
-        BtnEvent();
+            // 顯示按鈕
+            ShowBtn();
+        if (isPause != true)
+        {
+            // 按鈕點擊觸發事件
+            BtnEvent();
+        }
     }
 
     public void ShowBtn()
@@ -107,6 +118,7 @@ public class GameController : MonoBehaviour {
     {
         if (isBtnClick != false)
         {
+            isPause = true;
             BoyEvent();
             HospitalDoorEvent();
             ParkDoorEvent();
@@ -158,13 +170,17 @@ public class GameController : MonoBehaviour {
             {
                 isSeePaper = true;
                 Map.SetActive(true);
+                MapCount = 1;
                 Debug.Log("PaperDone");
                 TriggerDialogue(PaperDoneDialogue);
+                CloseBtn.MapOpen = true;
             }
             else if (isCheckPool != true)
             {
+                MapCount = 1;
                 Map.SetActive(true);
                 Debug.Log("ShowMap");
+                CloseBtn.MapOpen = true;
             }
             else
             {
@@ -232,14 +248,17 @@ public class GameController : MonoBehaviour {
                 if (grassNum == 1)
                 {
                     TriggerDialogue(Grass1Dialogue);
+                    Grass1.transform.position = new Vector3(Grass1.transform.position.x + 5, Grass1.transform.position.y, Grass1.transform.position.z);
                 }
                 else if (grassNum == 2)
                 {
                     TriggerDialogue(Grass2Dialogue);
+                    Grass2.transform.position = new Vector3(Grass2.transform.position.x - 5, Grass2.transform.position.y, Grass2.transform.position.z);
                 }
                 else
                 {
                     TriggerDialogue(Grass3Dialogue);
+                    Grass3.transform.position = new Vector3(Grass3.transform.position.x + 5, Grass3.transform.position.y, Grass3.transform.position.z);
                 }
             }
             else
@@ -433,6 +452,8 @@ public class GameController : MonoBehaviour {
         if (btnEvent == "HospitalDoor")
         {
             Player.transform.position = new Vector3(ParkDoor.transform.position.x + 5, ParkDoor.transform.position.y, ParkDoor.transform.position.z);
+            Debug.Log("HospitalDoorDone");
+            isPause = false;
         }
     }
 
@@ -442,6 +463,7 @@ public class GameController : MonoBehaviour {
         {
             Player.transform.position = new Vector3(HospitalDoor.transform.position.x + 5, HospitalDoor.transform.position.y, HospitalDoor.transform.position.z);
             Debug.Log("ParkDoorDone");
+            isPause = false;
         }
     }
 

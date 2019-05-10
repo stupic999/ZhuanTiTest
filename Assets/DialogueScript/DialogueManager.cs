@@ -59,5 +59,6 @@ public class DialogueManager : MonoBehaviour{
     void EndDialogue()
     {
         anim.SetBool("IsOpen", false);
+        GameController.isPause = false;
     }
 }

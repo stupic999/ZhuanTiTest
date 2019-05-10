@@ -8,6 +8,7 @@ public class GrassTrigger : MonoBehaviour {
 
     private void Update()
     {
+        if(GameController.isPause!=true)
         GrassTimer += Time.deltaTime;
     }
 

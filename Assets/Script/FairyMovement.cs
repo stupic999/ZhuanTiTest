@@ -17,9 +17,12 @@ public class FairyMovement : MonoBehaviour {
 
     public void FixedUpdate()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Move(h, v);
+        if (GameController.isPause != true)
+        {
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+            Move(h, v);
+        }
     }
 
     public void Move(float h, float v)

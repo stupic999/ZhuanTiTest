@@ -4,23 +4,9 @@ using UnityEngine;
 
 public class PaperTrigger : MonoBehaviour {
 
-    bool ShowMap;
-    public GameObject Map;
-
-    public void Start()
-    {
-        ShowMap = false;
-        Map.SetActive(false);
-    }
-
-    public void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isSeePaper != true)
+        if (other.transform.tag == "Player")
         {
             GameController.btnEvent = "Paper";
         }
