@@ -5,19 +5,23 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public static bool isPause;
+    public static bool isEventOn;
 
     public static int MapCount;
 
+    public GameObject Photo;
+    public GameObject BoardCamare;
+    public GameObject Player;
     public GameObject Grass1;
     public GameObject Grass2;
     public GameObject Grass3;
     public GameObject Map;
-    public GameObject Player;
     public GameObject HospitalDoor;
     public GameObject ParkDoor;
     public GameObject PaperUI;
     public GameObject InHouseDoorBlock;
     public GameObject FishBait;
+    public GameObject Bear;
 
     public Dialogue BoyDoneDialogue;
     public Dialogue BoyFailDialogue;
@@ -52,6 +56,8 @@ public class GameController : MonoBehaviour {
     public Dialogue PhotoDialogue;
     public Dialogue PaperDoneDialogue;
     public Dialogue PaperFailDialogue;
+    public Dialogue BearDialogue;
+    public Dialogue BoardHintDone;
 
     public bool isOpenHospitalDoor;
     public bool isOpenParkDoor;
@@ -77,6 +83,8 @@ public class GameController : MonoBehaviour {
     public static bool isOpenDoor;
     public static bool isCheckBoard;
     public static bool isCheckComputer;
+    public static bool isTakeBear;
+    public static bool isBoardHint;
 
     public GameObject Btn;
 
@@ -92,21 +100,24 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
-
             // 顯示按鈕
             ShowBtn();
-        if (isPause != true)
-        {
             // 按鈕點擊觸發事件
             BtnEvent();
-        }
     }
 
     public void ShowBtn()
     {
-        if (btnEvent != "")
+        if (isEventOn != true)
         {
-            Btn.SetActive(true);
+            if (btnEvent != "")
+            {
+                Btn.SetActive(true);
+            }
+            else
+            {
+                Btn.SetActive(false);
+            }
         }
         else
         {
@@ -137,6 +148,7 @@ public class GameController : MonoBehaviour {
             ComputerEvent();
             PhotoEvent();
             LadderEvent();
+            BoardEventOn();
 
             btnEvent = "";
             isBtnClick = false;
@@ -277,11 +289,13 @@ public class GameController : MonoBehaviour {
             isCloseLight = !isCloseLight;
             if (isCloseLight != false)
             {
+                Photo.SetActive(false);
                 Debug.Log("LightOn");
                 TriggerDialogue(LightOnDialogue);
             }
             else
             {
+                Photo.SetActive(true);
                 Debug.Log("LightClose");
                 TriggerDialogue(LightCloseDialogue);
             }            
@@ -394,12 +408,24 @@ public class GameController : MonoBehaviour {
                 isCheckBoard = true;
                 Debug.Log("BoardDone");
                 TriggerDialogue(BoardDoneDialogue);
+                EventOn();
             }
             else
             {
                 Debug.Log("BoardFail");
                 TriggerDialogue(BoardFailDialogue);
             }
+        }
+    }
+
+    public void BoardEventOn()
+    {
+        if (btnEvent == "BoardEvent")
+        {
+            isBoardHint = true;
+            EventOff();
+            Debug.Log("BoardDone2");
+            TriggerDialogue(BoardHintDone);
         }
     }
 
@@ -438,6 +464,17 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void BearEvent()
+    {
+        if (btnEvent == "Bear")
+        {
+            Debug.Log("BearDone");
+            isTakeBear = true;
+            TriggerDialogue(BearDialogue);
+            Destroy(Bear);
+        }
+    }
+
     public void LadderEvent()
     {
         if (btnEvent == "Ladder")
@@ -470,5 +507,19 @@ public class GameController : MonoBehaviour {
     public void TriggerDialogue(Dialogue dialogue)
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
+
+    public void EventOn()
+    {
+        isEventOn = true;
+        Player.SetActive(false);
+        BoardCamare.SetActive(true);  
+    }
+
+    public void EventOff()
+    {
+        isEventOn = false;
+        Player.SetActive(true);
+        BoardCamare.SetActive(false);
     }
 }
