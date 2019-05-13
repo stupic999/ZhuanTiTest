@@ -6,9 +6,15 @@ public class FairyMovement : MonoBehaviour {
 
     Vector3 movementH;
     Vector3 movementV;
+    string PlayerFace = "L";
+    public Animator PlayerAnim;
+
     public float moveHSpd;
     public float moveVSpd;
+    
     Rigidbody playerRb;
+    public GameObject Player;
+    
 
     public void Start()
     {
@@ -21,6 +27,34 @@ public class FairyMovement : MonoBehaviour {
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
+
+            // Player面向
+            if (h > 0)
+            {
+                PlayerFace = "R";
+            }
+            if (h < 0)
+            {
+                PlayerFace = "L";
+            }
+            if (PlayerFace == "L")
+            {
+                Player.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                Player.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+
+            if (v != 0)
+            {
+                PlayerAnim.SetBool("isFly", true);
+            }
+            else
+            {
+                PlayerAnim.SetBool("isFly", false);
+            }
+
             Move(h, v);
         }
     }
