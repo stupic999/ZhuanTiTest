@@ -36,14 +36,16 @@ public class GameController : MonoBehaviour {
     public Dialogue GrassDoneDialogue;
     public Dialogue LightCloseDialogue;
     public Dialogue LightOnDialogue;
-    public Dialogue VaseFailDialogue;
-    public Dialogue VaseDoneDialogue;
+    public Dialogue VaseInLightFailDialogue;
+    public Dialogue VaseInLightDoneDialogue;
+    public Dialogue VaseInDarkDoneDialogue;
     public Dialogue LadderFailDialogue;
     public Dialogue CupBoardDoneDialogue;
     public Dialogue CupBoardFailDialogue;
     public Dialogue PuzzleDoneDialogue;
     public Dialogue PuzzleFailDialogue;
     public Dialogue PuzzleStartDialogue;
+    public Dialogue ShoesStartDialogue;
     public Dialogue ShoesDoneDialogue;
     public Dialogue ShoesFailDialogue;
     public Dialogue InHouseDoorFailDialogue;
@@ -76,7 +78,8 @@ public class GameController : MonoBehaviour {
     public static bool isDigTreasure;
     public static bool isCheckGrass;
     public static bool isCloseLight;
-    public static bool isCheckVase;
+    public static bool isCheckVaseInLight;
+    public static bool isCheckVaseInDark;
     public static bool isCheckCupBoard;
     public static bool isDonePuzzle;
     public static bool isCheckShoes;
@@ -149,6 +152,7 @@ public class GameController : MonoBehaviour {
             PhotoEvent();
             LadderEvent();
             BoardEventOn();
+            BearEvent();
 
             btnEvent = "";
             isBtnClick = false;
@@ -306,23 +310,32 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Vase")
         {
-            if (isCheckVase != true)
+            if (isCloseLight != true)
             {
-                isCheckVase = true;
-                Debug.Log("VaseDone");
-                TriggerDialogue(VaseDoneDialogue);
+                if (isCheckVaseInLight != true)
+                {
+                    isCheckVaseInLight = true;
+                    Debug.Log("VaseInLightDone");
+                    TriggerDialogue(VaseInLightDoneDialogue);
+                }
+                else
+                {
+                    Debug.Log("VaseInLightFail");
+                    TriggerDialogue(VaseInLightFailDialogue);
+                }
             }
             else
             {
-                Debug.Log("VaseFail");
-                TriggerDialogue(VaseFailDialogue);
+                    isCheckVaseInDark = true;
+                    Debug.Log("VaseInDarkDone");
+                    TriggerDialogue(VaseInDarkDoneDialogue);
             }
         }
     }
 
     public void CupBoardEvent()
     {
-        if (btnEvent == "Cupboard")
+        if (btnEvent == "CupBoard")
         {
             if (isCheckCupBoard != true)
             {
@@ -342,12 +355,12 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Puzzle")
         {
-            if (isDonePuzzle != false)
+            if (isDonePuzzle)
             {
                 Debug.Log("PuzzleFail");
                 TriggerDialogue(PuzzleFailDialogue);
             }
-            if (isCheckCupBoard != false)
+            if (isCheckCupBoard && isCheckVaseInLight)
             {
                 isDonePuzzle = true;
                 Debug.Log("PuzzleDone");
@@ -365,18 +378,25 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Shoes")
         {
-            if (isCheckShoes != true)
+            if (isCheckVaseInDark)
             {
-                isCheckShoes = true;
-                Debug.Log("ShoesDone");
-                TriggerDialogue(ShoesDoneDialogue);
+                if (isCheckShoes != true)
+                {
+                    isCheckShoes = true;
+                    Debug.Log("ShoesDone");
+                    TriggerDialogue(ShoesDoneDialogue);
+                }
+                else
+                {
+                    Debug.Log("ShoesFail");
+                    TriggerDialogue(ShoesFailDialogue);
+                }
             }
             else
             {
-                Debug.Log("ShoesFail");
-                TriggerDialogue(ShoesFailDialogue);
+                Debug.Log("ShoesStart");
+                TriggerDialogue(ShoesStartDialogue);
             }
-
         }
     }
 
@@ -384,7 +404,7 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "InHouseDoor")
         {
-            if (isCheckShoes != false)
+            if (isCheckShoes)
             {
                 isOpenDoor = true;
                 InHouseDoorBlock.SetActive(false);

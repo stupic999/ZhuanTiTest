@@ -113,6 +113,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &16861996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 16861997}
+  - component: {fileID: 16861998}
+  m_Layer: 0
+  m_Name: HouseBgDarkPuzzleDone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &16861997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16861996}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 200.76, y: -0.02, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 439822401}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &16861998
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16861996}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 45d8433339a5f80498ccde5f09b5d2d0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 75, y: 7.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &50023502
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,8 +294,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 51514748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -133.46, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 150, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 202478778}
   - {fileID: 1454465255}
@@ -1387,9 +1462,11 @@ Transform:
   - {fileID: 913953897}
   - {fileID: 320196186}
   - {fileID: 630106406}
-  - {fileID: 1896749288}
   - {fileID: 885132600}
+  - {fileID: 1896749288}
+  - {fileID: 1288996906}
   - {fileID: 949167853}
+  - {fileID: 16861997}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2359,9 +2436,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e5124c10a3b9e489d0122fb47ad2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HouseBgLight: {fileID: 1896749287}
-  HouseBgDark: {fileID: 949167852}
-  Photo: {fileID: 885132599}
+  HouseLgtPzlDone: {fileID: 1288996905}
+  HouseLgtPzlYet: {fileID: 1896749287}
+  HouseDkPzlDone: {fileID: 16861996}
+  HouseDkPzlYet: {fileID: 949167852}
 --- !u!1 &885132599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,10 +2466,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 189.39, y: 2.16, z: 0}
   m_LocalScale: {x: 3.5, y: 4.2, z: 1}
-  m_Children:
-  - {fileID: 2105559648}
+  m_Children: []
   m_Father: {fileID: 439822401}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &885132601
 BoxCollider:
@@ -2492,12 +2569,12 @@ GameObject:
   - component: {fileID: 949167853}
   - component: {fileID: 949167854}
   m_Layer: 0
-  m_Name: HouseBgDark
+  m_Name: HouseBgDarkPuzzleYet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &949167853
 Transform:
   m_ObjectHideFlags: 0
@@ -2506,10 +2583,10 @@ Transform:
   m_GameObject: {fileID: 949167852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 200.76, y: -0.02, z: 1}
-  m_LocalScale: {x: 1.983, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 439822401}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &949167854
 SpriteRenderer:
@@ -2546,7 +2623,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2e21544c8428e6348986475a446b7c7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c68d1d56a510ee34e990274b8cbe50c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3098,8 +3175,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 168, y: 2.45, z: 0}
   m_LocalScale: {x: 4.8, y: 3, z: 1}
-  m_Children:
-  - {fileID: 1315858234}
+  m_Children: []
   m_Father: {fileID: 439822401}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3560,6 +3636,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1288996905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1288996906}
+  - component: {fileID: 1288996907}
+  m_Layer: 0
+  m_Name: HouseBgLightPuzzleDone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1288996906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1288996905}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 200, y: 0, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 439822401}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1288996907
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1288996905}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f0cf1d914a4baef45a0a7ecb09b11666, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 74.35, y: 7.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1312287615
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,81 +3786,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1312287615}
   m_CullTransparentMesh: 0
---- !u!1 &1315858232
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1315858234}
-  - component: {fileID: 1315858233}
-  m_Layer: 0
-  m_Name: PuzzlePic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1315858233
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1315858232}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 86fffe7358cf28f4baeb1931219b244d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.5, y: 5.5}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1315858234
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1315858232}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0018755593, y: -0.0033333302, z: 0}
-  m_LocalScale: {x: 0.13051456, y: 0.18333334, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1126322879}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347553108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,7 +4275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Photo: {fileID: 885132599}
   BoardCamare: {fileID: 1720267226}
-  Player: {fileID: 202478772}
+  Player: {fileID: 51514748}
   Grass1: {fileID: 839827129}
   Grass2: {fileID: 1374251845}
   Grass3: {fileID: 1243776636}
@@ -4271,16 +4347,19 @@ MonoBehaviour:
     name: LightOn
     sentences:
     - 1
-  VaseFailDialogue:
-    name: VaseFail
+  VaseInLightFailDialogue:
+    name: VaseInLightFail
     sentences:
-    - 1
-  VaseDoneDialogue:
-    name: VaseDone
+    - "\u7A7A\u7684"
+  VaseInLightDoneDialogue:
+    name: Vase In Light Done
     sentences:
-    - '1
-
-'
+    - "\u5F97\u5230\"\u62FC\u56FE\"\u4E00\u7247"
+  VaseInDarkDoneDialogue:
+    name: Vase In Dark Done
+    sentences:
+    - "\u4E0A\u9762\u753B\u7740\u4E00\u53EA\u978B\u5B50\u548C\u4E00\u4E2A\u94A5\u5319"
+    - "\u592A\u6697\u4E86\uFF0C\u88E1\u9762\u770B\u4E0D\u6E05"
   LadderFailDialogue:
     name: LadderFail
     sentences:
@@ -4300,27 +4379,27 @@ MonoBehaviour:
   PuzzleDoneDialogue:
     name: PuzzleDone
     sentences:
-    - '1
-
-'
+    - "\u628A\u62FC\u56FE\u62FC\u4E0A\u53BB"
   PuzzleFailDialogue:
     name: PuzzleFail
     sentences:
-    - 1
+    - "\u5B8C\u6210\u7684\u62FC\u56FE"
   PuzzleStartDialogue:
     name: PuzzleStart
     sentences:
-    - 1
+    - "\u4E00\u526F\u62FC\u56FE\uFF0C\u4E0A\u9762\u597D\u50CF\u5C11\u4E86\u51E0\u5757"
+  ShoesStartDialogue:
+    name: ShoesStart
+    sentences:
+    - "\u978B\u67DC\u4E0A\u6709\u4E00\u53CC\u62D6\u978B"
   ShoesDoneDialogue:
     name: ShoesDone
     sentences:
-    - '1
-
-'
+    - "\u62FF\u5F00\u978B\u5B50\uFF0C\u53D1\u73B0\u4E0B\u9762\u6709\u4E00\u628A\u94A5\u5319\n"
   ShoesFailDialogue:
     name: ShoesFail
     sentences:
-    - 1
+    - "\u9664\u4E86\u978B\u5B50\u6CA1\u6709\u5176\u4ED6\u4E1C\u897F"
   InHouseDoorFailDialogue:
     name: InHouseDoorFail
     sentences:
@@ -5019,7 +5098,7 @@ GameObject:
   - component: {fileID: 1896749288}
   - component: {fileID: 1896749289}
   m_Layer: 0
-  m_Name: HouseBgLight
+  m_Name: HouseBgLightPuzzleYet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5036,7 +5115,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 439822401}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1896749289
 SpriteRenderer:
@@ -5073,7 +5152,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb886db9321a31b4081626a920c765eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa7c79c3d88af4742800d3376d9194ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5425,81 +5504,6 @@ MonoBehaviour:
   Map2: {fileID: 844500427}
   Map3: {fileID: 1182903617}
   Map4: {fileID: 1573625808}
---- !u!1 &2105559646
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2105559648}
-  - component: {fileID: 2105559647}
-  m_Layer: 0
-  m_Name: PhotoPic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &2105559647
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2105559646}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e7856b23bc9b48345af4ffbcb0bd0726, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.3, y: 7.2}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &2105559648
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2105559646}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0122855045, y: -0.011190517, z: 0}
-  m_LocalScale: {x: 0.18835542, y: 0.13803333, z: 1}
-  m_Children: []
-  m_Father: {fileID: 885132600}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2114912485
 GameObject:
   m_ObjectHideFlags: 0

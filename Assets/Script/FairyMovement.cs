@@ -46,10 +46,15 @@ public class FairyMovement : MonoBehaviour {
                 Player.transform.eulerAngles = new Vector3(0, 180, 0);
             }
 
-            if (v != 0)
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
+            {
+                PlayerAnim.SetBool("isFly", false);
+            }
+            else if (v != 0 || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
                 PlayerAnim.SetBool("isFly", true);
             }
+            
             else
             {
                 PlayerAnim.SetBool("isFly", false);
