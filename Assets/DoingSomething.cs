@@ -20,7 +20,6 @@ public class DoingSomething : MonoBehaviour {
         }
         else if(ShowTimer>3 && GameController.EventName == "Dig")
         {
-            GameController.isPause = false;
             GameController.EventName = "";
             UI.SetActive(false);
             ShowTimer = 0;

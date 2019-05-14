@@ -15,11 +15,12 @@ public class GameController : MonoBehaviour {
     public GameObject PuzzleDone;
     public GameObject PuzzleCamare;
     public GameObject BoardCamare;
+    public GameObject BoardHint;
     public GameObject Player;
     public GameObject Grass1;
     public GameObject Grass2;
     public GameObject Grass3;
-    public GameObject Map;
+    public GameObject MapUI;
     public GameObject HospitalDoor;
     public GameObject ParkDoor;
     public GameObject PaperUI;
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour {
     public Dialogue DigDialogue;
     public Dialogue FishBaitFailDialogue;
     public Dialogue FishBaitDoneDialogue;
+    public Dialogue PoolStartDialogue;
     public Dialogue PoolFailDialogue;
     public Dialogue PoolDoneDialogue;
     public Dialogue Grass1Dialogue;
@@ -190,7 +192,7 @@ public class GameController : MonoBehaviour {
             if (isSeePaper != true)
             {
                 isSeePaper = true;
-                Map.SetActive(true);
+                MapUI.SetActive(true);
                 MapCount = 1;
                 Debug.Log("PaperDone");
                 TriggerDialogue(PaperDoneDialogue);
@@ -199,7 +201,7 @@ public class GameController : MonoBehaviour {
             else if (isCheckPool != true)
             {
                 MapCount = 1;
-                Map.SetActive(true);
+                MapUI.SetActive(true);
                 Debug.Log("ShowMap");
                 CloseBtn.MapOpen = true;
             }
@@ -221,6 +223,7 @@ public class GameController : MonoBehaviour {
                 Debug.Log("FishBaitDone");
                 Destroy(FishBait);
                 TriggerDialogue(FishBaitDoneDialogue);
+                BagItem.Bag.Add("FishBait");
             }
             else
             {
@@ -234,16 +237,23 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Pool")
         {
-            if (isTakeFishBait != false)
-            {
-                isCheckPool = true;
-                Debug.Log("PoolDone");
-                TriggerDialogue(PoolDoneDialogue);
-            }
-            else
+            if (isCheckPool)
             {
                 Debug.Log("PoolFail");
                 TriggerDialogue(PoolFailDialogue);
+            }
+            else if (isTakeFishBait != false)
+            {
+                isCheckPool = true;
+                BagItem.Bag.Add("Music");
+                Debug.Log("PoolDone");
+                BagItem.Bag.Remove("Pool");
+                TriggerDialogue(PoolDoneDialogue);
+            }
+            else 
+            {
+                Debug.Log("PoolStart");
+                TriggerDialogue(PoolStartDialogue);
             }
         }
     }
@@ -255,6 +265,7 @@ public class GameController : MonoBehaviour {
             isDigTreasure = true;
             EventName = "Dig";
             Debug.Log("DigDone");
+            BagItem.Bag.Add("Cars");
         }
     }
 
@@ -287,6 +298,7 @@ public class GameController : MonoBehaviour {
                 isCheckGrass = true;
                 Debug.Log("GrassDone");
                 TriggerDialogue(GrassDoneDialogue);
+                BagItem.Bag.Add("Clown");
             }
         }
     }
@@ -322,6 +334,7 @@ public class GameController : MonoBehaviour {
                     isCheckVaseInLight = true;
                     Debug.Log("VaseInLightDone");
                     TriggerDialogue(VaseInLightDoneDialogue);
+                    BagItem.Bag.Add("PuzzleVase");
                 }
                 else
                 {
@@ -347,6 +360,7 @@ public class GameController : MonoBehaviour {
                 isCheckCupBoard = true;
                 Debug.Log("CupBoardDone");
                 TriggerDialogue(CupBoardDoneDialogue);
+                BagItem.Bag.Add("PuzzleCupBoard");
             }
             else
             {
@@ -367,6 +381,7 @@ public class GameController : MonoBehaviour {
                     isCheckShoes = true;
                     Debug.Log("ShoesDone");
                     TriggerDialogue(ShoesDoneDialogue);
+                    BagItem.Bag.Add("Key");
                 }
                 else
                 {
@@ -392,6 +407,7 @@ public class GameController : MonoBehaviour {
                 InHouseDoorBlock.SetActive(false);
                 Debug.Log("DoorDone");
                 TriggerDialogue(InHouseDoorDoneDialogue);
+                BagItem.Bag.Remove("Key");
             }
             else
             {
@@ -450,6 +466,8 @@ public class GameController : MonoBehaviour {
                 isPuzzleEvent = true;
                 isDonePuzzle = true;
                 Debug.Log("PuzzleDone");
+                BagItem.Bag.Remove("PuzzleVase");
+                BagItem.Bag.Remove("PuzzleCupBoard");
                 TriggerDialogue(PuzzleDoneDialogue);
             }
             else
@@ -547,6 +565,7 @@ public class GameController : MonoBehaviour {
         Player.SetActive(false);
         if (EventName == "BoardEvent")
         {
+            BoardHint.SetActive(true);
             BoardCamare.SetActive(true);
         }
         if (EventName == "PuzzleEvent")

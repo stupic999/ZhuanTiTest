@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapEvent : MonoBehaviour {
-
+ 
     public GameObject CloseItem;
     public static bool MapOpen;
 

@@ -19,6 +19,6 @@ public class CloseBtn : MonoBehaviour {
     {
         MapOpen = false;
         GameController.isPause = false;
-        CloseItem.SetActive(false);        
+        CloseItem.SetActive(false);
     }
 }
