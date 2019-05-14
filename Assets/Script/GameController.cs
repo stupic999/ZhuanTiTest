@@ -6,10 +6,14 @@ public class GameController : MonoBehaviour {
 
     public static bool isPause;
     public static bool isEventOn;
+    public static bool isPuzzleEvent;
 
     public static int MapCount;
 
     public GameObject Photo;
+    public GameObject PuzzleYet;
+    public GameObject PuzzleDone;
+    public GameObject PuzzleCamare;
     public GameObject BoardCamare;
     public GameObject Player;
     public GameObject Grass1;
@@ -66,6 +70,7 @@ public class GameController : MonoBehaviour {
 
     public static string LoadingSceneName;
     public static string btnEvent;
+    public static string EventName;
 
     int grassNum;
 
@@ -248,8 +253,8 @@ public class GameController : MonoBehaviour {
         if (btnEvent == "Dig")
         {            
             isDigTreasure = true;
+            EventName = "Dig";
             Debug.Log("DigDone");
-            TriggerDialogue(DigDialogue);
         }
     }
 
@@ -351,29 +356,6 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void PuzzleEvent()
-    {
-        if (btnEvent == "Puzzle")
-        {
-            if (isDonePuzzle)
-            {
-                Debug.Log("PuzzleFail");
-                TriggerDialogue(PuzzleFailDialogue);
-            }
-            if (isCheckCupBoard && isCheckVaseInLight)
-            {
-                isDonePuzzle = true;
-                Debug.Log("PuzzleDone");
-                TriggerDialogue(PuzzleDoneDialogue);
-            }
-            else
-            {
-                Debug.Log("PuzzleStart");
-                TriggerDialogue(PuzzleStartDialogue);
-            }
-        }
-    }
-
     public void ShoesEvent()
     {
         if (btnEvent == "Shoes")
@@ -428,6 +410,7 @@ public class GameController : MonoBehaviour {
                 isCheckBoard = true;
                 Debug.Log("BoardDone");
                 TriggerDialogue(BoardDoneDialogue);
+                EventName = "BoardEvent";
                 EventOn();
             }
             else
@@ -446,6 +429,35 @@ public class GameController : MonoBehaviour {
             EventOff();
             Debug.Log("BoardDone2");
             TriggerDialogue(BoardHintDone);
+        }
+    }
+
+
+    public void PuzzleEvent()
+    {
+        if (btnEvent == "Puzzle")
+        {
+            EventName = "PuzzleEvent";
+            EventOn();
+            if (isDonePuzzle)
+            {
+                Debug.Log("PuzzleFail");
+                TriggerDialogue(PuzzleFailDialogue);
+                EventOff();
+            }
+            else if (isCheckCupBoard && isCheckVaseInLight)
+            {
+                isPuzzleEvent = true;
+                isDonePuzzle = true;
+                Debug.Log("PuzzleDone");
+                TriggerDialogue(PuzzleDoneDialogue);
+            }
+            else
+            {
+                Debug.Log("PuzzleStart");
+                TriggerDialogue(PuzzleStartDialogue);
+                EventOff();
+            }
         }
     }
 
@@ -533,13 +545,26 @@ public class GameController : MonoBehaviour {
     {
         isEventOn = true;
         Player.SetActive(false);
-        BoardCamare.SetActive(true);  
+        if (EventName == "BoardEvent")
+        {
+            BoardCamare.SetActive(true);
+        }
+        if (EventName == "PuzzleEvent")
+        {
+            PuzzleCamare.SetActive(true);
+            if (isDonePuzzle)
+            {
+                PuzzleDone.SetActive(true);
+            }
+            else
+            {
+                PuzzleYet.SetActive(true);
+            }
+        }
     }
 
     public void EventOff()
     {
         isEventOn = false;
-        Player.SetActive(true);
-        BoardCamare.SetActive(false);
     }
 }

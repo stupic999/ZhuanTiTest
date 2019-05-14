@@ -7,6 +7,13 @@ public class DialogueManager : MonoBehaviour{
 
     public Text nameText;
     public Text dialogueText;
+    public GameObject Player;
+    public GameObject BoardCamere;
+    public GameObject PuzzleCamere;
+    public GameObject PuzzleYet;
+    public GameObject PuzzleDone;
+
+    public Dialogue PuzzleDone2Dialogue;
 
     public Animator anim;
 
@@ -60,5 +67,26 @@ public class DialogueManager : MonoBehaviour{
     {
         anim.SetBool("IsOpen", false);
         GameController.isPause = false;
+        if (GameController.isEventOn!=true)
+        {
+            Player.SetActive(true);
+            BoardCamere.SetActive(false);
+            PuzzleCamere.SetActive(false);
+            PuzzleDone.SetActive(false);
+            PuzzleYet.SetActive(false);
+        }
+        if (GameController.isPuzzleEvent)
+        {
+            PuzzleYet.SetActive(false);
+            PuzzleDone.SetActive(true);
+            GameController.isEventOn = false;
+            TriggerDialogue(PuzzleDone2Dialogue);
+            GameController.isPuzzleEvent = false;
+        }
+    }
+
+    public void TriggerDialogue(Dialogue dialogue)
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }
