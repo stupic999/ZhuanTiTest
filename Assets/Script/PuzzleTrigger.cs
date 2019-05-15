@@ -6,7 +6,7 @@ public class PuzzleTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && !GameController.isDonePuzzle)
         {
             GameController.btnEvent = "Puzzle";
         }

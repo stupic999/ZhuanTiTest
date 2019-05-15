@@ -6,7 +6,7 @@ public class PoolTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && !GameController.isCheckPool)
         {
             GameController.btnEvent = "Pool";
         }

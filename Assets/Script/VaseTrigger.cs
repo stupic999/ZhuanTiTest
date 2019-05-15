@@ -6,7 +6,7 @@ public class VaseTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && !GameController.isCheckVase)
         {
             GameController.btnEvent = "Vase";
         }

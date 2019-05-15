@@ -6,7 +6,7 @@ public class ComputerTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && !GameController.isCheckComputer)
         {
             GameController.btnEvent = "Computer";
         }

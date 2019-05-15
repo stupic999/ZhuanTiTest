@@ -6,7 +6,7 @@ public class DigTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isDigTreasure != true)
+        if (other.transform.tag == "Player")
         {
             GameController.btnEvent = "Dig";
         }

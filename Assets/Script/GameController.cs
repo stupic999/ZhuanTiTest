@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public static string PlayerRoom="Hospital";
+    public static string PortalPlace;
     public static bool isPause;
     public static bool isEventOn;
     public static bool isPuzzleEvent;
 
     public static int MapCount;
 
-    public GameObject Photo;
     public GameObject PuzzleYet;
     public GameObject PuzzleDone;
     public GameObject PuzzleCamare;
     public GameObject BoardCamare;
     public GameObject BoardHint;
+    public GameObject BoardPaper;
     public GameObject Player;
     public GameObject Grass1;
     public GameObject Grass2;
@@ -23,47 +25,39 @@ public class GameController : MonoBehaviour {
     public GameObject MapUI;
     public GameObject HospitalDoor;
     public GameObject ParkDoor;
+    public GameObject HouseDoor;
     public GameObject PaperUI;
     public GameObject InHouseDoorBlock;
     public GameObject FishBait;
     public GameObject Bear;
+    public GameObject Shoes;
+    public GameObject HouseBgPuzzleYet;
+    public GameObject HouseBgPuzzleDone;
+
 
     public Dialogue BoyDoneDialogue;
-    public Dialogue BoyFailDialogue;
     public Dialogue DigDialogue;
-    public Dialogue FishBaitFailDialogue;
     public Dialogue FishBaitDoneDialogue;
+    public Dialogue FishBaitStartDialogue;
     public Dialogue PoolStartDialogue;
-    public Dialogue PoolFailDialogue;
     public Dialogue PoolDoneDialogue;
     public Dialogue Grass1Dialogue;
     public Dialogue Grass2Dialogue;
     public Dialogue Grass3Dialogue;
     public Dialogue GrassDoneDialogue;
-    public Dialogue LightCloseDialogue;
-    public Dialogue LightOnDialogue;
-    public Dialogue VaseInLightFailDialogue;
-    public Dialogue VaseInLightDoneDialogue;
-    public Dialogue VaseInDarkDoneDialogue;
+    public Dialogue VaseDoneDialogue;
     public Dialogue LadderFailDialogue;
     public Dialogue CupBoardDoneDialogue;
-    public Dialogue CupBoardFailDialogue;
     public Dialogue PuzzleDoneDialogue;
-    public Dialogue PuzzleFailDialogue;
+    public Dialogue PuzzleHalfDialogue;
     public Dialogue PuzzleStartDialogue;
-    public Dialogue ShoesStartDialogue;
     public Dialogue ShoesDoneDialogue;
-    public Dialogue ShoesFailDialogue;
-    public Dialogue InHouseDoorFailDialogue;
     public Dialogue InHouseDoorDoneDialogue;
+    public Dialogue InHouseFailDoneDialogue;
     public Dialogue BoardStartDialogue;
-    public Dialogue BoardFailDialogue;
-    public Dialogue ComputerFailDialogue;
     public Dialogue ComputerDoneDialogue;
     public Dialogue ComputerStartDialogue;
-    public Dialogue PhotoDialogue;
     public Dialogue PaperDoneDialogue;
-    public Dialogue PaperFailDialogue;
     public Dialogue BearDialogue;
     public Dialogue BoardHintDone;
 
@@ -84,9 +78,7 @@ public class GameController : MonoBehaviour {
     public static bool isCheckPool;
     public static bool isDigTreasure;
     public static bool isCheckGrass;
-    public static bool isCloseLight;
-    public static bool isCheckVaseInLight;
-    public static bool isCheckVaseInDark;
+    public static bool isCheckVase;
     public static bool isCheckCupBoard;
     public static bool isDonePuzzle;
     public static bool isCheckShoes;
@@ -95,6 +87,7 @@ public class GameController : MonoBehaviour {
     public static bool isCheckComputer;
     public static bool isTakeBear;
     public static bool isBoardHint;
+    public static bool isCheckLadder;
 
     public GameObject Btn;
 
@@ -148,7 +141,6 @@ public class GameController : MonoBehaviour {
             PoolEvent();
             DigEvent();
             GrassEvent();
-            LightEvent();
             VaseEvent();
             CupBoardEvent();
             PuzzleEvent();
@@ -156,7 +148,6 @@ public class GameController : MonoBehaviour {
             InHouseDoorEvent();
             BoardEvent();
             ComputerEvent();
-            PhotoEvent();
             LadderEvent();
             BoardEventOn();
             BearEvent();
@@ -171,16 +162,11 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Boy")
         {
-            if (isTalkWithBoy != true)
+            if (!isTalkWithBoy)
             {
                 isTalkWithBoy = true;
                 Debug.Log("BoyDone");
                 TriggerDialogue(BoyDoneDialogue);
-            }
-            else
-            {
-                Debug.Log("BoyFail");
-                TriggerDialogue(BoyFailDialogue);
             }
         }
     }
@@ -189,7 +175,7 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Paper")
         {
-            if (isSeePaper != true)
+            if (!isSeePaper)
             {
                 isSeePaper = true;
                 MapUI.SetActive(true);
@@ -198,17 +184,12 @@ public class GameController : MonoBehaviour {
                 TriggerDialogue(PaperDoneDialogue);
                 CloseBtn.MapOpen = true;
             }
-            else if (isCheckPool != true)
+            else if (!isCheckPool)
             {
                 MapCount = 1;
                 MapUI.SetActive(true);
                 Debug.Log("ShowMap");
                 CloseBtn.MapOpen = true;
-            }
-            else
-            {
-                TriggerDialogue(PaperFailDialogue);
-                Debug.Log("PaperFail");
             }
         }
     }
@@ -217,18 +198,19 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "FishBait")
         {
-            if (isSeePaper != false)
+            if (isSeePaper)
             {
                 isTakeFishBait = true;
                 Debug.Log("FishBaitDone");
                 Destroy(FishBait);
                 TriggerDialogue(FishBaitDoneDialogue);
                 BagItem.Bag.Add("FishBait");
+                BagItem.isItem = true;
             }
             else
             {
-                Debug.Log("FishBaitFail");
-                TriggerDialogue(FishBaitFailDialogue);
+                Debug.Log("FishBaitStart");
+                TriggerDialogue(FishBaitStartDialogue);
             }
         }        
     }
@@ -237,17 +219,13 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Pool")
         {
-            if (isCheckPool)
-            {
-                Debug.Log("PoolFail");
-                TriggerDialogue(PoolFailDialogue);
-            }
-            else if (isTakeFishBait != false)
+            if (isTakeFishBait)
             {
                 isCheckPool = true;
                 BagItem.Bag.Add("Music");
                 Debug.Log("PoolDone");
                 BagItem.Bag.Remove("FishBait");
+                BagItem.isItem = true;
                 TriggerDialogue(PoolDoneDialogue);
             }
             else 
@@ -266,6 +244,7 @@ public class GameController : MonoBehaviour {
             EventName = "Dig";
             Debug.Log("DigDone");
             BagItem.Bag.Add("Cars");
+            BagItem.isItem = true;
         }
     }
 
@@ -299,27 +278,8 @@ public class GameController : MonoBehaviour {
                 Debug.Log("GrassDone");
                 TriggerDialogue(GrassDoneDialogue);
                 BagItem.Bag.Add("Clown");
+                BagItem.isItem = true;
             }
-        }
-    }
-
-    public void LightEvent()
-    {
-        if (btnEvent == "Light")
-        {
-            isCloseLight = !isCloseLight;
-            if (isCloseLight != false)
-            {
-                Photo.SetActive(false);
-                Debug.Log("LightOn");
-                TriggerDialogue(LightOnDialogue);
-            }
-            else
-            {
-                Photo.SetActive(true);
-                Debug.Log("LightClose");
-                TriggerDialogue(LightCloseDialogue);
-            }            
         }
     }
 
@@ -327,27 +287,10 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Vase")
         {
-            if (isCloseLight != true)
-            {
-                if (isCheckVaseInLight != true)
-                {
-                    isCheckVaseInLight = true;
-                    Debug.Log("VaseInLightDone");
-                    TriggerDialogue(VaseInLightDoneDialogue);
-                    BagItem.Bag.Add("PuzzleVase");
-                }
-                else
-                {
-                    Debug.Log("VaseInLightFail");
-                    TriggerDialogue(VaseInLightFailDialogue);
-                }
-            }
-            else
-            {
-                    isCheckVaseInDark = true;
-                    Debug.Log("VaseInDarkDone");
-                    TriggerDialogue(VaseInDarkDoneDialogue);
-            }
+            Debug.Log("VaseInDone");
+            TriggerDialogue(VaseDoneDialogue);
+            BagItem.Bag.Add("PuzzleVase");
+            BagItem.isItem = true;
         }
     }
 
@@ -355,17 +298,13 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "CupBoard")
         {
-            if (isCheckCupBoard != true)
+            if (!isCheckCupBoard)
             {
                 isCheckCupBoard = true;
                 Debug.Log("CupBoardDone");
                 TriggerDialogue(CupBoardDoneDialogue);
                 BagItem.Bag.Add("PuzzleCupBoard");
-            }
-            else
-            {
-                Debug.Log("CupBoardFail");
-                TriggerDialogue(CupBoardFailDialogue);
+                BagItem.isItem = true;
             }
         }
     }
@@ -374,25 +313,14 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Shoes")
         {
-            if (isCheckVaseInDark)
+            if (!isCheckShoes)
             {
-                if (isCheckShoes != true)
-                {
-                    isCheckShoes = true;
-                    Debug.Log("ShoesDone");
-                    TriggerDialogue(ShoesDoneDialogue);
-                    BagItem.Bag.Add("Key");
-                }
-                else
-                {
-                    Debug.Log("ShoesFail");
-                    TriggerDialogue(ShoesFailDialogue);
-                }
-            }
-            else
-            {
-                Debug.Log("ShoesStart");
-                TriggerDialogue(ShoesStartDialogue);
+                isCheckShoes = true;
+                Debug.Log("ShoesDone");
+                TriggerDialogue(ShoesDoneDialogue);
+                BagItem.Bag.Add("Key");
+                BagItem.isItem = true;
+                Shoes.transform.position = new Vector3(Shoes.transform.position.x + 0.25f, Shoes.transform.position.y, Shoes.transform.position.z);
             }
         }
     }
@@ -408,11 +336,12 @@ public class GameController : MonoBehaviour {
                 Debug.Log("DoorDone");
                 TriggerDialogue(InHouseDoorDoneDialogue);
                 BagItem.Bag.Remove("Key");
+                BagItem.isItem = true;
             }
             else
             {
                 Debug.Log("DoorFail");
-                TriggerDialogue(InHouseDoorFailDialogue);
+                TriggerDialogue(InHouseFailDoneDialogue);
             }
         }
     }
@@ -421,18 +350,13 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Board")
         {
-            if (isCheckBoard != true)
+            if (!isCheckBoard)
             {
                 isCheckBoard = true;
                 Debug.Log("BoardStart");
                 TriggerDialogue(BoardStartDialogue);
                 EventName = "BoardEvent";
                 EventOn();
-            }
-            else
-            {
-                Debug.Log("BoardFail");
-                TriggerDialogue(BoardFailDialogue);
             }
         }
     }
@@ -455,20 +379,24 @@ public class GameController : MonoBehaviour {
         {
             EventName = "PuzzleEvent";
             EventOn();
-            if (isDonePuzzle)
+
+            if (isCheckCupBoard && isCheckVase)
             {
-                Debug.Log("PuzzleFail");
-                TriggerDialogue(PuzzleFailDialogue);
-                EventOff();
-            }
-            else if (isCheckCupBoard && isCheckVaseInLight)
-            {
+                HouseBgPuzzleDone.SetActive(true);
+                HouseBgPuzzleYet.SetActive(false);
                 isPuzzleEvent = true;
                 isDonePuzzle = true;
                 Debug.Log("PuzzleDone");
                 BagItem.Bag.Remove("PuzzleVase");
                 BagItem.Bag.Remove("PuzzleCupBoard");
+                BagItem.isItem = true;
                 TriggerDialogue(PuzzleDoneDialogue);
+            }
+            else if (isCheckCupBoard || isCheckVase)
+            {
+                Debug.Log("PuzzleHalf");
+                TriggerDialogue(PuzzleHalfDialogue);
+                EventOff();
             }
             else
             {
@@ -483,34 +411,17 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Computer")
         {
-            if (isCheckComputer != true)
+            if (isCheckBoard)
             {
-                if (isCheckBoard != false)
-                {
-                    isCheckComputer = true;
-                    Debug.Log("ConputerDone");
-                    TriggerDialogue(ComputerDoneDialogue);
-                }
-                else
-                {
-                    Debug.Log("ComputerStart");
-                    TriggerDialogue(ComputerStartDialogue);
-                }
+                isCheckComputer = true;
+                Debug.Log("ConputerDone");
+                TriggerDialogue(ComputerDoneDialogue);
             }
             else
             {
-                Debug.Log("ComputerFail");
-                TriggerDialogue(ComputerFailDialogue);
-            }            
-        }
-    }
-
-    public void PhotoEvent()
-    {
-        if (btnEvent == "Photo")
-        {
-            Debug.Log("PhotoDone");
-            TriggerDialogue(PhotoDialogue);
+                Debug.Log("ComputerStart");
+                TriggerDialogue(ComputerStartDialogue);
+            }         
         }
     }
 
@@ -521,6 +432,7 @@ public class GameController : MonoBehaviour {
             Debug.Log("BearDone");
             isTakeBear = true;
             BagItem.Bag.Add("Bear");
+            BagItem.isItem = true;
             TriggerDialogue(BearDialogue);
             Destroy(Bear);
         }
@@ -531,6 +443,7 @@ public class GameController : MonoBehaviour {
         if (btnEvent == "Ladder")
         {
             Debug.Log("LadderDone");
+            isCheckLadder = true;
             TriggerDialogue(LadderFailDialogue);
         }
     }
@@ -542,6 +455,8 @@ public class GameController : MonoBehaviour {
             Player.transform.position = new Vector3(ParkDoor.transform.position.x + 5, ParkDoor.transform.position.y, ParkDoor.transform.position.z);
             Debug.Log("HospitalDoorDone");
             isPause = false;
+            PlayerRoom = "Park";
+            PortalPlace = "Park";
         }
     }
 
@@ -552,6 +467,20 @@ public class GameController : MonoBehaviour {
             Player.transform.position = new Vector3(HospitalDoor.transform.position.x + 5, HospitalDoor.transform.position.y, HospitalDoor.transform.position.z);
             Debug.Log("ParkDoorDone");
             isPause = false;
+            PlayerRoom = "Park";
+            PortalPlace = "Park";
+        }
+    }
+
+    public void HouseDoorEvent()
+    {
+        if (btnEvent == "HouseDoor")
+        {
+            Player.transform.position = new Vector3(HouseDoor.transform.position.x + 5, HouseDoor.transform.position.y, HouseDoor.transform.position.z);
+            Debug.Log("HouseDoorDone");
+            isPause = false;
+            PlayerRoom = "House";
+            PortalPlace = "House";
         }
     }
 
@@ -568,6 +497,7 @@ public class GameController : MonoBehaviour {
         {
             BoardHint.SetActive(true);
             BoardCamare.SetActive(true);
+            BoardPaper.SetActive(false);
         }
         if (EventName == "PuzzleEvent")
         {

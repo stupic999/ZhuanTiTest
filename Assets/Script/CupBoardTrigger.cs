@@ -6,7 +6,7 @@ public class CupBoardTrigger : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.btnEvent!="Bear")
+        if (other.transform.tag == "Player" && GameController.btnEvent!="Bear" && !GameController.isCheckCupBoard)
         {
             GameController.btnEvent = "CupBoard";
         }

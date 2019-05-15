@@ -6,7 +6,7 @@ public class ShoesTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && !GameController.isCheckShoes)
         {
             GameController.btnEvent = "Shoes";
         }
