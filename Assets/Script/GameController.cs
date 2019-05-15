@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour {
     public Dialogue ShoesFailDialogue;
     public Dialogue InHouseDoorFailDialogue;
     public Dialogue InHouseDoorDoneDialogue;
-    public Dialogue BoardDoneDialogue;
+    public Dialogue BoardStartDialogue;
     public Dialogue BoardFailDialogue;
     public Dialogue ComputerFailDialogue;
     public Dialogue ComputerDoneDialogue;
@@ -247,7 +247,7 @@ public class GameController : MonoBehaviour {
                 isCheckPool = true;
                 BagItem.Bag.Add("Music");
                 Debug.Log("PoolDone");
-                BagItem.Bag.Remove("Pool");
+                BagItem.Bag.Remove("FishBait");
                 TriggerDialogue(PoolDoneDialogue);
             }
             else 
@@ -424,8 +424,8 @@ public class GameController : MonoBehaviour {
             if (isCheckBoard != true)
             {
                 isCheckBoard = true;
-                Debug.Log("BoardDone");
-                TriggerDialogue(BoardDoneDialogue);
+                Debug.Log("BoardStart");
+                TriggerDialogue(BoardStartDialogue);
                 EventName = "BoardEvent";
                 EventOn();
             }
@@ -520,6 +520,7 @@ public class GameController : MonoBehaviour {
         {
             Debug.Log("BearDone");
             isTakeBear = true;
+            BagItem.Bag.Add("Bear");
             TriggerDialogue(BearDialogue);
             Destroy(Bear);
         }
