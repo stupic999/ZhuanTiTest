@@ -54,13 +54,17 @@ public class FairyMovement : MonoBehaviour {
             {
                 PlayerAnim.SetBool("isFly", true);
             }
-            
+
             else
             {
                 PlayerAnim.SetBool("isFly", false);
             }
 
             Move(h, v);
+        }
+        else
+        {
+            PlayerAnim.SetBool("isFly", false);
         }
     }
 

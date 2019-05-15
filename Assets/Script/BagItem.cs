@@ -156,5 +156,13 @@ public class BagItem : MonoBehaviour {
     {
         isBagOpen = !isBagOpen;
         BagAnim.SetBool("isBagOpen", isBagOpen);
+        if (isBagOpen)
+        {
+            GameController.isPause = true;
+        }
+        else
+        {
+            GameController.isPause = false;
+        }
     }
 }

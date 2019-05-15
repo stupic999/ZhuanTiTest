@@ -7,6 +7,7 @@ public class DoingSomething : MonoBehaviour {
     public Dialogue DigDialogue;
     public GameObject UI;
     public GameObject DigPic;
+    public GameObject CarsUI;
     float ShowTimer;
 
 	// Update is called once per frame
@@ -20,9 +21,13 @@ public class DoingSomething : MonoBehaviour {
         }
         else if(ShowTimer>3 && GameController.EventName == "Dig")
         {
+
             GameController.EventName = "";
             UI.SetActive(false);
             ShowTimer = 0;
+            BagItem.Bag.Add("Cars");
+            BagItem.isItem = true;
+            CarsUI.SetActive(true);
             TriggerDialogue(DigDialogue);
         }
     }

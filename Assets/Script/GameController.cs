@@ -12,6 +12,14 @@ public class GameController : MonoBehaviour {
 
     public static int MapCount;
 
+    public GameObject FishBaitUI;
+    public GameObject KeyUI;
+    public GameObject BearUI;
+    public GameObject ClownUI;
+    public GameObject PuzzleVaseUI;
+    public GameObject PuzzleCupBoardUI;
+    public GameObject MusicUI;
+
     public GameObject PuzzleYet;
     public GameObject PuzzleDone;
     public GameObject PuzzleCamare;
@@ -23,9 +31,6 @@ public class GameController : MonoBehaviour {
     public GameObject Grass2;
     public GameObject Grass3;
     public GameObject MapUI;
-    public GameObject HospitalDoor;
-    public GameObject ParkDoor;
-    public GameObject HouseDoor;
     public GameObject PaperUI;
     public GameObject InHouseDoorBlock;
     public GameObject FishBait;
@@ -60,9 +65,6 @@ public class GameController : MonoBehaviour {
     public Dialogue PaperDoneDialogue;
     public Dialogue BearDialogue;
     public Dialogue BoardHintDone;
-
-    public bool isOpenHospitalDoor;
-    public bool isOpenParkDoor;
 
     public static string LoadingSceneName;
     public static string btnEvent;
@@ -134,8 +136,6 @@ public class GameController : MonoBehaviour {
         {
             isPause = true;
             BoyEvent();
-            HospitalDoorEvent();
-            ParkDoorEvent();
             PaperEvent();
             FishBaitEvent();
             PoolEvent();
@@ -206,6 +206,7 @@ public class GameController : MonoBehaviour {
                 TriggerDialogue(FishBaitDoneDialogue);
                 BagItem.Bag.Add("FishBait");
                 BagItem.isItem = true;
+                FishBaitUI.SetActive(true);
             }
             else
             {
@@ -223,6 +224,7 @@ public class GameController : MonoBehaviour {
             {
                 isCheckPool = true;
                 BagItem.Bag.Add("Music");
+                MusicUI.SetActive(true);
                 Debug.Log("PoolDone");
                 BagItem.Bag.Remove("FishBait");
                 BagItem.isItem = true;
@@ -243,8 +245,6 @@ public class GameController : MonoBehaviour {
             isDigTreasure = true;
             EventName = "Dig";
             Debug.Log("DigDone");
-            BagItem.Bag.Add("Cars");
-            BagItem.isItem = true;
         }
     }
 
@@ -278,6 +278,7 @@ public class GameController : MonoBehaviour {
                 Debug.Log("GrassDone");
                 TriggerDialogue(GrassDoneDialogue);
                 BagItem.Bag.Add("Clown");
+                ClownUI.SetActive(true);
                 BagItem.isItem = true;
             }
         }
@@ -290,6 +291,7 @@ public class GameController : MonoBehaviour {
             Debug.Log("VaseInDone");
             TriggerDialogue(VaseDoneDialogue);
             BagItem.Bag.Add("PuzzleVase");
+            PuzzleVaseUI.SetActive(true);
             BagItem.isItem = true;
         }
     }
@@ -304,6 +306,7 @@ public class GameController : MonoBehaviour {
                 Debug.Log("CupBoardDone");
                 TriggerDialogue(CupBoardDoneDialogue);
                 BagItem.Bag.Add("PuzzleCupBoard");
+                PuzzleCupBoardUI.SetActive(true);
                 BagItem.isItem = true;
             }
         }
@@ -320,6 +323,7 @@ public class GameController : MonoBehaviour {
                 TriggerDialogue(ShoesDoneDialogue);
                 BagItem.Bag.Add("Key");
                 BagItem.isItem = true;
+                KeyUI.SetActive(true);
                 Shoes.transform.position = new Vector3(Shoes.transform.position.x + 0.25f, Shoes.transform.position.y, Shoes.transform.position.z);
             }
         }
@@ -434,6 +438,7 @@ public class GameController : MonoBehaviour {
             BagItem.Bag.Add("Bear");
             BagItem.isItem = true;
             TriggerDialogue(BearDialogue);
+            BearUI.SetActive(true);
             Destroy(Bear);
         }
     }
@@ -445,42 +450,6 @@ public class GameController : MonoBehaviour {
             Debug.Log("LadderDone");
             isCheckLadder = true;
             TriggerDialogue(LadderFailDialogue);
-        }
-    }
-
-    public void HospitalDoorEvent()
-    {
-        if (btnEvent == "HospitalDoor")
-        {
-            Player.transform.position = new Vector3(ParkDoor.transform.position.x + 5, ParkDoor.transform.position.y, ParkDoor.transform.position.z);
-            Debug.Log("HospitalDoorDone");
-            isPause = false;
-            PlayerRoom = "Park";
-            PortalPlace = "Park";
-        }
-    }
-
-    public void ParkDoorEvent()
-    {
-        if (btnEvent == "ParkDoor")
-        {
-            Player.transform.position = new Vector3(HospitalDoor.transform.position.x + 5, HospitalDoor.transform.position.y, HospitalDoor.transform.position.z);
-            Debug.Log("ParkDoorDone");
-            isPause = false;
-            PlayerRoom = "Park";
-            PortalPlace = "Park";
-        }
-    }
-
-    public void HouseDoorEvent()
-    {
-        if (btnEvent == "HouseDoor")
-        {
-            Player.transform.position = new Vector3(HouseDoor.transform.position.x + 5, HouseDoor.transform.position.y, HouseDoor.transform.position.z);
-            Debug.Log("HouseDoorDone");
-            isPause = false;
-            PlayerRoom = "House";
-            PortalPlace = "House";
         }
     }
 
