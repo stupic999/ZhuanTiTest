@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    public static bool changeTalkingPerson;
+    public static string talkingPerson;
     public static string PlayerRoom = "Hospital";
     public static string PortalPlace;
     public static bool isPause;
@@ -20,6 +22,8 @@ public class GameController : MonoBehaviour {
     public GameObject PuzzleCupBoardUI;
     public GameObject MusicUI;
 
+    public GameObject computerUI;
+    public GameObject computerEvent;
     public GameObject PuzzleYet;
     public GameObject PuzzleDone;
     public GameObject PuzzleCamare;
@@ -38,7 +42,6 @@ public class GameController : MonoBehaviour {
     public GameObject Shoes;
     public GameObject HouseBgPuzzleYet;
     public GameObject HouseBgPuzzleDone;
-
 
     public Dialogue BoyDoneDialogue;
     public Dialogue DigDialogue;
@@ -61,6 +64,7 @@ public class GameController : MonoBehaviour {
     public Dialogue InHouseFailDoneDialogue;
     public Dialogue BoardStartDialogue;
     public Dialogue ComputerDoneDialogue;
+    public Dialogue ComputerKeyInDialogue;
     public Dialogue ComputerStartDialogue;
     public Dialogue PaperDoneDialogue;
     public Dialogue BearDialogue;
@@ -166,6 +170,7 @@ public class GameController : MonoBehaviour {
             {
                 isTalkWithBoy = true;
                 Debug.Log("BoyDone");
+                changeTalkingPerson = true;
                 TriggerDialogue(BoyDoneDialogue);
             }
         }
@@ -288,6 +293,7 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "Vase")
         {
+            isCheckVase = true;
             Debug.Log("VaseInDone");
             TriggerDialogue(VaseDoneDialogue);
             BagItem.Bag.Add("PuzzleVase");
@@ -417,9 +423,10 @@ public class GameController : MonoBehaviour {
         {
             if (isCheckBoard)
             {
-                isCheckComputer = true;
-                Debug.Log("ConputerDone");
-                TriggerDialogue(ComputerDoneDialogue);
+                EventName = "ComputerEvent";
+                Debug.Log("ComputerEvent");
+                EventOn();
+                TriggerDialogue(ComputerKeyInDialogue);
             }
             else
             {
@@ -428,6 +435,19 @@ public class GameController : MonoBehaviour {
             }         
         }
     }
+
+    public void ComputerEventOn()
+    {
+        if (btnEvent == "ComputerEvent")
+        {
+            isCheckComputer = true;
+            EventOff();
+            Debug.Log("ComputerDone");
+            TriggerDialogue(ComputerDoneDialogue);
+        }
+    }
+
+
 
     public void BearEvent()
     {
@@ -455,6 +475,7 @@ public class GameController : MonoBehaviour {
 
     public void TriggerDialogue(Dialogue dialogue)
     {
+        talkingPerson= dialogue.name;
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 
@@ -462,6 +483,7 @@ public class GameController : MonoBehaviour {
     {
         isEventOn = true;
         Player.SetActive(false);
+
         if (EventName == "BoardEvent")
         {
             BoardHint.SetActive(true);
@@ -479,6 +501,11 @@ public class GameController : MonoBehaviour {
             {
                 PuzzleYet.SetActive(true);
             }
+        }
+        if (EventName == "ComputerEvent")
+        {
+            computerEvent.SetActive(true);
+            computerUI.SetActive(true);
         }
     }
 

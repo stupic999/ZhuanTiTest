@@ -12,6 +12,11 @@ public class DialogueManager : MonoBehaviour{
     public GameObject PuzzleCamere;
     public GameObject PuzzleYet;
     public GameObject PuzzleDone;
+    public GameObject computerUI;
+    public GameObject computerEvent;
+    public GameObject normalDialogueBox;
+    public GameObject boyDialogueBox;
+    public GameObject fairyDialogueBox;
 
     public Dialogue PuzzleDone2Dialogue;
 
@@ -25,6 +30,28 @@ public class DialogueManager : MonoBehaviour{
         sentences = new Queue<string>();
 	}
 
+    public void Update()
+    {
+            if (GameController.talkingPerson == "Boy")
+            {
+                normalDialogueBox.SetActive(false);
+                boyDialogueBox.SetActive(true);
+                fairyDialogueBox.SetActive(false);
+            }
+            else if (GameController.talkingPerson == "Fairy")
+            {
+                normalDialogueBox.SetActive(false);
+                boyDialogueBox.SetActive(false);
+                fairyDialogueBox.SetActive(true);
+            }
+            else
+            {
+                normalDialogueBox.SetActive(true);
+                boyDialogueBox.SetActive(false);
+                fairyDialogueBox.SetActive(false);
+            }
+    }
+
     public void StartDialogue(Dialogue dialogue)
     {
         anim.SetBool("IsOpen", true);
@@ -37,7 +64,6 @@ public class DialogueManager : MonoBehaviour{
         {
             sentences.Enqueue(sentence);
         }
-
         DisplayNextSentence();
     }
 
@@ -46,7 +72,26 @@ public class DialogueManager : MonoBehaviour{
         if (sentences.Count <= 0)
         {
             EndDialogue();
+            GameController.changeTalkingPerson = false;
             return;
+        }
+        if (GameController.changeTalkingPerson)
+        {
+            if (GameController.talkingPerson == "Boy")
+            {
+                GameController.talkingPerson = "Fairy";
+            }
+            else if (GameController.talkingPerson == "Fairy")
+            {
+                GameController.talkingPerson = "Boy";
+            }
+        }
+        else
+        {
+            GameController.talkingPerson = "";
+            normalDialogueBox.SetActive(true);
+            boyDialogueBox.SetActive(false);
+            fairyDialogueBox.SetActive(false);
         }
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
@@ -64,16 +109,18 @@ public class DialogueManager : MonoBehaviour{
     }
 
     void EndDialogue()
-    {
+    { 
         anim.SetBool("IsOpen", false);
         GameController.isPause = false;
-        if (GameController.isEventOn!=true)
+        if (!GameController.isEventOn)
         {
             Player.SetActive(true);
             BoardCamere.SetActive(false);
             PuzzleCamere.SetActive(false);
             PuzzleDone.SetActive(false);
             PuzzleYet.SetActive(false);
+            computerUI.SetActive(false);
+            computerEvent.SetActive(false);
         }
         if (GameController.isPuzzleEvent)
         {
