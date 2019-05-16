@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FairyFly
+  m_Name: FairyHMove
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,11 +19,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: c94a1a2d7c78d3d43876cb542bc06ee8, type: 3}
+      value: {fileID: 21300000, guid: 3c6e2957e512241448bd7d97031ae930, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: 85977088f9444fe448b890a82cc1efea, type: 3}
+      value: {fileID: 21300000, guid: e34f3cc8f4c0fff4ea415adaf8241e75, type: 3}
     - time: 1
-      value: {fileID: 21300000, guid: c94a1a2d7c78d3d43876cb542bc06ee8, type: 3}
+      value: {fileID: 21300000, guid: 3c6e2957e512241448bd7d97031ae930, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -43,9 +43,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: c94a1a2d7c78d3d43876cb542bc06ee8, type: 3}
-    - {fileID: 21300000, guid: 85977088f9444fe448b890a82cc1efea, type: 3}
-    - {fileID: 21300000, guid: c94a1a2d7c78d3d43876cb542bc06ee8, type: 3}
+    - {fileID: 21300000, guid: 3c6e2957e512241448bd7d97031ae930, type: 3}
+    - {fileID: 21300000, guid: e34f3cc8f4c0fff4ea415adaf8241e75, type: 3}
+    - {fileID: 21300000, guid: 3c6e2957e512241448bd7d97031ae930, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

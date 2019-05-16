@@ -8,6 +8,8 @@ public class FairyMovement : MonoBehaviour {
     Vector3 movementV;
     string PlayerFace = "L";
     public Animator PlayerAnim;
+    float h;
+    float v;
 
     public float moveHSpd;
     public float moveVSpd;
@@ -25,18 +27,16 @@ public class FairyMovement : MonoBehaviour {
     {
         if (GameController.isPause != true)
         {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-
             // Player面向
             if (h > 0)
             {
                 PlayerFace = "R";
             }
-            if (h < 0)
+            else if (h < 0)
             {
                 PlayerFace = "L";
             }
+
             if (PlayerFace == "L")
             {
                 Player.transform.eulerAngles = new Vector3(0, 0, 0);
@@ -46,25 +46,29 @@ public class FairyMovement : MonoBehaviour {
                 Player.transform.eulerAngles = new Vector3(0, 180, 0);
             }
 
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
+            if (h != 0)
             {
-                PlayerAnim.SetBool("isFly", false);
+                PlayerAnim.SetBool("isLeftRight", true);
             }
-            else if (v != 0 || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            else
+            {
+                PlayerAnim.SetBool("isLeftRight", false);
+            }
+
+            if (v != 0)
             {
                 PlayerAnim.SetBool("isFly", true);
             }
-
             else
             {
                 PlayerAnim.SetBool("isFly", false);
             }
-
             Move(h, v);
         }
         else
         {
             PlayerAnim.SetBool("isFly", false);
+            PlayerAnim.SetBool("isLeftRight", false);
         }
     }
 
@@ -79,5 +83,30 @@ public class FairyMovement : MonoBehaviour {
         movementV= movementV.normalized * moveVSpd * Time.deltaTime;
 
         playerRb.MovePosition(transform.position + movementH + movementV);
+    }
+
+    public void MoveUpPress()
+    {
+        v = 1;
+    }
+    public void MoveDownPress()
+    {
+        v = -1;
+    }
+    public void MoveVRelease()
+    {
+        v = 0;
+    }
+    public void MoveLeftPress()
+    {
+        h = -1;
+    }
+    public void MoveRightPress()
+    {
+        h = 1;
+    }
+    public void MoveHRelease()
+    {
+        h = 0;
     }
 }

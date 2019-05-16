@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public static string PlayerRoom="Hospital";
+    public static string PlayerRoom = "Hospital";
     public static string PortalPlace;
     public static bool isPause;
     public static bool isEventOn;
