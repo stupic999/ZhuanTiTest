@@ -71,8 +71,8 @@ public class DialogueManager : MonoBehaviour{
     {
         if (sentences.Count <= 0)
         {
-            EndDialogue();
             GameController.changeTalkingPerson = false;
+            EndDialogue();
             return;
         }
         if (GameController.changeTalkingPerson)

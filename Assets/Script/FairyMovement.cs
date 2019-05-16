@@ -109,4 +109,29 @@ public class FairyMovement : MonoBehaviour {
     {
         h = 0;
     }
+    public void MoveUpLeftPress()
+    {
+        h = -1;
+        v = 1;
+    }
+    public void MoveUpRightPress()
+    {
+        h = 1;
+        v = 1;
+    }
+    public void MoveDownLeftPress()
+    {
+        h = -1;
+        v = -1;
+    }
+    public void MoveDownRightPress()
+    {
+        h = 1;
+        v = -1;
+    }
+    public void MoveTwoRelease()
+    {
+        h = 0;
+        v = 0;
+    }
 }

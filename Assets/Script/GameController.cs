@@ -447,6 +447,14 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void CloseComputer()
+    {
+        computerUI.SetActive(false);
+        computerEvent.SetActive(false);
+        Player.SetActive(true);
+        EventOff();
+    }
+
 
 
     public void BearEvent()

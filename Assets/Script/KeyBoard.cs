@@ -152,4 +152,15 @@ public class KeyBoard : MonoBehaviour
             }
         }
     }
+    public void CloseComputer()
+    {
+        if (!GameController.isPause)
+        {
+            Count = 0;
+            Password.Clear();
+            PasswordText.text = "";
+
+
+        }
+    }
 }
