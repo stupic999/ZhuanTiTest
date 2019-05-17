@@ -25,7 +25,7 @@ public class FairyMovement : MonoBehaviour {
 
     public void FixedUpdate()
     {
-        if (GameController.isPause != true)
+        if (!GameController.isPause && GameController.isTalkWithBoy)
         {
             // Player面向
             if (h > 0)

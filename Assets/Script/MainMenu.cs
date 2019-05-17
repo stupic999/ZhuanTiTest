@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour {
 
     bool isStart;
+    bool isSetting;
     public GameObject mainMenu;
     public GameObject gameScene;
     public Animator StartAnim;
@@ -12,40 +13,63 @@ public class MainMenu : MonoBehaviour {
 
     public void StartGame()
     {
-        isStart = true;
-        mainMenu.SetActive(false);
-        gameScene.SetActive(true);
-        GameController.isPause = false;
-        StartAnim.SetBool("isStart", true);
-    }
-
-    public void ContinueGame()
-    {
-        if (isStart)
+        if (!isSetting)
         {
+            isStart = true;
             mainMenu.SetActive(false);
             gameScene.SetActive(true);
             GameController.isPause = false;
             StartAnim.SetBool("isStart", true);
+            AudioController.btnSound = true;
+        }
+    }
+
+    public void ContinueGame()
+    {
+        if (!isSetting)
+        {
+            if (isStart)
+            {
+                GameController.isPause = false;
+                mainMenu.SetActive(false);
+                gameScene.SetActive(true);
+                StartAnim.SetBool("isStart", true);
+                AudioController.btnSound = true;
+            }
+            else
+            {
+                AudioController.error = true;
+            }
         }
     }
 
     public void ShowSettingUI()
     {
-        gameScene.SetActive(false);
-        SoundSettingUI.SetActive(true); 
+        if (!isSetting)
+        {
+            isSetting = true;
+            gameScene.SetActive(false);
+            SoundSettingUI.SetActive(true);
+            AudioController.btnSound = true;
+        }
     }
 
 
     public void QuitGame()
     {
-        Debug.Log("Quit");
-        Application.Quit();
+        if (!isSetting)
+        {
+            Debug.Log("Quit");
+            Application.Quit();
+            AudioController.btnSound = true;
+        }
     }
 
     public void CloseSoundSettingUI()
     {
         SoundSettingUI.SetActive(false);
         mainMenu.SetActive(true);
+        AudioController.btnSound = true;
+        isSetting = false;
     }
 }

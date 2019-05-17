@@ -10,9 +10,12 @@ public class Portal : MonoBehaviour {
     public GameObject Park2Portal;
     public GameObject HousePortal;
     public GameObject MainCamare;
+    public Animator DialogueAnim;
+    public GameObject YesOrNo;
 
     public void GoToWhr()
-    { 
+    {
+        AudioController.btnSound = true;
         if (GameController.PortalPlace == "GoToHospital")
         {
             Debug.Log("GoToHospital");
@@ -46,4 +49,14 @@ public class Portal : MonoBehaviour {
             MainCamare.transform.position = new Vector3(223, 0, MainCamare.transform.position.z);
         }
     }
+
+    public void DontGo()
+    {
+        GameController.isPause = false;
+        AudioController.btnSound = true;
+        GameController.PortalPlace = "";
+        YesOrNo.SetActive(false);
+        DialogueAnim.SetBool("IsOpen", false);        
+    }
+
 }

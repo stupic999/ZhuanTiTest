@@ -8,10 +8,13 @@ public class BoardEvent : MonoBehaviour {
 
     public void isBoardEvent()
     {
-        GameController.isEventOn = true;
-        GameController.btnEvent = "BoardEvent";
-        GameController.isBtnClick = true;
-        Debug.Log("BoardClick");
-        Destroy(BoardDestroyable);
+        if (!GameController.isPause)
+        {
+            GameController.isEventOn = true;
+            GameController.btnEvent = "BoardEvent";
+            GameController.isBtnClick = true;
+            Debug.Log("BoardClick");
+            Destroy(BoardDestroyable);
+        }
     }
 }

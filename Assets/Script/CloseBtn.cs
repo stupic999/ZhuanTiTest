@@ -20,5 +20,7 @@ public class CloseBtn : MonoBehaviour {
         MapOpen = false;
         GameController.isPause = false;
         CloseItem.SetActive(false);
+        AudioController.btnSound = true;
+        GameController.MapCount = 0;
     }
 }

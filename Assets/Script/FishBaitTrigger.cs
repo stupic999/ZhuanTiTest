@@ -6,7 +6,7 @@ public class FishBaitTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isSeePaper) 
+        if (other.transform.tag == "Player") 
         {
             GameController.btnEvent = "FishBait";
         }

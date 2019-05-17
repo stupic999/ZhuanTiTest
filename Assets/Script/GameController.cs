@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-    public static bool changeTalkingPerson;
-    public static string talkingPerson;
     public static string PlayerRoom = "Hospital";
     public static string PortalPlace;
     public static bool isPause;
     public static bool isEventOn;
     public static bool isPuzzleEvent;
+    public static bool allDone;
+    public static int winCount;
+
+    public GameObject mainCamare;
+
+    public Text takeItemText;
 
     public static int MapCount;
 
@@ -43,31 +48,21 @@ public class GameController : MonoBehaviour {
     public GameObject HouseBgPuzzleYet;
     public GameObject HouseBgPuzzleDone;
 
+    public Dialogue WinDialogue;
+
     public Dialogue BoyDoneDialogue;
-    public Dialogue DigDialogue;
-    public Dialogue FishBaitDoneDialogue;
     public Dialogue FishBaitStartDialogue;
     public Dialogue PoolStartDialogue;
-    public Dialogue PoolDoneDialogue;
     public Dialogue Grass1Dialogue;
     public Dialogue Grass2Dialogue;
     public Dialogue Grass3Dialogue;
-    public Dialogue GrassDoneDialogue;
-    public Dialogue VaseDoneDialogue;
     public Dialogue LadderFailDialogue;
-    public Dialogue CupBoardDoneDialogue;
     public Dialogue PuzzleDoneDialogue;
     public Dialogue PuzzleHalfDialogue;
     public Dialogue PuzzleStartDialogue;
-    public Dialogue ShoesDoneDialogue;
-    public Dialogue InHouseDoorDoneDialogue;
-    public Dialogue InHouseFailDoneDialogue;
+    public Dialogue InHouseFailDoorDialogue;
     public Dialogue BoardStartDialogue;
-    public Dialogue ComputerDoneDialogue;
-    public Dialogue ComputerKeyInDialogue;
     public Dialogue ComputerStartDialogue;
-    public Dialogue PaperDoneDialogue;
-    public Dialogue BearDialogue;
     public Dialogue BoardHintDone;
 
     public static string LoadingSceneName;
@@ -99,20 +94,27 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
+        btnEvent = "Boy";
+        isBtnClick = true;
+
         isPause = false;
-        isBtnClick = false;
         isLoadingScene = false;
         LoadingSceneName = "";
         // 把全部bool设定预设值
-        btnEvent="";
     }
 
     private void Update()
     {
-            // 顯示按鈕
-            ShowBtn();
-            // 按鈕點擊觸發事件
-            BtnEvent();
+        // 顯示按鈕
+        ShowBtn();
+
+        // 按鈕點擊觸發事件
+        BtnEvent();
+
+        if (isTakeBear && isDonePuzzle && isCheckComputer && isCheckPool && isDigTreasure && isCheckGrass)
+        {
+            allDone = true;
+        }
     }
 
     public void ShowBtn()
@@ -155,7 +157,7 @@ public class GameController : MonoBehaviour {
             LadderEvent();
             BoardEventOn();
             BearEvent();
-
+            AudioController.btnSound = true;
             btnEvent = "";
             isBtnClick = false;
         }
@@ -170,7 +172,6 @@ public class GameController : MonoBehaviour {
             {
                 isTalkWithBoy = true;
                 Debug.Log("BoyDone");
-                changeTalkingPerson = true;
                 TriggerDialogue(BoyDoneDialogue);
             }
         }
@@ -178,24 +179,13 @@ public class GameController : MonoBehaviour {
 
     public void PaperEvent()
     {
-        if (btnEvent == "Paper")
+        if (btnEvent == "Paper" && !isCheckPool)
         {
-            if (!isSeePaper)
-            {
-                isSeePaper = true;
-                MapUI.SetActive(true);
-                MapCount = 1;
-                Debug.Log("PaperDone");
-                TriggerDialogue(PaperDoneDialogue);
-                CloseBtn.MapOpen = true;
-            }
-            else if (!isCheckPool)
-            {
-                MapCount = 1;
-                MapUI.SetActive(true);
-                Debug.Log("ShowMap");
-                CloseBtn.MapOpen = true;
-            }
+            isSeePaper = true;
+            MapUI.SetActive(true);
+            MapCount = 1;
+            Debug.Log("PaperDone");
+            CloseBtn.MapOpen = true;
         }
     }
 
@@ -208,10 +198,12 @@ public class GameController : MonoBehaviour {
                 isTakeFishBait = true;
                 Debug.Log("FishBaitDone");
                 Destroy(FishBait);
-                TriggerDialogue(FishBaitDoneDialogue);
                 BagItem.Bag.Add("FishBait");
                 BagItem.isItem = true;
                 FishBaitUI.SetActive(true);
+                AudioController.takeItem = true;
+                takeItemText.text = "獲得麵包";
+                isPause = false;
             }
             else
             {
@@ -233,7 +225,14 @@ public class GameController : MonoBehaviour {
                 Debug.Log("PoolDone");
                 BagItem.Bag.Remove("FishBait");
                 BagItem.isItem = true;
-                TriggerDialogue(PoolDoneDialogue);
+                isPause = false;
+                AudioController.takeItem = true;
+                takeItemText.text = "獲得樂器";
+                if (allDone && winCount == 0)
+                {
+                    TriggerDialogue(WinDialogue);
+                    winCount++;
+                }
             }
             else 
             {
@@ -250,6 +249,7 @@ public class GameController : MonoBehaviour {
             isDigTreasure = true;
             EventName = "Dig";
             Debug.Log("DigDone");
+            AudioController.digSand = true;
         }
     }
 
@@ -281,10 +281,17 @@ public class GameController : MonoBehaviour {
             {
                 isCheckGrass = true;
                 Debug.Log("GrassDone");
-                TriggerDialogue(GrassDoneDialogue);
                 BagItem.Bag.Add("Clown");
                 ClownUI.SetActive(true);
                 BagItem.isItem = true;
+                AudioController.takeItem = true;
+                isPause = false;
+                takeItemText.text = "獲得驚嚇箱";
+                if (allDone && winCount == 0)
+                {
+                    TriggerDialogue(WinDialogue);
+                    winCount++;
+                }
             }
         }
     }
@@ -295,10 +302,12 @@ public class GameController : MonoBehaviour {
         {
             isCheckVase = true;
             Debug.Log("VaseInDone");
-            TriggerDialogue(VaseDoneDialogue);
             BagItem.Bag.Add("PuzzleVase");
             PuzzleVaseUI.SetActive(true);
             BagItem.isItem = true;
+            isPause = false;
+            AudioController.takeItem = true;
+            takeItemText.text = "獲得拼圖(下)";
         }
     }
 
@@ -310,10 +319,12 @@ public class GameController : MonoBehaviour {
             {
                 isCheckCupBoard = true;
                 Debug.Log("CupBoardDone");
-                TriggerDialogue(CupBoardDoneDialogue);
                 BagItem.Bag.Add("PuzzleCupBoard");
                 PuzzleCupBoardUI.SetActive(true);
                 BagItem.isItem = true;
+                AudioController.takeItem = true;
+                isPause = false;
+                takeItemText.text = "獲得拼圖(上)";
             }
         }
     }
@@ -326,11 +337,13 @@ public class GameController : MonoBehaviour {
             {
                 isCheckShoes = true;
                 Debug.Log("ShoesDone");
-                TriggerDialogue(ShoesDoneDialogue);
                 BagItem.Bag.Add("Key");
                 BagItem.isItem = true;
                 KeyUI.SetActive(true);
                 Shoes.transform.position = new Vector3(Shoes.transform.position.x + 0.25f, Shoes.transform.position.y, Shoes.transform.position.z);
+                AudioController.takeItem = true;
+                isPause = false;
+                takeItemText.text = "獲得門鑰匙";
             }
         }
     }
@@ -344,14 +357,15 @@ public class GameController : MonoBehaviour {
                 isOpenDoor = true;
                 InHouseDoorBlock.SetActive(false);
                 Debug.Log("DoorDone");
-                TriggerDialogue(InHouseDoorDoneDialogue);
                 BagItem.Bag.Remove("Key");
                 BagItem.isItem = true;
+                AudioController.openDoor = true;
+                isPause = false;
             }
             else
             {
                 Debug.Log("DoorFail");
-                TriggerDialogue(InHouseFailDoneDialogue);
+                TriggerDialogue(InHouseFailDoorDialogue);
             }
         }
     }
@@ -375,8 +389,8 @@ public class GameController : MonoBehaviour {
     {
         if (btnEvent == "BoardEvent")
         {
-            isBoardHint = true;
             EventOff();
+            isBoardHint = true;
             Debug.Log("BoardDone2");
             TriggerDialogue(BoardHintDone);
         }
@@ -392,27 +406,26 @@ public class GameController : MonoBehaviour {
 
             if (isCheckCupBoard && isCheckVase)
             {
+                EventName = "PuzzleEvent2";
                 HouseBgPuzzleDone.SetActive(true);
                 HouseBgPuzzleYet.SetActive(false);
                 isPuzzleEvent = true;
-                isDonePuzzle = true;
                 Debug.Log("PuzzleDone");
                 BagItem.Bag.Remove("PuzzleVase");
                 BagItem.Bag.Remove("PuzzleCupBoard");
                 BagItem.isItem = true;
                 TriggerDialogue(PuzzleDoneDialogue);
+                AudioController.takeItem = true;
             }
             else if (isCheckCupBoard || isCheckVase)
             {
                 Debug.Log("PuzzleHalf");
                 TriggerDialogue(PuzzleHalfDialogue);
-                EventOff();
             }
             else
             {
                 Debug.Log("PuzzleStart");
                 TriggerDialogue(PuzzleStartDialogue);
-                EventOff();
             }
         }
     }
@@ -426,24 +439,14 @@ public class GameController : MonoBehaviour {
                 EventName = "ComputerEvent";
                 Debug.Log("ComputerEvent");
                 EventOn();
-                TriggerDialogue(ComputerKeyInDialogue);
+                AudioController.openComputer = true;
+                isPause = false;
             }
             else
             {
                 Debug.Log("ComputerStart");
                 TriggerDialogue(ComputerStartDialogue);
             }         
-        }
-    }
-
-    public void ComputerEventOn()
-    {
-        if (btnEvent == "ComputerEvent")
-        {
-            isCheckComputer = true;
-            EventOff();
-            Debug.Log("ComputerDone");
-            TriggerDialogue(ComputerDoneDialogue);
         }
     }
 
@@ -455,8 +458,6 @@ public class GameController : MonoBehaviour {
         EventOff();
     }
 
-
-
     public void BearEvent()
     {
         if (btnEvent == "Bear")
@@ -465,9 +466,16 @@ public class GameController : MonoBehaviour {
             isTakeBear = true;
             BagItem.Bag.Add("Bear");
             BagItem.isItem = true;
-            TriggerDialogue(BearDialogue);
             BearUI.SetActive(true);
             Destroy(Bear);
+            AudioController.takeItem = true;
+            isPause = false;
+            takeItemText.text = "獲得小熊玩偶";
+            if (allDone && winCount == 0)
+            {
+                TriggerDialogue(WinDialogue);
+                winCount++;
+            }
         }
     }
 
@@ -483,15 +491,15 @@ public class GameController : MonoBehaviour {
 
     public void TriggerDialogue(Dialogue dialogue)
     {
-        talkingPerson= dialogue.name;
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 
     public void EventOn()
     {
+        mainCamare.SetActive(false);
         isEventOn = true;
         Player.SetActive(false);
-
+        
         if (EventName == "BoardEvent")
         {
             BoardHint.SetActive(true);
@@ -513,7 +521,7 @@ public class GameController : MonoBehaviour {
         if (EventName == "ComputerEvent")
         {
             computerEvent.SetActive(true);
-            computerUI.SetActive(true);
+            computerUI.SetActive(true);            
         }
     }
 

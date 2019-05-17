@@ -14,7 +14,7 @@ public class GrassTrigger : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isCheckGrass != true && GrassTimer>=1)
+        if (other.transform.tag == "Player" && GameController.isCheckGrass != true && GrassTimer>=0.5)
         {
             GameController.btnEvent = "Grass";
             GrassTimer = 0;

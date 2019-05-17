@@ -73,19 +73,15 @@ public class MapEvent : MonoBehaviour {
 
     public void ClickLeftBtn()
     {
+        AudioController.changeMap = true;
         GameController.MapCount -= 1;
         Debug.Log(GameController.MapCount);        
     }
 
     public void ClickRightBtn()
     {
+        AudioController.changeMap = true;
         GameController.MapCount += 1;
         Debug.Log(GameController.MapCount);
-    }
-
-    public void isCloseBtn()
-    {
-        GameController.MapCount = 0;
-        GameController.isPause = false;
     }
 }

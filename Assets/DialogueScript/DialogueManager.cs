@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour{
 
-    public Text nameText;
     public Text dialogueText;
+    public GameObject mainCamera;
     public GameObject Player;
     public GameObject BoardCamere;
     public GameObject PuzzleCamere;
@@ -18,7 +18,12 @@ public class DialogueManager : MonoBehaviour{
     public GameObject boyDialogueBox;
     public GameObject fairyDialogueBox;
 
+    public Dialogue WinDialogue;
+
     public Dialogue PuzzleDone2Dialogue;
+    public int sentenceCount;
+
+    public string talkingPerson;
 
     public Animator anim;
 
@@ -30,70 +35,102 @@ public class DialogueManager : MonoBehaviour{
         sentences = new Queue<string>();
 	}
 
-    public void Update()
+    public void StartDialogue(Dialogue dialogue)
     {
-            if (GameController.talkingPerson == "Boy")
+        anim.SetBool("IsOpen", true);
+
+        talkingPerson = dialogue.name;
+
+        if (dialogue.name != "")
+        {
+            if (dialogue.name == "Fairy")
+            {
+                normalDialogueBox.SetActive(false);
+                boyDialogueBox.SetActive(false);
+                fairyDialogueBox.SetActive(true);
+            }
+            if (dialogue.name == "Boy")
             {
                 normalDialogueBox.SetActive(false);
                 boyDialogueBox.SetActive(true);
                 fairyDialogueBox.SetActive(false);
             }
-            else if (GameController.talkingPerson == "Fairy")
+        }
+        else
+        {
+            normalDialogueBox.SetActive(true);
+            boyDialogueBox.SetActive(false);
+            fairyDialogueBox.SetActive(false);
+        }
+        sentences.Clear();
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+        sentenceCount = sentences.Count;
+        DisplayNextSentence();
+    }
+
+    public void DisplayNextSentence()
+    {
+        AudioController.btnSound = true;
+        if (sentences.Count <= 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        if (talkingPerson == "BothFairyNow")
+        {
+            if (sentences.Count % 2 == 0 && sentenceCount % 2 == 0)
             {
+                Debug.Log("BF1");
                 normalDialogueBox.SetActive(false);
                 boyDialogueBox.SetActive(false);
                 fairyDialogueBox.SetActive(true);
             }
             else
             {
-                normalDialogueBox.SetActive(true);
-                boyDialogueBox.SetActive(false);
+                Debug.Log("BF2");
+                normalDialogueBox.SetActive(false);
+                boyDialogueBox.SetActive(true);
                 fairyDialogueBox.SetActive(false);
             }
-    }
-
-    public void StartDialogue(Dialogue dialogue)
-    {
-        anim.SetBool("IsOpen", true);
-
-        nameText.text = dialogue.name;
-
-        sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
         }
-        DisplayNextSentence();
-    }
-
-    public void DisplayNextSentence()
-    {
-        if (sentences.Count <= 0)
+        else if (talkingPerson == "BothBoyNow")
         {
-            GameController.changeTalkingPerson = false;
-            EndDialogue();
-            return;
-        }
-        if (GameController.changeTalkingPerson)
-        {
-            if (GameController.talkingPerson == "Boy")
+            if (sentenceCount % 2 == 0)
             {
-                GameController.talkingPerson = "Fairy";
+                if (sentences.Count % 2 == 0)
+                {
+                    normalDialogueBox.SetActive(false);
+                    boyDialogueBox.SetActive(true);
+                    fairyDialogueBox.SetActive(false);
+                }
+                else
+                {
+                    normalDialogueBox.SetActive(false);
+                    boyDialogueBox.SetActive(false);
+                    fairyDialogueBox.SetActive(true);
+                }
             }
-            else if (GameController.talkingPerson == "Fairy")
+            if (sentenceCount % 2 != 0)
             {
-                GameController.talkingPerson = "Boy";
+                if (sentences.Count % 2 == 0)
+                {
+                    normalDialogueBox.SetActive(false);
+                    boyDialogueBox.SetActive(false);
+                    fairyDialogueBox.SetActive(true);
+                }
+                else
+                {
+                    normalDialogueBox.SetActive(false);
+                    boyDialogueBox.SetActive(true);
+                    fairyDialogueBox.SetActive(false);
+                }
             }
         }
-        else
-        {
-            GameController.talkingPerson = "";
-            normalDialogueBox.SetActive(true);
-            boyDialogueBox.SetActive(false);
-            fairyDialogueBox.SetActive(false);
-        }
-        string sentence = sentences.Dequeue();
+            string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeWord(sentence));
     }
@@ -115,6 +152,7 @@ public class DialogueManager : MonoBehaviour{
         if (!GameController.isEventOn)
         {
             Player.SetActive(true);
+            mainCamera.SetActive(true);
             BoardCamere.SetActive(false);
             PuzzleCamere.SetActive(false);
             PuzzleDone.SetActive(false);
@@ -129,6 +167,19 @@ public class DialogueManager : MonoBehaviour{
             GameController.isEventOn = false;
             TriggerDialogue(PuzzleDone2Dialogue);
             GameController.isPuzzleEvent = false;
+            GameController.isDonePuzzle = true;
+        }
+        if (GameController.EventName == "PuzzleEvent")
+        {
+            PuzzleCamere.SetActive(false);
+            mainCamera.SetActive(true);
+            GameController.isEventOn = false;
+            Player.SetActive(true);
+        }
+        if (GameController.allDone && GameController.winCount==0)
+        {
+            TriggerDialogue(WinDialogue);
+            GameController.winCount++;
         }
     }
 

@@ -156,6 +156,7 @@ public class BagItem : MonoBehaviour {
     {
         if (!GameController.isPause || isBagOpen)
         {
+            AudioController.openBag = true;
             isBagOpen = !isBagOpen;
             BagAnim.SetBool("isBagOpen", isBagOpen);
             if (isBagOpen)
