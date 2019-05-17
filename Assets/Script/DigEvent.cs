@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DigEvent : MonoBehaviour {
 
-    public GameObject UI;
+    public Animator DigAnim;
     public GameObject DigPic;
     public GameObject CarsUI;
     public Text takeItemText;
@@ -15,17 +15,16 @@ public class DigEvent : MonoBehaviour {
 	void Update () {
         if (GameController.EventName == "Dig" && ShowTimer<3)
         {
-            UI.SetActive(true);
+            DigAnim.SetBool("isDig", true);
             ShowTimer += Time.deltaTime;
             GameController.isPause = true;
-            Destroy(DigPic);
         }
         else if(ShowTimer>3 && GameController.EventName == "Dig")
         {
+            Destroy(DigPic);
             takeItemText.text ="獲得玩具車";
             AudioController.takeItem = true;
             GameController.EventName = "";
-            UI.SetActive(false);
             ShowTimer = 0;
             BagItem.Bag.Add("Cars");
             BagItem.isItem = true;
