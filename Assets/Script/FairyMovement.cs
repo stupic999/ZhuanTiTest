@@ -8,6 +8,7 @@ public class FairyMovement : MonoBehaviour {
     Vector3 movementV;
     string PlayerFace = "L";
     public Animator PlayerAnim;
+    bool isOpenLight; 
     float h;
     float v;
 
@@ -25,13 +26,25 @@ public class FairyMovement : MonoBehaviour {
 
     public void FixedUpdate()
     {
-        if (GameController.isPause)
+        if (!ClockTimer.isNight)
+        {
+            isOpenLight = false;
+            PlayerAnim.SetBool("isOpenLight", isOpenLight);
+        }
+
+        if (GameController.isPause || isOpenLight)
         {
             h = 0;
             v = 0;
         }
         if (!GameController.isPause && GameController.isTalkWithBoy)
         {
+            if (Input.GetKeyDown(KeyCode.Space) && ClockTimer.isNight)
+            {
+                isOpenLight = !isOpenLight;
+                PlayerAnim.SetBool("isOpenLight",isOpenLight);
+            }
+            
             // Player面向
             if (h > 0)
             {
@@ -87,7 +100,8 @@ public class FairyMovement : MonoBehaviour {
 
         movementV= movementV.normalized * moveVSpd * Time.deltaTime;
 
-        playerRb.MovePosition(transform.position + movementH + movementV);
+        playerRb.MovePosition(transform.position + movementH +movementV);
+        Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, -3);
     }
 
     public void MoveUpPress()

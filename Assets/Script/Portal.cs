@@ -13,6 +13,10 @@ public class Portal : MonoBehaviour {
     public Animator DialogueAnim;
     public GameObject YesOrNo;
 
+    public Dialogue teach;
+
+    bool isTeach;
+
     public void GoToWhr()
     {
         AudioController.btnSound = true;
@@ -31,6 +35,11 @@ public class Portal : MonoBehaviour {
             GameController.PortalPlace = "";
             Player.transform.position = ParkPortal.transform.position;
             MainCamare.transform.position = new Vector3(-109, 0, MainCamare.transform.position.z);
+            if (!isTeach)
+            {
+                isTeach = true;
+                TriggerDialogue(teach);
+            }
         }
         else if (GameController.PortalPlace == "GoToPark2")
         {
@@ -59,4 +68,8 @@ public class Portal : MonoBehaviour {
         DialogueAnim.SetBool("IsOpen", false);        
     }
 
+    public void TriggerDialogue(Dialogue dialogue)
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
 }

@@ -13,6 +13,7 @@ public class AudioController : MonoBehaviour {
     public AudioClip BtnSound;
     public AudioClip ChangeMapSound;
     public AudioClip ErrorSound;
+    public AudioClip BellSound;
 
     public static bool takeItem;
     public static bool openBag;
@@ -22,6 +23,7 @@ public class AudioController : MonoBehaviour {
     public static bool btnSound;
     public static bool changeMap;
     public static bool error;
+    public static bool bell;
 
 
 
@@ -76,6 +78,11 @@ public class AudioController : MonoBehaviour {
         {
             audioSource.PlayOneShot(ErrorSound);
             error= false;
+        }
+        if (bell)
+        {
+            audioSource.PlayOneShot(BellSound);
+            bell = false;
         }
     }
 }
