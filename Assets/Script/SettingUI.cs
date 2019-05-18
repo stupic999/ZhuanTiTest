@@ -30,6 +30,7 @@ public class SettingUI : MonoBehaviour {
     public void GoToMainMenu()
     {
         AudioController.btnSound = true;
+        GameController.isPause = true;
         settingUI.SetActive(false);
         GameScene.SetActive(false);
         MainMenu.SetActive(true);

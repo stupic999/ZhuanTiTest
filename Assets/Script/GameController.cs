@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour {
     public GameObject PuzzleDone;
     public GameObject PuzzleCamare;
     public GameObject BoardCamare;
-    public GameObject BoardHint;
+    public GameObject BoardBtn;
     public GameObject BoardPaper;
     public GameObject Player;
     public GameObject Grass1;
@@ -157,7 +157,6 @@ public class GameController : MonoBehaviour {
             LadderEvent();
             BoardEventOn();
             BearEvent();
-            AudioController.btnSound = true;
             btnEvent = "";
             isBtnClick = false;
         }
@@ -185,7 +184,7 @@ public class GameController : MonoBehaviour {
             MapUI.SetActive(true);
             MapCount = 1;
             Debug.Log("PaperDone");
-            CloseBtn.MapOpen = true;
+            MapEvent.MapOpen = true;
         }
     }
 
@@ -232,6 +231,7 @@ public class GameController : MonoBehaviour {
                 {
                     TriggerDialogue(WinDialogue);
                     winCount++;
+                    isPause = true;
                 }
             }
             else 
@@ -264,17 +264,17 @@ public class GameController : MonoBehaviour {
                 if (grassNum == 1)
                 {
                     TriggerDialogue(Grass1Dialogue);
-                    Grass1.transform.position = new Vector3(Grass1.transform.position.x + 5, Grass1.transform.position.y, Grass1.transform.position.z);
+                    Grass1.transform.position = new Vector3(Grass1.transform.position.x -2, Grass1.transform.position.y, Grass1.transform.position.z);
                 }
                 else if (grassNum == 2)
                 {
                     TriggerDialogue(Grass2Dialogue);
-                    Grass2.transform.position = new Vector3(Grass2.transform.position.x - 5, Grass2.transform.position.y, Grass2.transform.position.z);
+                    Grass2.transform.position = new Vector3(Grass2.transform.position.x -2, Grass2.transform.position.y, Grass2.transform.position.z);
                 }
                 else
                 {
                     TriggerDialogue(Grass3Dialogue);
-                    Grass3.transform.position = new Vector3(Grass3.transform.position.x + 5, Grass3.transform.position.y, Grass3.transform.position.z);
+                    Grass3.transform.position = new Vector3(Grass3.transform.position.x +2, Grass3.transform.position.y, Grass3.transform.position.z);
                 }
             }
             else
@@ -291,6 +291,7 @@ public class GameController : MonoBehaviour {
                 {
                     TriggerDialogue(WinDialogue);
                     winCount++;
+                    isPause = true;
                 }
             }
         }
@@ -452,10 +453,13 @@ public class GameController : MonoBehaviour {
 
     public void CloseComputer()
     {
-        computerUI.SetActive(false);
-        computerEvent.SetActive(false);
-        Player.SetActive(true);
-        EventOff();
+        if (!isPause)
+        {
+            computerUI.SetActive(false);
+            computerEvent.SetActive(false);
+            Player.SetActive(true);
+            EventOff();
+        }
     }
 
     public void BearEvent()
@@ -475,6 +479,7 @@ public class GameController : MonoBehaviour {
             {
                 TriggerDialogue(WinDialogue);
                 winCount++;
+                isPause = true;
             }
         }
     }
@@ -502,7 +507,7 @@ public class GameController : MonoBehaviour {
         
         if (EventName == "BoardEvent")
         {
-            BoardHint.SetActive(true);
+            BoardBtn.SetActive(true);
             BoardCamare.SetActive(true);
             BoardPaper.SetActive(false);
         }

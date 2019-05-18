@@ -84,4 +84,18 @@ public class MapEvent : MonoBehaviour {
         GameController.MapCount += 1;
         Debug.Log(GameController.MapCount);
     }
+
+    public void isCloseBtn()
+    {
+        MapOpen = false;
+        GameController.isPause = false;
+        CloseItem.SetActive(false);
+        AudioController.btnSound = true;
+        GameController.MapCount = 0;
+
+        Map1.SetActive(true);
+        Map2.SetActive(false);
+        Map3.SetActive(false);
+        Map4.SetActive(false);
+    }
 }

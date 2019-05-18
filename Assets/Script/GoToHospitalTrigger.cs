@@ -5,18 +5,24 @@ using UnityEngine;
 public class GoToHospitalTrigger : MonoBehaviour {
 
     public Dialogue GoOrNot;
+    public Dialogue CantGo;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.tag == "Player" && !ClockTimer.isNight)
         {
             GameController.isPause = true;
             GameController.PortalPlace = "GoToHospital";
             TriggerDialogue(GoOrNot);
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);
+        }
+        else if (other.transform.tag == "Player" &&  ClockTimer.isNight)
+        {
+            GameController.isPause=true;
+            TriggerDialogue(CantGo);
         }
     }
 

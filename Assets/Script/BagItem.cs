@@ -12,104 +12,108 @@ public class BagItem : MonoBehaviour {
     public GameObject FishBait;
     public GameObject Key;
     public GameObject PuzzleVase;
-    public GameObject PuzzleCupbBoard;
+    public GameObject PuzzleCupBoard;
     public GameObject Music;
     public GameObject Clown;
     public GameObject Cars;
     public GameObject Bear;
     public Animator BagAnim;
-    public GameObject Item1;
-    public GameObject Item2;
-    public GameObject Item3;
-    public GameObject Item4;
-    public GameObject Item5;
-    public GameObject Item6;
-    public GameObject Item7;
-    public GameObject Item8;
+    //public GameObject Item1;
+    //public GameObject Item2;
+    //public GameObject Item3;
+    //public GameObject Item4;
+    //public GameObject Item5;
+    //public GameObject Item6;
+    //public GameObject Item7;
+    //public GameObject Item8;
 
     public static bool isItem=true;
+
+    public GameObject BagUI;
 
     Vector3 Place;
 
     bool isBagOpen;
 
-    public int Count;
-
     private void Update()
     {
+        if (GameController.isPause && !isBagOpen)
+        {
+            BagUI.SetActive(false);
+        }
+        else
+        {
+            BagUI.SetActive(true);
+        }
+
         if (isItem)
         {
-            for (int i = 0; i < Bag.Count; i++)
-            {
-                Count = i;
+            //Count = Bag.Count;
+            //if (Count == 0)
+            //{
+            //    Place = Item1.transform.position;
+            //}
+            //else if (Count == 1)
+            //{
+            //    Place = Item2.transform.position;
+            //}
+            //else if (Count == 2)
+            //{
+            //    Place = Item3.transform.position;
+            //}
+            //else if (Count == 3)
+            //{
+            //    Place = Item4.transform.position;
+            //}
+            //else if (Count == 4)
+            //{
+            //    Place = Item5.transform.position;
+            //}
+            //else if (Count == 5)
+            //{
+            //    Place = Item6.transform.position;
+            //}
+            //else if (Count == 6)
+            //{
+            //    Place = Item7.transform.position;
+            //}
+            //else if (Count == 7)
+            //{
+            //    Place = Item8.transform.position;
+            //}
 
-                if (Count == 0)
-                {
-                    Place = Item1.transform.position;
-                }
-                else if (Count == 1)
-                {
-                    Place = Item2.transform.position;
-                }
-                else if (Count == 2)
-                {
-                    Place = Item3.transform.position;
-                }
-                else if (Count == 3)
-                {
-                    Place = Item4.transform.position;
-                }
-                else if (Count == 4)
-                {
-                    Place = Item5.transform.position;
-                }
-                else if (Count == 5)
-                {
-                    Place = Item6.transform.position;
-                }
-                else if (Count == 6)
-                {
-                    Place = Item7.transform.position;
-                }
-                else if (Count == 7)
-                {
-                    Place = Item8.transform.position;
-                }
-
-                if (Bag.Contains("FishBait"))
-                {
-                    FishBait.transform.position = Place;
-                }
-                else if (Bag.Contains("Key"))
-                {
-                    Key.transform.position = Place;
-                }
-                else if (Bag.Contains("PuzzleVase"))
-                {
-                    PuzzleVase.transform.position = Place;
-                }
-                else if (Bag.Contains("PuzzleCupBoard"))
-                {
-                    PuzzleCupbBoard.transform.position = Place;
-                }
-                else if (Bag.Contains("Music"))
-                {
-                    Music.transform.position = Place;
-                }
-                else if (Bag.Contains("Clown"))
-                {
-                    Clown.transform.position = Place;
-                }
-                else if (Bag.Contains("Cars"))
-                {
-                    Cars.transform.position = Place;
-                }
-                else if (Bag.Contains("Bear"))
-                {
-                    Bear.transform.position = Place;
-                }
-            }
-
+            //if (itemName == "FishBait")
+            //{
+            //    FishBait.transform.position = Place;
+            //}
+            //else if (itemName == "Key")
+            //{
+            //    Key.transform.position = Place;
+            //}
+            //else if (itemName == "PuzzleVase")
+            //{
+            //    PuzzleVase.transform.position = Place;
+            //}
+            //else if (itemName == "PuzzleCupBoard")
+            //{
+            //    PuzzleCupBoard.transform.position = Place;
+            //}
+            //else if (itemName == "Music")
+            //{
+            //    Music.transform.position = Place;
+            //}
+            //else if (itemName == "Clown")
+            //{
+            //    Clown.transform.position = Place;
+            //}
+            //else if (itemName == "Cars")
+            //{
+            //    Cars.transform.position = Place;
+            //}
+            //else if (itemName == "Bear")
+            //{
+            //    Bear.transform.position = Place;
+            //}
             if (Bag.Contains("FishBait"))
                 FishBait.SetActive(true);
             else
@@ -126,9 +130,9 @@ public class BagItem : MonoBehaviour {
                 PuzzleVase.SetActive(false);
 
             if (Bag.Contains("PuzzleCupBoard"))
-                PuzzleCupbBoard.SetActive(true);
+                PuzzleCupBoard.SetActive(true);
             else
-                PuzzleCupbBoard.SetActive(false);
+                PuzzleCupBoard.SetActive(false);
 
             if (Bag.Contains("Music"))
                 Music.SetActive(true);
@@ -151,6 +155,7 @@ public class BagItem : MonoBehaviour {
                 Bear.SetActive(false);
         }
     }
+
 
     public void isClickBagBtn()
     {

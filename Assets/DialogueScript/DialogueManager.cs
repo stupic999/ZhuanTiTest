@@ -73,6 +73,11 @@ public class DialogueManager : MonoBehaviour{
 
     public void DisplayNextSentence()
     {
+        if (GameController.EventName == "PuzzleEvent")
+        {
+            GameController.isEventOn = false;
+        }
+
         AudioController.btnSound = true;
         if (sentences.Count <= 0)
         {
@@ -165,20 +170,15 @@ public class DialogueManager : MonoBehaviour{
             PuzzleYet.SetActive(false);
             PuzzleDone.SetActive(true);
             GameController.isEventOn = false;
+            GameController.isPause = true;
             TriggerDialogue(PuzzleDone2Dialogue);
             GameController.isPuzzleEvent = false;
             GameController.isDonePuzzle = true;
         }
-        if (GameController.EventName == "PuzzleEvent")
-        {
-            PuzzleCamere.SetActive(false);
-            mainCamera.SetActive(true);
-            GameController.isEventOn = false;
-            Player.SetActive(true);
-        }
         if (GameController.allDone && GameController.winCount==0)
         {
             TriggerDialogue(WinDialogue);
+            GameController.isPause = true;
             GameController.winCount++;
         }
     }
