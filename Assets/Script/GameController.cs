@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
     public static bool allDone;
     public static int winCount;
 
+    public static bool playerDie;
+
     public GameObject mainCamare;
 
     public Text takeItemText;
@@ -45,8 +47,10 @@ public class GameController : MonoBehaviour {
     public GameObject FishBait;
     public GameObject Bear;
     public GameObject Shoes;
-    public GameObject HouseBgPuzzleYet;
-    public GameObject HouseBgPuzzleDone;
+    public GameObject HouseBgLightYet;
+    public GameObject HouseBgLightDone;
+    public GameObject HouseBgNightYet;
+    public GameObject HouseBgNightDone;
 
     public Dialogue WinDialogue;
 
@@ -408,8 +412,16 @@ public class GameController : MonoBehaviour {
             if (isCheckCupBoard && isCheckVase)
             {
                 EventName = "PuzzleEvent2";
-                HouseBgPuzzleDone.SetActive(true);
-                HouseBgPuzzleYet.SetActive(false);
+                if (ClockTimer.isNight)
+                {
+                    HouseBgNightDone.SetActive(true);
+                    HouseBgNightYet.SetActive(false);
+                }
+                else
+                {
+                    HouseBgLightDone.SetActive(true);
+                    HouseBgLightYet.SetActive(false);
+                }
                 isPuzzleEvent = true;
                 Debug.Log("PuzzleDone");
                 BagItem.Bag.Remove("PuzzleVase");

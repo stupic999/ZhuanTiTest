@@ -35,6 +35,14 @@ public class DialogueManager : MonoBehaviour{
         sentences = new Queue<string>();
 	}
 
+    private void Update()
+    {
+        if (anim.GetBool("IsOpen") == true)
+        {
+            GameController.isPause = true;
+        }
+    }
+
     public void StartDialogue(Dialogue dialogue)
     {
         anim.SetBool("IsOpen", true);
@@ -173,7 +181,7 @@ public class DialogueManager : MonoBehaviour{
             GameController.isPause = true;
             TriggerDialogue(PuzzleDone2Dialogue);
             GameController.isPuzzleEvent = false;
-            GameController.isDonePuzzle = true;
+            GameController.isDonePuzzle  = true;
         }
         if (GameController.allDone && GameController.winCount==0)
         {

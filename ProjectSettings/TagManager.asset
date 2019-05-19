@@ -7,6 +7,8 @@ TagManager:
   - Destroyer
   - GoodFood
   - BadFood
+  - Light
+  - Ghost
   layers:
   - Default
   - TransparentFX

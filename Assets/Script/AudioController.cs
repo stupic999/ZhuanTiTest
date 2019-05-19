@@ -14,6 +14,8 @@ public class AudioController : MonoBehaviour {
     public AudioClip ChangeMapSound;
     public AudioClip ErrorSound;
     public AudioClip BellSound;
+    public AudioClip GhostDie;
+    public AudioClip PlayerDie;
 
     public static bool takeItem;
     public static bool openBag;
@@ -24,6 +26,8 @@ public class AudioController : MonoBehaviour {
     public static bool changeMap;
     public static bool error;
     public static bool bell;
+    public static bool ghostDie;
+    public static bool playerDie;
 
 
 
@@ -83,6 +87,16 @@ public class AudioController : MonoBehaviour {
         {
             audioSource.PlayOneShot(BellSound);
             bell = false;
+        }
+        if (ghostDie)
+        {
+            audioSource.PlayOneShot(GhostDie);
+            ghostDie = false;
+        }
+        if (playerDie)
+        {
+            audioSource.PlayOneShot(PlayerDie);
+            playerDie = false;
         }
     }
 }

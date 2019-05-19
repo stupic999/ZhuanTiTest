@@ -368,13 +368,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 51514748}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -876.01, y: -358.71, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -235.81, y: 1.2900085, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 5}
   m_Children:
   - {fileID: 2129437907}
-  m_Father: {fileID: 1634470921}
-  m_RootOrder: 1
+  - {fileID: 605080064}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &51514750
 BoxCollider:
@@ -386,7 +387,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2.79, z: 1}
+  m_Size: {x: 1.5, y: 2.79, z: 10}
   m_Center: {x: 0.05, y: 0.15, z: 0}
 --- !u!54 &51514751
 Rigidbody:
@@ -1438,7 +1439,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1634470921}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &197152897
 GameObject:
@@ -3200,7 +3201,7 @@ RectTransform:
   m_Children:
   - {fileID: 1332368662}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3247,7 +3248,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 439822400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -590, y: -360, z: 0}
+  m_LocalPosition: {x: -590, y: -360, z: 1}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 1674217473}
@@ -3260,11 +3261,12 @@ Transform:
   - {fileID: 320196186}
   - {fileID: 630106406}
   - {fileID: 885132600}
-  - {fileID: 2009058126}
+  - {fileID: 924693983}
   - {fileID: 1896749288}
+  - {fileID: 2009058126}
   - {fileID: 1288996906}
   m_Father: {fileID: 1634470921}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &477324031
 GameObject:
@@ -3370,7 +3372,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1634470921}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &493145822
 GameObject:
@@ -3653,6 +3655,47 @@ RectTransform:
   m_AnchoredPosition: {x: 88.999985, y: 78.99999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &605080063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 605080064}
+  - component: {fileID: 605080065}
+  m_Layer: 0
+  m_Name: Light
+  m_TagString: Light
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &605080064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605080063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 51514749}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &605080065
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605080063}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 3, z: 1}
+  m_Center: {x: -3.37, y: -0.21, z: 0}
 --- !u!1 &609314289
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,7 +3815,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 625705221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.090538, y: -0.56599325, z: 0}
+  m_LocalPosition: {x: -1.090538, y: -0.5659932, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2129437907}
@@ -3813,7 +3856,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 115ea6528265db54a9f65ed55d16d8d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ecdad0d7f6b0e846a10c107f3cecf51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4972,6 +5015,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Self: {fileID: 739725393}
+--- !u!1 &742351444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 742351445}
+  - component: {fileID: 742351447}
+  - component: {fileID: 742351446}
+  m_Layer: 5
+  m_Name: LightBtn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &742351445
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742351444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 780127644}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 410, y: -187}
+  m_SizeDelta: {x: 389, y: 656}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &742351446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742351444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: c9874112655c2e740b8c484739a18fc7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &742351447
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742351444}
+  m_CullTransparentMesh: 0
 --- !u!1 &761598005
 GameObject:
   m_ObjectHideFlags: 0
@@ -5165,8 +5277,9 @@ RectTransform:
   m_Children:
   - {fileID: 1018524027}
   - {fileID: 493145823}
+  - {fileID: 742351445}
   m_Father: {fileID: 1634470921}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6020,6 +6133,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorOpened: {fileID: 2025478765}
   doorClosed: {fileID: 1682604442}
+--- !u!1 &924693982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924693983}
+  - component: {fileID: 924693984}
+  m_Layer: 0
+  m_Name: HouseDarkYet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &924693983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924693982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 200, y: 0, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 439822401}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &924693984
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924693982}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 6739d98482f8a3d4bb25b36fb9f5cc0f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 75, y: 7.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &961040902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6511,7 +6699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &992253145
 Transform:
   m_ObjectHideFlags: 0
@@ -6825,7 +7013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 506, y: 219}
+  m_AnchoredPosition: {x: -500, y: 260}
   m_SizeDelta: {x: 167, y: 167}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018524028
@@ -6873,12 +7061,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dc2014d1eff8941b934a72d4eacbaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParkMorning: {fileID: 0}
-  ParkNight: {fileID: 0}
-  HouseYetMorning: {fileID: 0}
-  HouseYetNight: {fileID: 0}
-  HouseDoneMorning: {fileID: 0}
-  HouseDoneNight: {fileID: 0}
+  ParkMorning: {fileID: 1756940626}
+  ParkNight: {fileID: 992253144}
+  HouseYetMorning: {fileID: 1896749287}
+  HouseYetNight: {fileID: 924693982}
+  HouseDoneMorning: {fileID: 1288996905}
+  HouseDoneNight: {fileID: 2009058125}
+  ghost: {fileID: 1830808459521316, guid: 81f741e88c080d946aee3e80d1df3242, type: 2}
   clockArrowRoot: {fileID: 1852529037}
   BgMusic: {fileID: 1634470922}
   Morning: {fileID: 8300000, guid: 4c3dcb53a5e14764fad834188c87456d, type: 3}
@@ -7114,14 +7303,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1061903655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -658.6, y: -360, z: 0}
+  m_LocalPosition: {x: -658.6, y: -360, z: 1}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 208672653}
   - {fileID: 1898747635}
   - {fileID: 1649600859}
   m_Father: {fileID: 1634470921}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1081105432
 GameObject:
@@ -8429,7 +8618,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1246209789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -640, y: -360, z: 0}
+  m_LocalPosition: {x: -640, y: -360, z: 1}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 180773583}
@@ -8439,7 +8628,7 @@ Transform:
   - {fileID: 1756940628}
   - {fileID: 992253145}
   m_Father: {fileID: 1634470921}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254973843
 GameObject:
@@ -8729,12 +8918,12 @@ GameObject:
   - component: {fileID: 1288996906}
   - component: {fileID: 1288996907}
   m_Layer: 0
-  m_Name: HouseBgLightPuzzleDone
+  m_Name: HouseBgLightDone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1288996906
 Transform:
   m_ObjectHideFlags: 0
@@ -8746,7 +8935,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 439822401}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1288996907
 SpriteRenderer:
@@ -8783,7 +8972,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f0cf1d914a4baef45a0a7ecb09b11666, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5537ab18929816a4080377abcaa56db2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10026,8 +10215,10 @@ MonoBehaviour:
   FishBait: {fileID: 1898747634}
   Bear: {fileID: 1270973734}
   Shoes: {fileID: 1932420369}
-  HouseBgPuzzleYet: {fileID: 1896749287}
-  HouseBgPuzzleDone: {fileID: 1288996905}
+  HouseBgLightYet: {fileID: 1896749287}
+  HouseBgLightDone: {fileID: 1288996905}
+  HouseBgNightYet: {fileID: 924693982}
+  HouseBgNightDone: {fileID: 2009058125}
   WinDialogue:
     name: Fairy
     sentences:
@@ -10122,6 +10313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveUI: {fileID: 1720280418}
   SettingUI: {fileID: 1830884066}
+  ClockUI: {fileID: 1018524026}
+  LightUI: {fileID: 742351444}
 --- !u!1 &1464253689
 GameObject:
   m_ObjectHideFlags: 0
@@ -10479,6 +10672,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 370587194}
     m_Modifications:
+    - target: {fileID: 114174943814749020, guid: 25f583672c64ecb4f8b34dfe4088b851,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224826444720133080, guid: 25f583672c64ecb4f8b34dfe4088b851,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -10579,6 +10777,26 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1602040922}
+    - target: {fileID: 114174943814749020, guid: 25f583672c64ecb4f8b34dfe4088b851,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 114174943814749020, guid: 25f583672c64ecb4f8b34dfe4088b851,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114174943814749020, guid: 25f583672c64ecb4f8b34dfe4088b851,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114174943814749020, guid: 25f583672c64ecb4f8b34dfe4088b851,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25f583672c64ecb4f8b34dfe4088b851, type: 2}
   m_IsPrefabAsset: 0
@@ -11136,7 +11354,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 185277415}
-  - {fileID: 51514749}
   - {fileID: 1061903656}
   - {fileID: 1246209790}
   - {fileID: 439822401}
@@ -11144,7 +11361,7 @@ RectTransform:
   - {fileID: 193877697}
   - {fileID: 780127644}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13975,12 +14192,12 @@ GameObject:
   - component: {fileID: 1896749288}
   - component: {fileID: 1896749289}
   m_Layer: 0
-  m_Name: HouseBgLightPuzzleYet
+  m_Name: HouseBgLightYet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1896749288
 Transform:
   m_ObjectHideFlags: 0
@@ -14029,7 +14246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa7c79c3d88af4742800d3376d9194ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bbb2a50173979fb4e80a29ee8940212f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14718,6 +14935,8 @@ MonoBehaviour:
   ChangeMapSound: {fileID: 8300000, guid: 0f00462c7eb764549b04cbbf046e4c7a, type: 3}
   ErrorSound: {fileID: 8300000, guid: 8edcd3826ff2f7e46adbe7c952f4ab76, type: 3}
   BellSound: {fileID: 8300000, guid: de5a6bf85a7b1544e916a3ea77ee2c9e, type: 3}
+  GhostDie: {fileID: 8300000, guid: 5776df7eb9b52ce46bfc770d1407fb2b, type: 3}
+  PlayerDie: {fileID: 8300000, guid: ba7d0ccd94595794a8b4d0f66187d4d9, type: 3}
 --- !u!1 &1953018548
 GameObject:
   m_ObjectHideFlags: 0
@@ -15280,7 +15499,7 @@ GameObject:
   - component: {fileID: 2009058126}
   - component: {fileID: 2009058127}
   m_Layer: 0
-  m_Name: HouseDark
+  m_Name: HouseDarkDone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15294,10 +15513,10 @@ Transform:
   m_GameObject: {fileID: 2009058125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 200, y: 0, z: 1}
-  m_LocalScale: {x: 1.98, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 439822401}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2009058127
 SpriteRenderer:
@@ -15334,7 +15553,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 085bef9cb0f84ab42842f033c83d9ea5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ceb3ceaaed898b479df15a65ee4c3f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

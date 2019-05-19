@@ -39,6 +39,7 @@ public class Portal : MonoBehaviour {
             {
                 isTeach = true;
                 TriggerDialogue(teach);
+                GameController.isPause = true;
             }
         }
         else if (GameController.PortalPlace == "GoToPark2")

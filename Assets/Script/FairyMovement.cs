@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FairyMovement : MonoBehaviour {
 
-    Vector3 movementH;
-    Vector3 movementV;
-    string PlayerFace = "L";
+    public static  Vector3 movementH;
+    static Vector3 movementV;
+    public static string PlayerFace = "L";
     public Animator PlayerAnim;
     bool isOpenLight; 
     float h;

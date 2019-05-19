@@ -10,6 +10,9 @@ public class ClockTimer : MonoBehaviour {
     public GameObject HouseYetNight;
     public GameObject HouseDoneMorning;
     public GameObject HouseDoneNight;
+    public GameObject ghost;
+
+    public static bool isGhost;
 
     public GameObject clockArrowRoot;
     public AudioSource BgMusic;
@@ -31,6 +34,14 @@ public class ClockTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        clockArrowRoot.transform.eulerAngles = new Vector3(0, 0, -timer * 3);
+
+        if (GameController.playerDie)
+        {
+            timer = 89.9f;
+            GameController.playerDie = false;
+        }
+
         if (isNight && bellCount < 3)
         {
             bellTimer += Time.deltaTime;
@@ -44,7 +55,6 @@ public class ClockTimer : MonoBehaviour {
         if (GameController.PlayerRoom != "Hospital" && !GameController.isPause)
         {
             timer += Time.deltaTime;
-            clockArrowRoot.transform.eulerAngles = new Vector3(0, 0, -timer * 3);
             
             // 晚上
             if (timer >= 90 && timer < 120)
@@ -55,6 +65,12 @@ public class ClockTimer : MonoBehaviour {
                 // 切換背景
                 ParkMorning.SetActive(false);
                 ParkNight.SetActive(true);
+                if (!isGhost)
+                {
+                    Instantiate(ghost, transform.position,transform.rotation);
+                    isGhost = true;
+                }
+
                 if (GameController.isDonePuzzle)
                 {
                     HouseDoneNight.SetActive(true);
@@ -69,6 +85,7 @@ public class ClockTimer : MonoBehaviour {
                 if (!once)
                 {
                     once = true;
+                    GameController.isPause = true;
                     TriggerDialogue(teach);
                 }
                 if (changeMusicNight == 0)
@@ -95,6 +112,9 @@ public class ClockTimer : MonoBehaviour {
                 PlayerAnim.SetBool("isNight", isNight);
                 Debug.Log("isMorning");
                 bellCount = 0;
+                GameObject ghost1 = GameObject.FindGameObjectWithTag("Ghost");
+                Destroy(ghost1);
+                isGhost = false;
 
                 // 切換背景
                 ParkMorning.SetActive(true);
