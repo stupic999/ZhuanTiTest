@@ -109,6 +109,7 @@ public class ghost : MonoBehaviour {
                 MainCamera.transform.position = new Vector3(-231.5f, 0, MainCamera.transform.position.z);
                 ClockTimer.isGhost = false;
                 TriggerDialogue(playerDie);
+                ClockTimer.isNight = false;
             }
         }
     }

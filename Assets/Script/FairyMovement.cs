@@ -30,6 +30,7 @@ public class FairyMovement : MonoBehaviour {
         {
             isOpenLight = false;
             PlayerAnim.SetBool("isOpenLight", isOpenLight);
+            PlayerAnim.SetBool("isNight", false);
         }
 
         if (GameController.isPause || isOpenLight)

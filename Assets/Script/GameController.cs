@@ -46,7 +46,6 @@ public class GameController : MonoBehaviour {
     public GameObject InHouseDoorBlock;
     public GameObject FishBait;
     public GameObject Bear;
-    public GameObject Shoes;
     public GameObject HouseBgLightYet;
     public GameObject HouseBgLightDone;
     public GameObject HouseBgNightYet;
@@ -345,7 +344,6 @@ public class GameController : MonoBehaviour {
                 BagItem.Bag.Add("Key");
                 BagItem.isItem = true;
                 KeyUI.SetActive(true);
-                Shoes.transform.position = new Vector3(Shoes.transform.position.x + 0.25f, Shoes.transform.position.y, Shoes.transform.position.z);
                 AudioController.takeItem = true;
                 isPause = false;
                 takeItemText.text = "獲得門鑰匙";

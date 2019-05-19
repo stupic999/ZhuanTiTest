@@ -65,12 +65,6 @@ public class ClockTimer : MonoBehaviour {
                 // 切換背景
                 ParkMorning.SetActive(false);
                 ParkNight.SetActive(true);
-                if (!isGhost)
-                {
-                    Instantiate(ghost, transform.position,transform.rotation);
-                    isGhost = true;
-                }
-
                 if (GameController.isDonePuzzle)
                 {
                     HouseDoneNight.SetActive(true);
@@ -81,6 +75,12 @@ public class ClockTimer : MonoBehaviour {
                     HouseYetNight.SetActive(true);
                     HouseYetMorning.SetActive(false);
                 }
+
+                if (!isGhost)
+                {
+                    Instantiate(ghost, transform.position,transform.rotation);
+                    isGhost = true;
+                }               
 
                 if (!once)
                 {

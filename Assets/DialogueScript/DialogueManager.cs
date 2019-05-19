@@ -17,6 +17,8 @@ public class DialogueManager : MonoBehaviour{
     public GameObject normalDialogueBox;
     public GameObject boyDialogueBox;
     public GameObject fairyDialogueBox;
+    public GameObject SmallScene;
+    public GameObject EndAnimation;
 
     public Dialogue WinDialogue;
 
@@ -182,6 +184,12 @@ public class DialogueManager : MonoBehaviour{
             TriggerDialogue(PuzzleDone2Dialogue);
             GameController.isPuzzleEvent = false;
             GameController.isDonePuzzle  = true;
+        }
+        if (GameController.winCount == 1)
+        {
+            GameController.winCount++;
+            EndAnimation.SetActive(true);
+            SmallScene.SetActive(false);
         }
         if (GameController.allDone && GameController.winCount==0)
         {
