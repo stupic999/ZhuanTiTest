@@ -8,7 +8,7 @@ public class FairyMovement : MonoBehaviour {
     static Vector3 movementV;
     public static string PlayerFace = "L";
     public Animator PlayerAnim;
-    bool isOpenLight; 
+    public static bool isOpenLight; 
     float h;
     float v;
 
@@ -39,11 +39,6 @@ public class FairyMovement : MonoBehaviour {
         }
         if (!GameController.isPause && GameController.isTalkWithBoy)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && ClockTimer.isNight)
-            {
-                isOpenLight = !isOpenLight;
-                PlayerAnim.SetBool("isOpenLight",isOpenLight);
-            }
             
             // Player面向
             if (h > 0)

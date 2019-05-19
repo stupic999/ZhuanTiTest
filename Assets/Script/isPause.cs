@@ -15,15 +15,21 @@ public class isPause : MonoBehaviour {
         {
             MoveUI.SetActive(false);
             SettingUI.SetActive(false);
-            LightUI.SetActive(false);
             ClockUI.SetActive(false);
         }
         else
         {
             MoveUI.SetActive(true);
             SettingUI.SetActive(true);
-            LightUI.SetActive(true);
             ClockUI.SetActive(true);
+        }
+        if (ClockTimer.isNight && !GameController.isPause)
+        {
+            LightUI.SetActive(true);
+        }
+        else
+        {
+            LightUI.SetActive(false);
         }
     }
 }
