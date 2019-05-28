@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class FairyMovement : MonoBehaviour {
 
-    public static  Vector3 movementH;
-    static Vector3 movementV;
     public static string PlayerFace = "L";
     public Animator PlayerAnim;
-    public static bool isOpenLight; 
+    public static bool isOpenLight;
     float h;
     float v;
 
     public float moveHSpd;
     public float moveVSpd;
-    
+
     Rigidbody playerRb;
     public GameObject Player;
-    
+    public JoyStickController joyStickController;
+
 
     public void Start()
     {
@@ -40,7 +39,9 @@ public class FairyMovement : MonoBehaviour {
         }
         if (!GameController.isPause && GameController.isTalkWithBoy)
         {
-            
+            h = joyStickController.GetHorizontal();
+            v = joyStickController.GetVertical();
+
             // Player面向
             if (h > 0)
             {
@@ -77,6 +78,7 @@ public class FairyMovement : MonoBehaviour {
             {
                 PlayerAnim.SetBool("isFly", false);
             }
+          //  Debug.Log(h+"       v="+v);
             Move(h, v);
         }
         else
@@ -88,65 +90,8 @@ public class FairyMovement : MonoBehaviour {
 
     public void Move(float h, float v)
     {
-        movementH.Set(h, 0, 0);
-
-        movementV.Set(0, v, 0);
-
-        movementH = movementH.normalized * moveHSpd * Time.deltaTime;
-
-        movementV= movementV.normalized * moveVSpd * Time.deltaTime;
-
-        playerRb.MovePosition(transform.position + movementH +movementV);
+        Vector3 movement = new Vector3(h/4.5f,v/9,0);
+        playerRb.MovePosition(transform.position + movement);
         Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, -3);
-    }
-
-    public void MoveUpPress()
-    {
-        v = 1;
-    }
-    public void MoveDownPress()
-    {
-        v = -1;
-    }
-    public void MoveVRelease()
-    {
-        v = 0;
-    }
-    public void MoveLeftPress()
-    {
-        h = -1;
-    }
-    public void MoveRightPress()
-    {
-        h = 1;
-    }
-    public void MoveHRelease()
-    {
-        h = 0;
-    }
-    public void MoveUpLeftPress()
-    {
-        h = -1;
-        v = 1;
-    }
-    public void MoveUpRightPress()
-    {
-        h = 1;
-        v = 1;
-    }
-    public void MoveDownLeftPress()
-    {
-        h = -1;
-        v = -1;
-    }
-    public void MoveDownRightPress()
-    {
-        h = 1;
-        v = -1;
-    }
-    public void MoveTwoRelease()
-    {
-        h = 0;
-        v = 0;
     }
 }

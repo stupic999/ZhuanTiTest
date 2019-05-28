@@ -68,13 +68,11 @@ public class GameController : MonoBehaviour {
     public Dialogue ComputerStartDialogue;
     public Dialogue BoardHintDone;
 
-    public static string LoadingSceneName;
     public static string btnEvent;
     public static string EventName;
 
     int grassNum;
 
-    public static bool isLoadingScene;
     public static bool isBtnClick;
     public static bool isTalkWithBoy;
     public static bool isSeePaper;
@@ -101,8 +99,6 @@ public class GameController : MonoBehaviour {
         isBtnClick = true;
 
         isPause = false;
-        isLoadingScene = false;
-        LoadingSceneName = "";
         // 把全部bool设定预设值
     }
 
@@ -143,7 +139,10 @@ public class GameController : MonoBehaviour {
     {
         if (isBtnClick != false)
         {
-            isPause = true;
+            if (btnEvent == "")
+            {
+                isPause = false;
+            }
             BoyEvent();
             PaperEvent();
             FishBaitEvent();

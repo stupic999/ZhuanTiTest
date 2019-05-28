@@ -6,6 +6,7 @@ public class BtnEvent : MonoBehaviour {
 
     public void isBtnEvent()
     {
+        if(!FairyMovement.isOpenLight)
         GameController.isBtnClick = true;
     }
 }

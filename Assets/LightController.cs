@@ -8,6 +8,7 @@ public class LightController : MonoBehaviour {
     Image LightImage;
     public GameObject PlayerLight;
     public Animator PlayerAnim;
+    public GameObject MoveUI;
 
     private void Awake()
     {
@@ -16,23 +17,30 @@ public class LightController : MonoBehaviour {
         PlayerLight.SetActive(false);
     }
 
+    public void Update()
+    {
+
+        if (FairyMovement.isOpenLight)
+        {
+            LightImage.sprite = Resources.Load<Sprite>("LightOn");
+            PlayerLight.SetActive(true);
+            PlayerAnim.SetBool("isOpenLight", FairyMovement.isOpenLight);
+            MoveUI.SetActive(false);
+        }
+        else
+        {
+            LightImage.sprite = Resources.Load<Sprite>("LightOff");
+            PlayerLight.SetActive(false);
+            PlayerAnim.SetBool("isOpenLight", FairyMovement.isOpenLight);
+            MoveUI.SetActive(true);
+        }
+    }
+
     public void ChangeLight()
     {
         if (!GameController.isPause)
         {
             FairyMovement.isOpenLight = !FairyMovement.isOpenLight;
-            if (FairyMovement.isOpenLight)
-            {
-                LightImage.sprite = Resources.Load<Sprite>("LightOn");
-                PlayerLight.SetActive(true);
-                PlayerAnim.SetBool("isOpenLight", FairyMovement.isOpenLight);
-            }
-            else
-            {
-                LightImage.sprite = Resources.Load<Sprite>("LightOff");
-                PlayerLight.SetActive(false);
-                PlayerAnim.SetBool("isOpenLight", FairyMovement.isOpenLight);
-            }
         }
     }
 }

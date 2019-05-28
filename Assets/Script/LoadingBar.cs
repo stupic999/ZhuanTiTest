@@ -7,26 +7,17 @@ using UnityEngine.UI;
 public class LoadingBar: MonoBehaviour
 {
     public Text loadingText;
-    public Slider sliderBar;
 
     void Start()
     {
-        sliderBar.gameObject.SetActive(false);
-        GameController.isLoadingScene = true;
+        loadingText.text = "Loading...";
+        StartCoroutine(LoadNewScene("Hospital"));
     }
 
     void Update()
     {
-        if (GameController.isLoadingScene)
-        {
-            GameController.isLoadingScene = false;
 
-            sliderBar.gameObject.SetActive(true);
 
-            loadingText.text = "Loading...";
-
-            StartCoroutine(LoadNewScene(GameController.LoadingSceneName));
-        }
     }
 
     IEnumerator LoadNewScene(string sceneName)
@@ -35,7 +26,6 @@ public class LoadingBar: MonoBehaviour
         while (!async.isDone)
         {
             float progress = Mathf.Clamp01(async.progress / 0.9f);
-            sliderBar.value = progress;
             loadingText.text = progress * 100f + "%";
             yield return null;
         }

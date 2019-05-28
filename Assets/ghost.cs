@@ -54,7 +54,7 @@ public class ghost : MonoBehaviour {
 
     private void Update()
     {
-        if (!GameController.isPause && !ghostDie)
+        if (!GameController.isPause && !ghostDie && !GameController.isEventOn)
         {
             timer += Time.deltaTime;
             if (timer >= 0.12)
@@ -74,13 +74,16 @@ public class ghost : MonoBehaviour {
                 }
             }
         }
-        if (ghostDie)
+        if (!GameController.isPause && !GameController.isEventOn)
         {
-            timer += Time.deltaTime;
-            if (timer >= 4.9f)
+            if (ghostDie)
             {
-                Destroy(ghostRoot);
-                ClockTimer.isGhost = false;
+                timer += Time.deltaTime;
+                if (timer >= 4.9f)
+                {
+                    Destroy(ghostRoot);
+                    ClockTimer.isGhost = false;
+                }
             }
         }
     }

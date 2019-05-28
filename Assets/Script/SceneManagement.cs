@@ -26,14 +26,12 @@ public class SceneManagement : MonoBehaviour {
 
     public void GoToSceneHospital()
     {
-        GameController.LoadingSceneName = "Hospital";
         SceneManager.LoadScene("LoadingScene");
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(gameController);
     }
     public void GoToScenePark()
     {
-        GameController.LoadingSceneName = "Park";
         SceneManager.LoadScene("LoadingScene");
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(gameController);
