@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DigEvent : MonoBehaviour {
 
+    public BagItem bagItem;
     public Animator DigAnim;
     public GameObject DigPic;
     public GameObject CarsUI;
@@ -26,7 +27,7 @@ public class DigEvent : MonoBehaviour {
             AudioController.takeItem = true;
             GameController.EventName = "";
             ShowTimer = 0;
-            BagItem.Bag.Add("Cars");
+            bagItem.AddItem("Cars");
             BagItem.isItem = true;
             CarsUI.SetActive(true);
             GameController.isPause = false;

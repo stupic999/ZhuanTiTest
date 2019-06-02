@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    public BagItem bagItem;
+
     public static string PlayerRoom = "Hospital";
     public static string PortalPlace;
     public static bool isPause;
@@ -199,8 +201,7 @@ public class GameController : MonoBehaviour {
                 isTakeFishBait = true;
                 Debug.Log("FishBaitDone");
                 Destroy(FishBait);
-                BagItem.Bag.Add("FishBait");
-                BagItem.isItem = true;
+                bagItem.AddItem("FishBait");
                 FishBaitUI.SetActive(true);
                 AudioController.takeItem = true;
                 takeItemText.text = "獲得麵包";
@@ -221,11 +222,10 @@ public class GameController : MonoBehaviour {
             if (isTakeFishBait)
             {
                 isCheckPool = true;
-                BagItem.Bag.Add("Music");
+                bagItem.RemoveItem("FishBait");
+                bagItem.AddItem("Music");
                 MusicUI.SetActive(true);
                 Debug.Log("PoolDone");
-                BagItem.Bag.Remove("FishBait");
-                BagItem.isItem = true;
                 isPause = false;
                 AudioController.takeItem = true;
                 takeItemText.text = "獲得樂器";
@@ -283,9 +283,8 @@ public class GameController : MonoBehaviour {
             {
                 isCheckGrass = true;
                 Debug.Log("GrassDone");
-                BagItem.Bag.Add("Clown");
+                bagItem.AddItem("Clown");
                 ClownUI.SetActive(true);
-                BagItem.isItem = true;
                 AudioController.takeItem = true;
                 isPause = false;
                 takeItemText.text = "獲得驚嚇箱";
@@ -305,9 +304,8 @@ public class GameController : MonoBehaviour {
         {
             isCheckVase = true;
             Debug.Log("VaseInDone");
-            BagItem.Bag.Add("PuzzleVase");
+            bagItem.AddItem("PuzzleVase");
             PuzzleVaseUI.SetActive(true);
-            BagItem.isItem = true;
             isPause = false;
             AudioController.takeItem = true;
             takeItemText.text = "獲得拼圖(下)";
@@ -322,9 +320,8 @@ public class GameController : MonoBehaviour {
             {
                 isCheckCupBoard = true;
                 Debug.Log("CupBoardDone");
-                BagItem.Bag.Add("PuzzleCupBoard");
+                bagItem.AddItem("PuzzleCupBoard");
                 PuzzleCupBoardUI.SetActive(true);
-                BagItem.isItem = true;
                 AudioController.takeItem = true;
                 isPause = false;
                 takeItemText.text = "獲得拼圖(上)";
@@ -340,8 +337,7 @@ public class GameController : MonoBehaviour {
             {
                 isCheckShoes = true;
                 Debug.Log("ShoesDone");
-                BagItem.Bag.Add("Key");
-                BagItem.isItem = true;
+                bagItem.AddItem("Key");
                 KeyUI.SetActive(true);
                 AudioController.takeItem = true;
                 isPause = false;
@@ -359,8 +355,7 @@ public class GameController : MonoBehaviour {
                 isOpenDoor = true;
                 InHouseDoorBlock.SetActive(false);
                 Debug.Log("DoorDone");
-                BagItem.Bag.Remove("Key");
-                BagItem.isItem = true;
+                bagItem.RemoveItem("Key");
                 AudioController.openDoor = true;
                 isPause = false;
             }
@@ -421,9 +416,8 @@ public class GameController : MonoBehaviour {
                 }
                 isPuzzleEvent = true;
                 Debug.Log("PuzzleDone");
-                BagItem.Bag.Remove("PuzzleVase");
-                BagItem.Bag.Remove("PuzzleCupBoard");
-                BagItem.isItem = true;
+                bagItem.RemoveItem("PuzzleVase");
+                bagItem.RemoveItem("PuzzleCupBoard");
                 TriggerDialogue(PuzzleDoneDialogue);
                 AudioController.takeItem = true;
             }
@@ -477,8 +471,7 @@ public class GameController : MonoBehaviour {
         {
             Debug.Log("BearDone");
             isTakeBear = true;
-            BagItem.Bag.Add("Bear");
-            BagItem.isItem = true;
+            bagItem.AddItem("Bear");
             BearUI.SetActive(true);
             Destroy(Bear);
             AudioController.takeItem = true;
