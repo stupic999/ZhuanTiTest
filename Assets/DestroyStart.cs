@@ -8,6 +8,7 @@ public class DestroyStart : MonoBehaviour {
     float timer;
     Animator StartAnim;
     public GameObject Self;
+    public GameObject Skip;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +25,18 @@ public class DestroyStart : MonoBehaviour {
         }
         if (timer > 32.30f)
         {
-            gameScene.SetActive(true);
-            Destroy(Self);
+            Begin();
         }
 	}
+
+    public void ShowSkip()
+    {
+        Skip.SetActive(true);
+    }
+
+    public void Begin()
+    {
+        gameScene.SetActive(true);
+        Destroy(Self);
+    }
 }
