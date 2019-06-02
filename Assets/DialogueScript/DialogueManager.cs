@@ -20,6 +20,9 @@ public class DialogueManager : MonoBehaviour{
     public GameObject SmallScene;
     public GameObject EndAnimation;
 
+    public Text passwordText;
+    public static bool passwordError;
+
     public Dialogue WinDialogue;
 
     public Dialogue PuzzleDone2Dialogue;
@@ -196,6 +199,11 @@ public class DialogueManager : MonoBehaviour{
             TriggerDialogue(WinDialogue);
             GameController.isPause = true;
             GameController.winCount++;
+        }
+        if (passwordError)
+        {
+            passwordError = false;
+            passwordText.text = "";
         }
     }
 

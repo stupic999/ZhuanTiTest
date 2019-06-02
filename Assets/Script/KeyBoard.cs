@@ -20,7 +20,7 @@ public class KeyBoard : MonoBehaviour
     {
         if (Count == 4)
         {
-            if (PasswordText.text == "5022")
+            if (PasswordText.text == "0522")
             {
                 GameController.isPause = true;
                 Count = 0;
@@ -38,7 +38,7 @@ public class KeyBoard : MonoBehaviour
                 AudioController.error = true;
                 GameController.isPause = true;
                 Count = 0;
-                PasswordText.text = "";
+                DialogueManager.passwordError = true;
                 TriggerDialogue(PasswordFailDialogue);
                 Password.Clear();
             }
