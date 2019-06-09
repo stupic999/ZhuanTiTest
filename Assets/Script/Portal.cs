@@ -6,6 +6,8 @@ public class Portal : MonoBehaviour {
 
     [SerializeField]
     DialogueScriptable dayTeach;
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     bool isTeach;
     public Animator DialogueAnim;
     public GameObject Player;
@@ -18,7 +20,7 @@ public class Portal : MonoBehaviour {
 
     public void GoToWhr()
     {
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         if (GameController.PortalPlace == "GoToHospital")
         {
             Debug.Log("GoToHospital");
@@ -62,7 +64,7 @@ public class Portal : MonoBehaviour {
     public void DontGo()
     {
         GameController.isPause = false;
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         GameController.PortalPlace = "";
         YesOrNo.SetActive(false);
         DialogueAnim.SetBool("IsOpen", false);        

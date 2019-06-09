@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     public BagItem bagItem;
 
     public static string PlayerRoom = "Hospital";
@@ -203,7 +205,7 @@ public class GameController : MonoBehaviour {
                 Destroy(FishBait);
                 bagItem.AddItem("FishBait");
                 FishBaitUI.SetActive(true);
-                AudioController.takeItem = true;
+                audioScriptableObject.takeItem = true;
                 takeItemText.text = "獲得麵包";
                 isPause = false;
             }
@@ -227,7 +229,7 @@ public class GameController : MonoBehaviour {
                 MusicUI.SetActive(true);
                 Debug.Log("PoolDone");
                 isPause = false;
-                AudioController.takeItem = true;
+                audioScriptableObject.takeItem = true;
                 takeItemText.text = "獲得樂器";
                 if (allDone && winCount == 0)
                 {
@@ -251,7 +253,7 @@ public class GameController : MonoBehaviour {
             isDigTreasure = true;
             EventName = "Dig";
             Debug.Log("DigDone");
-            AudioController.digSand = true;
+            audioScriptableObject.digSand = true;
         }
     }
 
@@ -285,7 +287,7 @@ public class GameController : MonoBehaviour {
                 Debug.Log("GrassDone");
                 bagItem.AddItem("Clown");
                 ClownUI.SetActive(true);
-                AudioController.takeItem = true;
+                audioScriptableObject.takeItem = true;
                 isPause = false;
                 takeItemText.text = "獲得驚嚇箱";
                 if (allDone && winCount == 0)
@@ -307,7 +309,7 @@ public class GameController : MonoBehaviour {
             bagItem.AddItem("PuzzleVase");
             PuzzleVaseUI.SetActive(true);
             isPause = false;
-            AudioController.takeItem = true;
+            audioScriptableObject.takeItem = true;
             takeItemText.text = "獲得拼圖(下)";
         }
     }
@@ -322,7 +324,7 @@ public class GameController : MonoBehaviour {
                 Debug.Log("CupBoardDone");
                 bagItem.AddItem("PuzzleCupBoard");
                 PuzzleCupBoardUI.SetActive(true);
-                AudioController.takeItem = true;
+                audioScriptableObject.takeItem = true;
                 isPause = false;
                 takeItemText.text = "獲得拼圖(上)";
             }
@@ -339,7 +341,7 @@ public class GameController : MonoBehaviour {
                 Debug.Log("ShoesDone");
                 bagItem.AddItem("Key");
                 KeyUI.SetActive(true);
-                AudioController.takeItem = true;
+                audioScriptableObject.takeItem = true;
                 isPause = false;
                 takeItemText.text = "獲得門鑰匙";
             }
@@ -356,7 +358,7 @@ public class GameController : MonoBehaviour {
                 InHouseDoorBlock.SetActive(false);
                 Debug.Log("DoorDone");
                 bagItem.RemoveItem("Key");
-                AudioController.openDoor = true;
+                audioScriptableObject.openDoor = true;
                 isPause = false;
             }
             else
@@ -419,7 +421,7 @@ public class GameController : MonoBehaviour {
                 bagItem.RemoveItem("PuzzleVase");
                 bagItem.RemoveItem("PuzzleCupBoard");
                 TriggerDialogue(PuzzleDoneDialogue);
-                AudioController.takeItem = true;
+                audioScriptableObject.takeItem = true;
             }
             else if (isCheckCupBoard || isCheckVase)
             {
@@ -443,7 +445,7 @@ public class GameController : MonoBehaviour {
                 EventName = "ComputerEvent";
                 Debug.Log("ComputerEvent");
                 EventOn();
-                AudioController.openComputer = true;
+                audioScriptableObject.openComputer = true;
                 isPause = false;
             }
             else
@@ -474,7 +476,7 @@ public class GameController : MonoBehaviour {
             bagItem.AddItem("Bear");
             BearUI.SetActive(true);
             Destroy(Bear);
-            AudioController.takeItem = true;
+            audioScriptableObject.takeItem = true;
             isPause = false;
             takeItemText.text = "獲得小熊玩偶";
             if (allDone && winCount == 0)

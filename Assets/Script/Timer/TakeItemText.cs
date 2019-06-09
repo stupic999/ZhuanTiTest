@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class TakeItemText : MonoBehaviour {
 
+    [SerializeField]
+    TimerScriptableObject timerScriptableObject;
     Text takeItemText;
-    float timer;
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +19,10 @@ public class TakeItemText : MonoBehaviour {
 	void Update () {
         if (takeItemText.text != "")
         {
-            timer += Time.deltaTime;
-            if (timer > 1.5)
+            timerScriptableObject.takeItemTimer += Time.deltaTime;
+            if (timerScriptableObject.takeItemTimer > 1.5)
             {
-                timer = 0;
+                timerScriptableObject.takeItemTimer = 0;
                 takeItemText.text = "";
             }
         }

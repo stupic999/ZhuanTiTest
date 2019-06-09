@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapEvent : MonoBehaviour {
- 
+
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     public GameObject CloseItem;
     public static bool MapOpen;
 
@@ -73,14 +75,14 @@ public class MapEvent : MonoBehaviour {
 
     public void ClickLeftBtn()
     {
-        AudioController.changeMap = true;
+        audioScriptableObject.changeMap = true;
         GameController.MapCount -= 1;
         Debug.Log(GameController.MapCount);        
     }
 
     public void ClickRightBtn()
     {
-        AudioController.changeMap = true;
+        audioScriptableObject.changeMap = true;
         GameController.MapCount += 1;
         Debug.Log(GameController.MapCount);
     }
@@ -90,7 +92,7 @@ public class MapEvent : MonoBehaviour {
         MapOpen = false;
         GameController.isPause = false;
         CloseItem.SetActive(false);
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         GameController.MapCount = 0;
 
         Map1.SetActive(true);

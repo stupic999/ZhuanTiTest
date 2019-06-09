@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour{
     DialogueScriptable firstDoneDialogue;
     [SerializeField]
     DialogueScriptable puzzleDone2Dialogue;
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
 
     Queue<string> sentences;
     public Text passwordText;
@@ -86,7 +88,7 @@ public class DialogueManager : MonoBehaviour{
             GameController.isEventOn = false;
         }
 
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         if (sentences.Count <= 0)
         {
             EndDialogue();

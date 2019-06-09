@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bbc0fbfd33d834292714a2da96e2c3, type: 3}
+  m_Name: AudioScriptableObject
+  m_EditorClassIdentifier: 
+  takeItem: 0
+  openBag: 0
+  digSand: 0
+  openDoor: 0
+  openComputer: 0
+  btnSound: 0
+  changeMap: 0
+  error: 0
+  bell: 0
+  ghostDie: 0
+  playerDie: 0
+  TakeItemSound: {fileID: 8300000, guid: 173391e9aff6a414d9f3bcf182b76685, type: 3}
+  OpenBagSound: {fileID: 8300000, guid: 8e294eb36c1e2cb4f86a05fb611c5291, type: 3}
+  DigSandSound: {fileID: 8300000, guid: 9a5c1e4a0b7f8414f8757889f536dbec, type: 3}
+  OpenDoorSound: {fileID: 8300000, guid: f977e9a807868fb4e87bf7b099a92170, type: 3}
+  OpenComputerSound: {fileID: 8300000, guid: ff7d70412ed47b542ade66f50da58b84, type: 3}
+  BtnSound: {fileID: 8300000, guid: 81235d69e8240174792bc490b7d5ce48, type: 3}
+  ChangeMapSound: {fileID: 8300000, guid: 0f00462c7eb764549b04cbbf046e4c7a, type: 3}
+  ErrorSound: {fileID: 8300000, guid: 8edcd3826ff2f7e46adbe7c952f4ab76, type: 3}
+  BellSound: {fileID: 8300000, guid: de5a6bf85a7b1544e916a3ea77ee2c9e, type: 3}
+  GhostDie: {fileID: 8300000, guid: 5776df7eb9b52ce46bfc770d1407fb2b, type: 3}
+  PlayerDie: {fileID: 8300000, guid: ba7d0ccd94595794a8b4d0f66187d4d9, type: 3}

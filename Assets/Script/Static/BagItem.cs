@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BagItem : MonoBehaviour {
 
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     Vector3 Place;
     bool isBagOpen;
     public List<string> Bag = new List<string>();
@@ -43,7 +45,7 @@ public class BagItem : MonoBehaviour {
     {
         if (!GameController.isPause || isBagOpen)
         {
-            AudioController.openBag = true;
+            audioScriptableObject.openBag = true;
             isBagOpen = !isBagOpen;
             BagAnim.SetBool("isBagOpen", isBagOpen);
             if (isBagOpen)

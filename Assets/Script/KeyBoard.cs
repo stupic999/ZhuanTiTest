@@ -9,6 +9,8 @@ public class KeyBoard : MonoBehaviour
     DialogueScriptable passwordDoneDialogue;
     [SerializeField]
     DialogueScriptable passwordFailDialogue;
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
 
     int Count;
     List<string> Password = new List<string>();
@@ -34,7 +36,7 @@ public class KeyBoard : MonoBehaviour
             else
             {
                 Debug.Log("ComputerPasswordWrong");
-                AudioController.error = true;
+                audioScriptableObject.error = true;
                 GameController.isPause = true;
                 Count = 0;
                 DialogueManager.passwordError = true;
@@ -56,7 +58,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "9";
             Password.Add("9");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click8()
@@ -66,7 +68,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "8";
             Password.Add("8");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click7()
@@ -76,7 +78,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "7";
             Password.Add("7");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click6()
@@ -86,7 +88,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "6";
             Password.Add("6");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click5()
@@ -96,7 +98,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "5";
             Password.Add("5");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click4()
@@ -106,7 +108,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "4";
             Password.Add("4");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click3()
@@ -116,7 +118,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "3";
             Password.Add("3");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click2()
@@ -126,7 +128,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "2";
             Password.Add("2");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click1()
@@ -136,7 +138,7 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "1";
             Password.Add("1");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void Click0()
@@ -146,14 +148,14 @@ public class KeyBoard : MonoBehaviour
             Count++;
             PasswordText.text = PasswordText.text + "0";
             Password.Add("0");
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
     public void ClickDel()
     {
         if (!GameController.isPause)
         {
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
             if (Count > 0)
             {
                 Count--;
@@ -173,7 +175,7 @@ public class KeyBoard : MonoBehaviour
             Count = 0;
             Password.Clear();
             PasswordText.text = "";
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
             GameController.isPause = false;
             GameController.isEventOn = false;
             mainCamare.SetActive(true);

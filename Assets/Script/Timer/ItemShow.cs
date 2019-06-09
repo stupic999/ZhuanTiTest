@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ItemShow : MonoBehaviour {
 
+    [SerializeField]
+    TimerScriptableObject timerScriptableObject;
     public GameObject Self;
-    float Timer;
 
     public void Update()
     {
-        Timer += Time.deltaTime;
-        if (Timer >= 3.5f)
+        timerScriptableObject.itemShowTimer += Time.deltaTime;
+        if (timerScriptableObject.itemShowTimer >= 3.5f)
         {
             Destroy(Self);
         }

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 
+    [SerializeField]
+    TimerScriptableObject timerScriptableObject;
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     string GhostFace;
     int ghostCount;
     SpriteRenderer ghostSprite;
-    float timer;
     AudioSource ghostAudio;
     Animator GhostAnim;
 
@@ -47,8 +50,8 @@ public class Ghost : MonoBehaviour {
         }
         if (ghostDie)
         {
-            timer += Time.deltaTime;
-            if (timer >= 5)
+            timerScriptableObject.ghostTimer += Time.deltaTime;
+            if (timerScriptableObject.ghostTimer >= 5)
             {
                 Destroy(gameObject);
             }
@@ -59,10 +62,10 @@ public class Ghost : MonoBehaviour {
     {
         if (!GameController.isPause && !ghostDie && !GameController.isEventOn)
         {
-            timer += Time.deltaTime;
-            if (timer >= 0.12)
+            timerScriptableObject.ghostTimer += Time.deltaTime;
+            if (timerScriptableObject.ghostTimer >= 0.12)
             {
-                timer = 0;
+                timerScriptableObject.ghostTimer = 0;
                 if (GhostFace == "R")
                 {
                     transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
@@ -81,8 +84,8 @@ public class Ghost : MonoBehaviour {
         {
             if (ghostDie)
             {
-                timer += Time.deltaTime;
-                if (timer >= 4.9f)
+                timerScriptableObject.ghostTimer += Time.deltaTime;
+                if (timerScriptableObject.ghostTimer >= 4.9f)
                 {
                     Destroy(ghostRoot);
                     ClockTimer.isGhost = false;
@@ -97,8 +100,8 @@ public class Ghost : MonoBehaviour {
         {
             if (other.tag == "Light")
             {
-                AudioController.ghostDie = true;
-                timer = 0;
+                audioScriptableObject.ghostDie = true;
+                timerScriptableObject.ghostTimer = 0;
                 GhostAnim.enabled = true;
                 ghostDie = true;
                 Debug.Log("Die");
@@ -106,7 +109,7 @@ public class Ghost : MonoBehaviour {
             }
             else if (other.tag == "Player")
             {
-                AudioController.playerDie = true;
+                audioScriptableObject.playerDie = true;
                 GameController.playerDie = true;
                 Destroy(ghostRoot);
                 GameController.PlayerRoom = "Hospital";

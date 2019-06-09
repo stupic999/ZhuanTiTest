@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
 
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     bool isStart;
     bool isSetting;
     public Animator StartAnim;
@@ -20,7 +22,7 @@ public class MainMenu : MonoBehaviour {
             gameScene.SetActive(true);
             GameController.isPause = false;
             StartAnim.SetBool("isStart", true);
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
 
@@ -34,11 +36,11 @@ public class MainMenu : MonoBehaviour {
                 mainMenu.SetActive(false);
                 gameScene.SetActive(true);
                 StartAnim.SetBool("isStart", true);
-                AudioController.btnSound = true;
+                audioScriptableObject.btnSound = true;
             }
             else
             {
-                AudioController.error = true;
+                audioScriptableObject.error = true;
             }
         }
     }
@@ -50,7 +52,7 @@ public class MainMenu : MonoBehaviour {
             isSetting = true;
             gameScene.SetActive(false);
             SoundSettingUI.SetActive(true);
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
 
@@ -61,7 +63,7 @@ public class MainMenu : MonoBehaviour {
         {
             Debug.Log("Quit");
             Application.Quit();
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
         }
     }
 
@@ -69,7 +71,7 @@ public class MainMenu : MonoBehaviour {
     {
         SoundSettingUI.SetActive(false);
         mainMenu.SetActive(true);
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         isSetting = false;
     }
 }

@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class GrassTrigger : MonoBehaviour {
 
-    float GrassTimer=1;
+    [SerializeField]
+    TimerScriptableObject timerScriptableObject;
 
     private void Update()
     {
-        if(GameController.isPause!=true)
-        GrassTimer += Time.deltaTime;
+        if (GameController.isPause != true)
+            timerScriptableObject.grassTimer += Time.deltaTime;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isCheckGrass != true && GrassTimer>=0.5)
+        if (other.transform.tag == "Player" && GameController.isCheckGrass != true && timerScriptableObject.grassTimer >= 0.5)
         {
             GameController.btnEvent = "Grass";
-            GrassTimer = 0;
+            timerScriptableObject.grassTimer = 0;
         }
     }
 

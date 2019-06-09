@@ -307,11 +307,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9905951054a31524590432359aa32fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerScriptableObject: {fileID: 11400000, guid: 39e59c40b16f8194384ab41f390528f5,
+    type: 2}
+  audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
+    type: 2}
+  playerDie: {fileID: 11400000, guid: 654d2f145b23d4545a50ee9a2dffa91f, type: 2}
   ghostRoot: {fileID: 1830808459521316}
   playerTransform: {fileID: 0}
   Player: {fileID: 0}
   MainCamera: {fileID: 0}
-  playerDie: {fileID: 11400000, guid: 654d2f145b23d4545a50ee9a2dffa91f, type: 2}
 --- !u!114 &114954612657058318
 MonoBehaviour:
   m_ObjectHideFlags: 1

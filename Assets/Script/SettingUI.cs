@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SettingUI : MonoBehaviour {
 
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     public GameObject MainMenu;
     public GameObject settingUI;
     public GameObject GameScene;
@@ -14,7 +16,7 @@ public class SettingUI : MonoBehaviour {
     {
         if (!GameController.isPause)
         {
-            AudioController.btnSound = true;
+            audioScriptableObject.btnSound = true;
             settingUI.SetActive(true);
             GameController.isPause = true;
         }
@@ -22,14 +24,14 @@ public class SettingUI : MonoBehaviour {
 
     public void ContinueGame()
     {
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         settingUI.SetActive(false);
         GameController.isPause = false;
     }
 
     public void GoToMainMenu()
     {
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         GameController.isPause = true;
         settingUI.SetActive(false);
         GameScene.SetActive(false);
@@ -39,14 +41,14 @@ public class SettingUI : MonoBehaviour {
 
     public void ShowSettingUI2()
     {
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         SoundSettingUI.SetActive(true);
         settingUI.SetActive(false);
     }
 
     public void CloseSoundSettingUI()
     {
-        AudioController.btnSound = true;
+        audioScriptableObject.btnSound = true;
         SoundSettingUI.SetActive(false);
         GameController.isPause = false;
     }

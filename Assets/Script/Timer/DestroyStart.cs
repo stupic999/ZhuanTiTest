@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class DestroyStart : MonoBehaviour {
 
-    float timer;
+    [SerializeField]
+    TimerScriptableObject timerScriptableObject;
     Animator StartAnim;
     public GameObject gameScene;
     public GameObject Self;
     public GameObject Skip;
 
-	// Use this for initialization
-	void Start () {
-        timer = 0;
+    // Use this for initialization
+    void Start () {
         StartAnim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        timer += Time.deltaTime;
-        if (timer > 30)
+        timerScriptableObject.startTimer += Time.deltaTime;
+        if (timerScriptableObject.startTimer > 30)
         {
             StartAnim.SetBool("Stop", true);
         }
-        if (timer > 32.30f)
+        if (timerScriptableObject.startTimer > 32.30f)
         {
             Begin();
         }

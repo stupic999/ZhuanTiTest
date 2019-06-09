@@ -2,97 +2,87 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioController : MonoBehaviour {
-
+public class AudioController : MonoBehaviour
+{
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
     AudioSource audioSource;
-    public AudioClip TakeItemSound;
-    public AudioClip OpenBagSound;
-    public AudioClip DigSandSound;
-    public AudioClip OpenDoorSound;
-    public AudioClip OpenComputerSound;
-    public AudioClip BtnSound;
-    public AudioClip ChangeMapSound;
-    public AudioClip ErrorSound;
-    public AudioClip BellSound;
-    public AudioClip GhostDie;
-    public AudioClip PlayerDie;
 
-    public static bool takeItem;
-    public static bool openBag;
-    public static bool digSand;
-    public static bool openDoor;
-    public static bool openComputer;
-    public static bool btnSound;
-    public static bool changeMap;
-    public static bool error;
-    public static bool bell;
-    public static bool ghostDie;
-    public static bool playerDie;
-
-    void Start()
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioScriptableObject.takeItem = false;
+        audioScriptableObject.openBag = false;
+        audioScriptableObject.digSand = false;
+        audioScriptableObject.openDoor = false;
+        audioScriptableObject.openComputer = false;
+        audioScriptableObject.btnSound = false;
+        audioScriptableObject.changeMap = false;
+        audioScriptableObject.error = false;
+        audioScriptableObject.bell = false;
+        audioScriptableObject.ghostDie = false;
+        audioScriptableObject.playerDie = false;
     }
 
     void Update()
     {
-        if (takeItem)
+        if (audioScriptableObject.takeItem)
         {
-            audioSource.PlayOneShot(TakeItemSound);
-            takeItem = false;
+            audioSource.PlayOneShot(audioScriptableObject.TakeItemSound);
+            audioScriptableObject.takeItem = false;
         }
 
-        if (openBag)
+        if (audioScriptableObject.openBag)
         {
-            audioSource.PlayOneShot(OpenBagSound);
-            openBag = false;
+            audioSource.PlayOneShot(audioScriptableObject.OpenBagSound);
+            audioScriptableObject.openBag = false;
         }
 
-        if (digSand)
+        if (audioScriptableObject.digSand)
         {
-            audioSource.PlayOneShot(DigSandSound);
-            digSand = false;
+            audioSource.PlayOneShot(audioScriptableObject.DigSandSound);
+            audioScriptableObject.digSand = false;
         }
 
-        if (openDoor)
+        if (audioScriptableObject.openDoor)
         {
-            audioSource.PlayOneShot(OpenDoorSound);
-            openDoor = false;
+            audioSource.PlayOneShot(audioScriptableObject.OpenDoorSound);
+            audioScriptableObject.openDoor = false;
         }
-        if (openComputer)
+        if (audioScriptableObject.openComputer)
         {
-            audioSource.PlayOneShot(OpenComputerSound);
-            openComputer = false;
+            audioSource.PlayOneShot(audioScriptableObject.OpenComputerSound);
+            audioScriptableObject.openComputer = false;
         }
-        if (btnSound == true)
+        if (audioScriptableObject.btnSound == true)
         {
-            audioSource.PlayOneShot(BtnSound);
-            btnSound = false;
+            audioSource.PlayOneShot(audioScriptableObject.BtnSound);
+            audioScriptableObject.btnSound = false;
         }
-        if (changeMap)
+        if (audioScriptableObject.changeMap)
         {
-            audioSource.PlayOneShot(ChangeMapSound);
-            changeMap = false;
+            audioSource.PlayOneShot(audioScriptableObject.ChangeMapSound);
+            audioScriptableObject.changeMap = false;
         }
-        if (error)
+        if (audioScriptableObject.error)
         {
-            audioSource.PlayOneShot(ErrorSound);
-            error= false;
+            audioSource.PlayOneShot(audioScriptableObject.ErrorSound);
+            audioScriptableObject.error = false;
         }
-        if (bell)
+        if (audioScriptableObject.bell)
         {
-            audioSource.PlayOneShot(BellSound);
-            bell = false;
+            audioSource.PlayOneShot(audioScriptableObject.BellSound);
+            audioScriptableObject.bell = false;
         }
-        if (ghostDie)
+        if (audioScriptableObject.ghostDie)
         {
-            audioSource.PlayOneShot(GhostDie);
-            ghostDie = false;
+            audioSource.PlayOneShot(audioScriptableObject.GhostDie);
+            audioScriptableObject.ghostDie = false;
         }
-        if (playerDie)
+        if (audioScriptableObject.playerDie)
         {
-            audioSource.PlayOneShot(PlayerDie);
-            playerDie = false;
+            audioSource.PlayOneShot(audioScriptableObject.PlayerDie);
+            audioScriptableObject.playerDie = false;
         }
     }
 }

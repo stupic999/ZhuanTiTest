@@ -6,6 +6,8 @@ public class ClockTimer : MonoBehaviour {
 
     [SerializeField]
     DialogueScriptable teach;
+    [SerializeField]
+    AudioScriptableObject audioScriptableObject;
 
     float timer;
     bool once;
@@ -48,7 +50,7 @@ public class ClockTimer : MonoBehaviour {
             if (bellTimer >= 2f)
             {
                 bellCount++;
-                AudioController.bell = true;
+                audioScriptableObject.bell = true;
                 bellTimer = 0;
             }
         }
