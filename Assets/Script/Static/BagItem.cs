@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BagItem : MonoBehaviour {
 
+    Vector3 Place;
+    bool isBagOpen;
     public List<string> Bag = new List<string>();
-
+    public Animator BagAnim;
     public GameObject FishBait;
     public GameObject Key;
     public GameObject PuzzleVase;
@@ -14,7 +16,6 @@ public class BagItem : MonoBehaviour {
     public GameObject Clown;
     public GameObject Cars;
     public GameObject Bear;
-    public Animator BagAnim;
     public GameObject Item1;
     public GameObject Item2;
     public GameObject Item3;
@@ -23,16 +24,10 @@ public class BagItem : MonoBehaviour {
     public GameObject Item6;
     public GameObject Item7;
     public GameObject Item8;
-
+    public GameObject BagUI;
     public static bool isItem=true;
 
-    public GameObject BagUI;
-
-    Vector3 Place;
-
-    bool isBagOpen;
-
-    private void Update()
+    void Update()
     {
         if (GameController.isPause && !isBagOpen)
         {
@@ -43,7 +38,6 @@ public class BagItem : MonoBehaviour {
             BagUI.SetActive(true);
         }
     }
-
 
     public void isClickBagBtn()
     {

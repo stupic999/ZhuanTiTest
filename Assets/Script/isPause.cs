@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class isPause : MonoBehaviour {
+public class IsPause : MonoBehaviour {
 
     public GameObject MoveUI;
-    public GameObject SettingUI;
     public GameObject ClockUI;
     public GameObject LightUI;
+    public GameObject SettingUI;
 
     private void Update()
     {

@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ghost : MonoBehaviour {
+public class Ghost : MonoBehaviour {
 
     string GhostFace;
     int ghostCount;
-    public GameObject ghostRoot;
-    float timer;
-    public static bool ghostDie;
-    AudioSource ghostAudio;
     SpriteRenderer ghostSprite;
-    public Transform playerTransform;
+    float timer;
+    AudioSource ghostAudio;
     Animator GhostAnim;
+
+    [SerializeField]
+    DialogueScriptable playerDie;
+
+    public GameObject ghostRoot;
+    public static bool ghostDie;
+    public Transform playerTransform;
     public GameObject Player;
     public GameObject MainCamera;
-    public Dialogue playerDie;
 
     private void Start()
     {
@@ -29,7 +32,7 @@ public class ghost : MonoBehaviour {
         ghostSprite.color = new Color(255, 255, 255, 0); 
         ghostAudio = GetComponent<AudioSource>();
         ghostAudio.volume = 0f;
-       ghostCount= Random.Range(1, 3);
+        ghostCount = Random.Range(1, 3);
         if (ghostCount == 1)
         {
             GhostFace = "R";
@@ -111,7 +114,7 @@ public class ghost : MonoBehaviour {
                 Player.transform.eulerAngles = new Vector3(0, 0, 0);
                 MainCamera.transform.position = new Vector3(-231.5f, 0, MainCamera.transform.position.z);
                 ClockTimer.isGhost = false;
-                TriggerDialogue(playerDie);
+                TriggerDialogue(playerDie.dialogue);
                 ClockTimer.isNight = false;
             }
         }

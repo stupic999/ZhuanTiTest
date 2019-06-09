@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class FairyMovement : MonoBehaviour {
 
-    public static string PlayerFace = "L";
-    public Animator PlayerAnim;
-    public static bool isOpenLight;
     float h;
     float v;
+    Rigidbody playerRb;
 
+    public static string PlayerFace = "L";
+    public static bool isOpenLight;
     public float moveHSpd;
     public float moveVSpd;
-
-    Rigidbody playerRb;
+    public Animator PlayerAnim;
     public GameObject Player;
     public JoyStickController joyStickController;
 
@@ -78,7 +77,6 @@ public class FairyMovement : MonoBehaviour {
             {
                 PlayerAnim.SetBool("isFly", false);
             }
-          //  Debug.Log(h+"       v="+v);
             Move(h, v);
         }
         else

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour {
 
+    [SerializeField]
+    DialogueScriptable dayTeach;
+    bool isTeach;
+    public Animator DialogueAnim;
     public GameObject Player;
     public GameObject HospitalPortal;
     public GameObject ParkPortal;
     public GameObject Park2Portal;
     public GameObject HousePortal;
     public GameObject MainCamare;
-    public Animator DialogueAnim;
     public GameObject YesOrNo;
-
-    public Dialogue teach;
-
-    bool isTeach;
 
     public void GoToWhr()
     {
@@ -38,7 +37,7 @@ public class Portal : MonoBehaviour {
             if (!isTeach)
             {
                 isTeach = true;
-                TriggerDialogue(teach);
+                TriggerDialogue(dayTeach.dialogue);
                 GameController.isPause = true;
             }
         }

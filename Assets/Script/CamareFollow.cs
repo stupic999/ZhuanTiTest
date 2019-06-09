@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class CamareFollow : MonoBehaviour {
 
-    public GameObject MainCamare;
     public GameObject Player;
+    public GameObject MainCamare;
 
-	// Update is called once per frame
-	void Update () {
-        // hospital 左边-231.5 右边-213.5
-        // Park 左边-109 右边 109
-        // house 左边 223 377
+    void Update()
+    {
         float Playerx = Player.transform.position.x;
         if (GameController.PlayerRoom == "Hospital")
         {

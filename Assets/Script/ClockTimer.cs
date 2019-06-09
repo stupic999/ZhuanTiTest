@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ClockTimer : MonoBehaviour {
 
+    [SerializeField]
+    DialogueScriptable teach;
+
+    float timer;
+    bool once;
+    int bellCount;
+    float bellTimer = 2f;
+    int changeMusicNight;
     public GameObject ParkMorning;
     public GameObject ParkNight;
     public GameObject HouseYetMorning;
@@ -11,21 +19,13 @@ public class ClockTimer : MonoBehaviour {
     public GameObject HouseDoneMorning;
     public GameObject HouseDoneNight;
     public GameObject ghost;
-
-    public static bool isGhost;
-
     public GameObject clockArrowRoot;
+    public Animator PlayerAnim;
     public AudioSource BgMusic;
     public AudioClip Morning;
     public AudioClip Night;
-    float timer;
     public static bool isNight;
-    public Animator PlayerAnim;
-    bool once;
-    public Dialogue teach;
-    int bellCount;
-    float bellTimer=2f;
-    int changeMusicNight;
+    public static bool isGhost;
 
 	// Use this for initialization
 	void Start () {
@@ -86,7 +86,7 @@ public class ClockTimer : MonoBehaviour {
                 {
                     once = true;
                     GameController.isPause = true;
-                    TriggerDialogue(teach);
+                    TriggerDialogue(teach.dialogue);
                 }
                 if (changeMusicNight == 0)
                 {

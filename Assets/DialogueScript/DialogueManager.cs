@@ -5,7 +5,15 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour{
 
+    [SerializeField]
+    DialogueScriptable firstDoneDialogue;
+    [SerializeField]
+    DialogueScriptable puzzleDone2Dialogue;
+
+    Queue<string> sentences;
+    public Text passwordText;
     public Text dialogueText;
+    public Animator anim;
     public GameObject mainCamera;
     public GameObject Player;
     public GameObject BoardCamere;
@@ -19,28 +27,15 @@ public class DialogueManager : MonoBehaviour{
     public GameObject fairyDialogueBox;
     public GameObject SmallScene;
     public GameObject EndAnimation;
-
-    public Text passwordText;
+    public int sentenceCount;
+    public string talkingPerson;
     public static bool passwordError;
 
-    public Dialogue WinDialogue;
-
-    public Dialogue PuzzleDone2Dialogue;
-    public int sentenceCount;
-
-    public string talkingPerson;
-
-    public Animator anim;
-
-    Queue<string> sentences;
-       
-
-	// Use this for initialization
-	void Awake () {
+    void Awake () {
         sentences = new Queue<string>();
 	}
 
-    private void Update()
+    void Update()
     {
         if (anim.GetBool("IsOpen") == true)
         {
@@ -184,7 +179,7 @@ public class DialogueManager : MonoBehaviour{
             PuzzleDone.SetActive(true);
             GameController.isEventOn = false;
             GameController.isPause = true;
-            TriggerDialogue(PuzzleDone2Dialogue);
+            TriggerDialogue(puzzleDone2Dialogue.dialogue);
             GameController.isPuzzleEvent = false;
             GameController.isDonePuzzle  = true;
         }
@@ -196,7 +191,7 @@ public class DialogueManager : MonoBehaviour{
         }
         if (GameController.allDone && GameController.winCount==0)
         {
-            TriggerDialogue(WinDialogue);
+            TriggerDialogue(firstDoneDialogue.dialogue);
             GameController.isPause = true;
             GameController.winCount++;
         }

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour {
 
-    public AudioMixer audioMixer; 
     Slider slider;
+    public AudioMixer audioMixer; 
 
     public void Start()
     {

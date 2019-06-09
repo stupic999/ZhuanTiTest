@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GoToHospitalTrigger : MonoBehaviour {
 
-    public Dialogue GoOrNot;
-    public Dialogue CantGo;
+    [SerializeField]
+    DialogueScriptable goHospitalDialogue;
+    [SerializeField]
+    DialogueScriptable cantGo;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
@@ -15,14 +17,14 @@ public class GoToHospitalTrigger : MonoBehaviour {
         {
             GameController.isPause = true;
             GameController.PortalPlace = "GoToHospital";
-            TriggerDialogue(GoOrNot);
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);
+            TriggerDialogue(goHospitalDialogue.dialogue);
         }
         else if (other.transform.tag == "Player" &&  ClockTimer.isNight)
         {
             GameController.isPause=true;
-            TriggerDialogue(CantGo);
+            TriggerDialogue(cantGo.dialogue);
         }
     }
 

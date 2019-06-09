@@ -297,9 +297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceeefa2c8f448ee41b22492cb80a6f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerAnim: {fileID: 625705224}
   moveHSpd: 0
   moveVSpd: 0
+  PlayerAnim: {fileID: 625705224}
   Player: {fileID: 2129437906}
   joyStickController: {fileID: 1967690696}
 --- !u!1 &93879307
@@ -1392,14 +1392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c6fc1bbf025b846bb66d33a8ea85db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoOrNot:
-    name: 
-    sentences:
-    - "\u8981\u96E2\u958B\u516C\u5712\uFF0C\u524D\u5F80\u75C5\u623F\u55CE\uFF1F"
-  CantGo:
-    name: 
-    sentences:
-    - "\u4E0D\u80FD\u8BA9\u5B83\u4F24\u5BB3\u5C0F\u7537\u5B69\uFF01"
+  goHospitalDialogue: {fileID: 11400000, guid: 9ff2e978f09a4014c8791f2af4417ea6, type: 2}
+  cantGo: {fileID: 11400000, guid: 5dd23feb33a435f4fb91a89bfc4c74b0, type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!65 &252627700
@@ -1744,16 +1738,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c63f1ada5b682a4d99cf38a96d6febb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passwordDoneDialogue: {fileID: 11400000, guid: 46fd71e868c435440aee659247daa198,
+    type: 2}
+  passwordFailDialogue: {fileID: 11400000, guid: 61d044fd5d0c14040b0d803514f1081e,
+    type: 2}
   PasswordText: {fileID: 115784568}
   mainCamare: {fileID: 1454465252}
-  PasswordDoneDialogue:
-    name: Fairy
-    sentences:
-    - "\u4E0A\u9762\u8BB0\u5F55\u4E86\u4E00\u4E9B\u8D26\u5355\u7684\u8D39\u7528\u3002\u5176\u4E2D\u6709\u4E00\u9879\u662F\u4F4F\u9662\u7684\u8D39\u7528\uFF0C\u4F46\u4E00\u4E2A\u6708\u524D\u5C31\u6CA1\u6709\u518D\u8BB0\u5F55\u4E86\u3002\r"
-  PasswordFailDialogue:
-    name: 
-    sentences:
-    - "\u5BC6\u78BC\u932F\u4E86"
 --- !u!1 &308960030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,10 +1978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3c67880dd58b468e2daeee9a1100c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoOrNot:
-    name: 
-    sentences:
-    - "\u8981\u96E2\u958B\u516C\u5712\uFF0C\u524D\u5F80\u4F4F\u5BB6\u55CE\uFF1F"
+  goHouseDialogue: {fileID: 11400000, guid: d29a84a5058db784db2dd86918405df3, type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!1 &370587192
@@ -2640,9 +2627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c968230b407b3c04eb91ead04670be50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartAnim: {fileID: 420991864}
   mainMenu: {fileID: 1332368661}
   gameScene: {fileID: 1634470920}
-  StartAnim: {fileID: 420991864}
   SoundSettingUI: {fileID: 961040902}
 --- !u!114 &420991860
 MonoBehaviour:
@@ -3692,10 +3679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8222fdba30c53d439debc6c7e9777b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoOrNot:
-    name: 
-    sentences:
-    - "\u8981\u96E2\u958B\u4F4F\u623F\uFF0C\u524D\u5F80\u516C\u5712\u55CE\uFF1F"
+  goParkDialogue: {fileID: 11400000, guid: 4f7e57c8ebcb181459d51b1752450c10, type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!1 &648072812
@@ -6705,6 +6689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dc2014d1eff8941b934a72d4eacbaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teach: {fileID: 11400000, guid: c637bb615e3231e48ab15489841bbab2, type: 2}
   ParkMorning: {fileID: 1756940626}
   ParkNight: {fileID: 992253144}
   HouseYetMorning: {fileID: 1896749287}
@@ -6713,14 +6698,10 @@ MonoBehaviour:
   HouseDoneNight: {fileID: 2009058125}
   ghost: {fileID: 1830808459521316, guid: 81f741e88c080d946aee3e80d1df3242, type: 2}
   clockArrowRoot: {fileID: 1852529037}
+  PlayerAnim: {fileID: 625705224}
   BgMusic: {fileID: 1634470922}
   Morning: {fileID: 8300000, guid: 4c3dcb53a5e14764fad834188c87456d, type: 3}
   Night: {fileID: 8300000, guid: b63d6cad9ffc3b14490fc4327b316106, type: 3}
-  PlayerAnim: {fileID: 625705224}
-  teach:
-    name: 
-    sentences:
-    - "\u665A\u4E0A\u4E86\uFF0C\u602A\u7269\u51FA\u6765\u4E86\uFF0C\u7528\u624B\u7535\u7B52\u7167\u5230\u602A\u7269\uFF0C\u602A\u7269\u5C06\u6682\u65F6\u88AB\u6D88\u706D\uFF0C\u602A\u7269\u5C06\u5728\u592A\u9633\u51FA\u73B0\u540E\u6D88\u5931\u3002"
 --- !u!1 &1019733191
 GameObject:
   m_ObjectHideFlags: 0
@@ -9619,10 +9600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5b6ad45d3e3ca42a183b71a3e26af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoOrNot:
-    name: 
-    sentences:
-    - "\u8981\u96E2\u958B\u75C5\u623F\uFF0C\u524D\u5F80\u516C\u5712\u55CE\uFF1F"
+  goParkDialogue: {fileID: 11400000, guid: 4f7e57c8ebcb181459d51b1752450c10, type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!65 &1420815443
@@ -9808,8 +9786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f772d09ab4b864ba61e6df3754e5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamare: {fileID: 1454465252}
   Player: {fileID: 51514748}
+  MainCamare: {fileID: 1454465252}
 --- !u!1 &1458514952
 GameObject:
   m_ObjectHideFlags: 0
@@ -10037,9 +10015,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bagItem: {fileID: 1733801084}
   DigAnim: {fileID: 1014573798}
+  takeItemText: {fileID: 1867590645}
   DigPic: {fileID: 2140497816}
   CarsUI: {fileID: 805783390}
-  takeItemText: {fileID: 1867590645}
 --- !u!114 &1462291597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10052,9 +10030,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveUI: {fileID: 1170609373}
-  SettingUI: {fileID: 1830884066}
   ClockUI: {fileID: 1018524026}
   LightUI: {fileID: 742351444}
+  SettingUI: {fileID: 1830884066}
 --- !u!1 &1464253689
 GameObject:
   m_ObjectHideFlags: 0
@@ -10598,7 +10576,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1c2a63bfdba2f498c0bc401b603278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstDoneDialogue: {fileID: 11400000, guid: 9b3a8582f0c35814ea7e96c82b8d6626, type: 2}
+  puzzleDone2Dialogue: {fileID: 11400000, guid: 13582cb8efacade45991c6042292b366,
+    type: 2}
+  passwordText: {fileID: 115784568}
   dialogueText: {fileID: 50023505}
+  anim: {fileID: 370587193}
   mainCamera: {fileID: 1454465252}
   Player: {fileID: 51514748}
   BoardCamere: {fileID: 1720267226}
@@ -10612,18 +10595,8 @@ MonoBehaviour:
   fairyDialogueBox: {fileID: 229463398}
   SmallScene: {fileID: 926030347}
   EndAnimation: {fileID: 1051411261}
-  passwordText: {fileID: 115784568}
-  WinDialogue:
-    name: Fairy
-    sentences:
-    - "\u8FD9\u5E94\u8BE5\u591F\u4E86\u5427\u3002\r"
-  PuzzleDone2Dialogue:
-    name: Fairy
-    sentences:
-    - "\u770B\u6765\u4ED6\u5F88\u559C\u6B22\u73A9\u73A9\u5177\u8F66\u5462\u3002\r"
   sentenceCount: 0
   talkingPerson: 
-  anim: {fileID: 370587193}
 --- !u!224 &1602040923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11718,7 +11691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1702000572
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12191,6 +12164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bag: []
+  BagAnim: {fileID: 1894806368}
   FishBait: {fileID: 326405443}
   Key: {fileID: 964792508}
   PuzzleVase: {fileID: 1092917420}
@@ -12199,7 +12173,6 @@ MonoBehaviour:
   Clown: {fileID: 1096755015}
   Cars: {fileID: 1961778454}
   Bear: {fileID: 1735021228}
-  BagAnim: {fileID: 1894806368}
   Item1: {fileID: 32592919}
   Item2: {fileID: 628404201}
   Item3: {fileID: 1587729906}
@@ -14925,11 +14898,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8345c739c6705e14f92cdb436ef947fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenu: {fileID: 1332368661}
   settingUI: {fileID: 1983354288}
   GameScene: {fileID: 1634470920}
-  MainMenu: {fileID: 1332368661}
-  SoundSettingUI: {fileID: 969563770}
   mainCamare: {fileID: 1454465252}
+  SoundSettingUI: {fileID: 969563770}
 --- !u!1 &1995478649
 GameObject:
   m_ObjectHideFlags: 0
@@ -15441,21 +15414,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98d16eddcedd5d43b0ef48bb0afe28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayTeach: {fileID: 11400000, guid: 9bb37d229a7621f4eb8bab28b700c806, type: 2}
+  DialogueAnim: {fileID: 370587193}
   Player: {fileID: 51514748}
   HospitalPortal: {fileID: 1815780401}
   ParkPortal: {fileID: 1216188689}
   Park2Portal: {fileID: 2116923415}
   HousePortal: {fileID: 1464253689}
   MainCamare: {fileID: 1454465252}
-  DialogueAnim: {fileID: 370587193}
   YesOrNo: {fileID: 1695528027}
-  teach:
-    name: 
-    sentences:
-    - "\u4EE5\u4E0B\u70BA\u6559\u5B78\uFF1A"
-    - "\u665A\u4E0A\u6703\u6709\u602A\u7269\u51FA\u6C92\uFF0C\u4F46\u7528\u624B\u96FB\u7B52\u80FD\u8B93\u5B83\u5011\u7121\u6CD5\u9760\u8FD1\u3002(\u624B\u96FB\u7B52\u665A\u4E0A\u624D\u6703\u62FF\u51FA\u4F86)"
-    - "\uFF08\u5DE6\u4E0A\u9B27\u9418\u56DB\u5206\u4E4B\u4E09\u70BA\u767D\u5929\uFF0C\u56DB\u5206\u4E4B\u4E00\u70BA\u591C\u665A)"
-    - "(\u5728\u75C5\u623F\u6642\uFF0C\u9B27\u9418\u6642\u9593\u4E0D\u6703\u6539\u8B8A\uFF0C\u665A\u4E0A\u4E0D\u53EF\u4EE5\u524D\u5F80\u75C5\u623F\uFF09"
 --- !u!1 &2063423424
 GameObject:
   m_ObjectHideFlags: 0

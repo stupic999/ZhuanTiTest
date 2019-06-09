@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GoToHouseTrigger : MonoBehaviour {
 
-    public Dialogue GoOrNot;
+    [SerializeField]
+    DialogueScriptable goHouseDialogue;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
@@ -14,7 +15,7 @@ public class GoToHouseTrigger : MonoBehaviour {
         {
             GameController.isPause = true;
             GameController.PortalPlace = "GoToHouse";
-            TriggerDialogue(GoOrNot);
+            TriggerDialogue(goHouseDialogue.dialogue);
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);           
         }

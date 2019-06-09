@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DestroyStart : MonoBehaviour {
 
-    public GameObject gameScene;
     float timer;
     Animator StartAnim;
+    public GameObject gameScene;
     public GameObject Self;
     public GameObject Skip;
 

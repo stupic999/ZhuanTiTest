@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class KeyBoard : MonoBehaviour
 {
-
-    public Text PasswordText;
-    List<string> Password=new List<string>();
+    [SerializeField]
+    DialogueScriptable passwordDoneDialogue;
+    [SerializeField]
+    DialogueScriptable passwordFailDialogue;
 
     int Count;
-
+    List<string> Password = new List<string>();
+    public Text PasswordText;
     public GameObject mainCamare;
-
-    public Dialogue PasswordDoneDialogue;
-    public Dialogue PasswordFailDialogue;
 
     public void Update()
     {
@@ -30,7 +29,7 @@ public class KeyBoard : MonoBehaviour
                 GameController.isBtnClick = true;
                 Debug.Log("ComputerDonePassword");
                 GameController.isEventOn = false;
-                TriggerDialogue(PasswordDoneDialogue);
+                TriggerDialogue(passwordDoneDialogue.dialogue);
             }
             else
             {
@@ -39,7 +38,7 @@ public class KeyBoard : MonoBehaviour
                 GameController.isPause = true;
                 Count = 0;
                 DialogueManager.passwordError = true;
-                TriggerDialogue(PasswordFailDialogue);
+                TriggerDialogue(passwordFailDialogue.dialogue);
                 Password.Clear();
             }
         }

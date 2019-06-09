@@ -311,10 +311,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   Player: {fileID: 0}
   MainCamera: {fileID: 0}
-  playerDie:
-    name: 
-    sentences:
-    - "\u5E7D\u9748\u61FC\u6015\u71C8\u5149?"
+  playerDie: {fileID: 11400000, guid: 654d2f145b23d4545a50ee9a2dffa91f, type: 2}
 --- !u!114 &114954612657058318
 MonoBehaviour:
   m_ObjectHideFlags: 1

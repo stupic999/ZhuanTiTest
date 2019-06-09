@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ghostFollow : MonoBehaviour {
+public class GhostFollow : MonoBehaviour {
 
-    public Transform target;
-    private Vector3 offset;
-    // Use this for initialization
+    Vector3 offset;
+    public Transform target;    
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         offset = target.position - transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(!ghost.ghostDie)
+        if(!Ghost.ghostDie)
         transform.position = target.position - offset;
     }
 }

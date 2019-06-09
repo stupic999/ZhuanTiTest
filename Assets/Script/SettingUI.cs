@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SettingUI : MonoBehaviour {
 
+    public GameObject MainMenu;
     public GameObject settingUI;
     public GameObject GameScene;
-    public GameObject MainMenu;
-    public GameObject SoundSettingUI;
     public GameObject mainCamare;
+    public GameObject SoundSettingUI;
 
     public void ShowSettingUI()
     {

@@ -29,15 +29,11 @@ public class AudioController : MonoBehaviour {
     public static bool ghostDie;
     public static bool playerDie;
 
-
-
-    // Use this for initialization
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (takeItem)

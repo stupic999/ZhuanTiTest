@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour {
 
+    public GameObject self;
     public GameObject player;
     public GameObject gameController;
-    public GameObject self;
 
     private void OnTriggerEnter(Collider other)
     {

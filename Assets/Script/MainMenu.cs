@@ -6,9 +6,9 @@ public class MainMenu : MonoBehaviour {
 
     bool isStart;
     bool isSetting;
+    public Animator StartAnim;
     public GameObject mainMenu;
     public GameObject gameScene;
-    public Animator StartAnim;
     public GameObject SoundSettingUI;
 
     public void StartGame()

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GoToPark2Trigger : MonoBehaviour {
 
-    public Dialogue GoOrNot;
+    [SerializeField]
+    DialogueScriptable goParkDialogue;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
@@ -14,7 +15,7 @@ public class GoToPark2Trigger : MonoBehaviour {
         {
             GameController.isPause = true;
             GameController.PortalPlace = "GoToPark2";
-            TriggerDialogue(GoOrNot);
+            TriggerDialogue(goParkDialogue.dialogue);
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);
         }
