@@ -6,6 +6,8 @@ public class BagItem : MonoBehaviour {
 
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     Vector3 Place;
     bool isBagOpen;
     public List<string> Bag = new List<string>();
@@ -31,7 +33,7 @@ public class BagItem : MonoBehaviour {
 
     void Update()
     {
-        if (GameController.isPause && !isBagOpen)
+        if (gameControllerScriptableObject.isPause && !isBagOpen)
         {
             BagUI.SetActive(false);
         }
@@ -43,18 +45,18 @@ public class BagItem : MonoBehaviour {
 
     public void isClickBagBtn()
     {
-        if (!GameController.isPause || isBagOpen)
+        if (!gameControllerScriptableObject.isPause || isBagOpen)
         {
             audioScriptableObject.openBag = true;
             isBagOpen = !isBagOpen;
             BagAnim.SetBool("isBagOpen", isBagOpen);
             if (isBagOpen)
             {
-                GameController.isPause = true;
+                gameControllerScriptableObject.isPause = true;
             }
             else
             {
-                GameController.isPause = false;
+                gameControllerScriptableObject.isPause = false;
             }
         }
     }

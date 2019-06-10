@@ -6,6 +6,8 @@ public class SettingUI : MonoBehaviour {
 
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject MainMenu;
     public GameObject settingUI;
     public GameObject GameScene;
@@ -14,11 +16,11 @@ public class SettingUI : MonoBehaviour {
 
     public void ShowSettingUI()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             audioScriptableObject.btnSound = true;
             settingUI.SetActive(true);
-            GameController.isPause = true;
+            gameControllerScriptableObject.isPause = true;
         }
     }
 
@@ -26,13 +28,13 @@ public class SettingUI : MonoBehaviour {
     {
         audioScriptableObject.btnSound = true;
         settingUI.SetActive(false);
-        GameController.isPause = false;
+        gameControllerScriptableObject.isPause = false;
     }
 
     public void GoToMainMenu()
     {
         audioScriptableObject.btnSound = true;
-        GameController.isPause = true;
+        gameControllerScriptableObject.isPause = true;
         settingUI.SetActive(false);
         GameScene.SetActive(false);
         MainMenu.SetActive(true);
@@ -50,6 +52,6 @@ public class SettingUI : MonoBehaviour {
     {
         audioScriptableObject.btnSound = true;
         SoundSettingUI.SetActive(false);
-        GameController.isPause = false;
+        gameControllerScriptableObject.isPause = false;
     }
 }

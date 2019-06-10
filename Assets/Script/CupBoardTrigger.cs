@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class CupBoardTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.btnEvent!="Bear" && !GameController.isCheckCupBoard)
+        if (other.transform.tag == "Player" && gameControllerScriptableObject.btnEvent!="Bear" && !gameControllerScriptableObject.isCheckCupBoard)
         {
-            GameController.btnEvent = "CupBoard";
+            gameControllerScriptableObject.btnEvent = "CupBoard";
         }
     }
 
@@ -16,7 +19,7 @@ public class CupBoardTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

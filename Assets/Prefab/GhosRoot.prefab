@@ -311,11 +311,13 @@ MonoBehaviour:
     type: 2}
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
     type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   playerDie: {fileID: 11400000, guid: 654d2f145b23d4545a50ee9a2dffa91f, type: 2}
-  ghostRoot: {fileID: 1830808459521316}
   playerTransform: {fileID: 0}
   Player: {fileID: 0}
   MainCamera: {fileID: 0}
+  ghostRoot: {fileID: 1830808459521316}
 --- !u!114 &114954612657058318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,6 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0062f99bc5067354783d476c1a0cd76f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   target: {fileID: 0}
 --- !u!212 &212171959123818632
 SpriteRenderer:

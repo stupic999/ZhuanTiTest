@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LightController : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     Image LightImage;
     public GameObject PlayerLight;
     public Animator PlayerAnim;
@@ -38,7 +40,7 @@ public class LightController : MonoBehaviour {
 
     public void ChangeLight()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             FairyMovement.isOpenLight = !FairyMovement.isOpenLight;
         }

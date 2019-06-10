@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HACK : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject Player;
     public GameObject MainCamare;
     public GameObject HospitalPortal;
@@ -23,49 +25,49 @@ public class HACK : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            GameController.PortalPlace = "GoToHospital";
+            gameControllerScriptableObject.PortalPlace = "GoToHospital";
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            GameController.PortalPlace = "GoToPark";
+            gameControllerScriptableObject.PortalPlace = "GoToPark";
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            GameController.PortalPlace = "GoToPark2";
+            gameControllerScriptableObject.PortalPlace = "GoToPark2";
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            GameController.PortalPlace = "GoToHouse";
+            gameControllerScriptableObject.PortalPlace = "GoToHouse";
         }
-        if (GameController.PortalPlace == "GoToHospital")
+        if (gameControllerScriptableObject.PortalPlace == "GoToHospital")
         {
             Debug.Log("GoToHospital");
-            GameController.PlayerRoom = "Hospital";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "Hospital";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = HospitalPortal.transform.position;
             MainCamare.transform.position = new Vector3(-213.5f, 0, MainCamare.transform.position.z);
         }
-        else if (GameController.PortalPlace == "GoToPark")
+        else if (gameControllerScriptableObject.PortalPlace == "GoToPark")
         {
             Debug.Log("GoToPark");
-            GameController.PlayerRoom = "Park";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "Park";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = ParkPortal.transform.position;
             MainCamare.transform.position = new Vector3(-109, 0, MainCamare.transform.position.z);
         }
-        else if (GameController.PortalPlace == "GoToPark2")
+        else if (gameControllerScriptableObject.PortalPlace == "GoToPark2")
         {
             Debug.Log("GoToPark2");
-            GameController.PlayerRoom = "Park";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "Park";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = Park2Portal.transform.position;
             MainCamare.transform.position = new Vector3(109, 0, MainCamare.transform.position.z);
         }
-        else if (GameController.PortalPlace == "GoToHouse")
+        else if (gameControllerScriptableObject.PortalPlace == "GoToHouse")
         {
             Debug.Log("GoToHouse");
-            GameController.PlayerRoom = "House";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "House";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = HousePortal.transform.position;
             MainCamare.transform.position = new Vector3(223, 0, MainCamare.transform.position.z);
         }

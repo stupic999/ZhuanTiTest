@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BoardTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isCheckBoard)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isCheckBoard)
         {
-            GameController.btnEvent = "Board";
+            gameControllerScriptableObject.btnEvent = "Board";
         }
     }
 
@@ -16,7 +19,7 @@ public class BoardTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

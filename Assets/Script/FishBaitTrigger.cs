@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class FishBaitTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player") 
         {
-            GameController.btnEvent = "FishBait";
+            gameControllerScriptableObject.btnEvent = "FishBait";
         }
     }
 
@@ -16,7 +19,7 @@ public class FishBaitTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

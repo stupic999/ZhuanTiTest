@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BtnEvent : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     public void isBtnEvent()
     {
         if(!FairyMovement.isOpenLight)
-        GameController.isBtnClick = true;
+            gameControllerScriptableObject.isBtnClick = true;
     }
 }

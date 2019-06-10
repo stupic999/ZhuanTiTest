@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class LadderTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isCheckLadder)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isCheckLadder)
         {
-            GameController.btnEvent = "Ladder";
+            gameControllerScriptableObject.btnEvent = "Ladder";
         }
     }
 
@@ -16,7 +19,7 @@ public class LadderTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

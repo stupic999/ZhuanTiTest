@@ -8,7 +8,8 @@ public class ClockTimer : MonoBehaviour {
     DialogueScriptable teach;
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
-
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     float timer;
     bool once;
     int bellCount;
@@ -26,8 +27,6 @@ public class ClockTimer : MonoBehaviour {
     public AudioSource BgMusic;
     public AudioClip Morning;
     public AudioClip Night;
-    public static bool isNight;
-    public static bool isGhost;
 
 	// Use this for initialization
 	void Start () {
@@ -38,13 +37,13 @@ public class ClockTimer : MonoBehaviour {
 	void Update () {
         clockArrowRoot.transform.eulerAngles = new Vector3(0, 0, -timer * 3);
 
-        if (GameController.playerDie)
+        if (gameControllerScriptableObject.playerDie)
         {
             timer = 89.9f;
-            GameController.playerDie = false;
+            gameControllerScriptableObject.playerDie = false;
         }
 
-        if (isNight && bellCount < 3)
+        if (gameControllerScriptableObject.isNight && bellCount < 3)
         {
             bellTimer += Time.deltaTime;
             if (bellTimer >= 2f)
@@ -54,20 +53,20 @@ public class ClockTimer : MonoBehaviour {
                 bellTimer = 0;
             }
         }
-        if (GameController.PlayerRoom != "Hospital" && !GameController.isPause)
+        if (gameControllerScriptableObject.PlayerRoom != "Hospital" && !gameControllerScriptableObject.isPause)
         {
             timer += Time.deltaTime;
             
             // 晚上
             if (timer >= 90 && timer < 120)
             {
-                isNight = true;
-                PlayerAnim.SetBool("isNight", isNight);
+                gameControllerScriptableObject.isNight = true;
+                PlayerAnim.SetBool("isNight", gameControllerScriptableObject.isNight);
 
                 // 切換背景
                 ParkMorning.SetActive(false);
                 ParkNight.SetActive(true);
-                if (GameController.isDonePuzzle)
+                if (gameControllerScriptableObject.isDonePuzzle)
                 {
                     HouseDoneNight.SetActive(true);
                     HouseDoneMorning.SetActive(false);
@@ -78,16 +77,16 @@ public class ClockTimer : MonoBehaviour {
                     HouseYetMorning.SetActive(false);
                 }
 
-                if (!isGhost)
+                if (!gameControllerScriptableObject.isGhost)
                 {
                     Instantiate(ghost, transform.position,transform.rotation);
-                    isGhost = true;
+                    gameControllerScriptableObject.isGhost = true;
                 }               
 
                 if (!once)
                 {
                     once = true;
-                    GameController.isPause = true;
+                    gameControllerScriptableObject.isPause = true;
                     TriggerDialogue(teach.dialogue);
                 }
                 if (changeMusicNight == 0)
@@ -109,19 +108,19 @@ public class ClockTimer : MonoBehaviour {
                 changeMusicNight=0;
                 BgMusic.clip = Morning;
                 BgMusic.Play();
-                isNight = false;
+                gameControllerScriptableObject.isNight = false;
                 timer = 0;
-                PlayerAnim.SetBool("isNight", isNight);
+                PlayerAnim.SetBool("isNight", gameControllerScriptableObject.isNight);
                 Debug.Log("isMorning");
                 bellCount = 0;
                 GameObject ghost1 = GameObject.FindGameObjectWithTag("Ghost");
                 Destroy(ghost1);
-                isGhost = false;
+                gameControllerScriptableObject.isGhost = false;
 
                 // 切換背景
                 ParkMorning.SetActive(true);
                 ParkNight.SetActive(false);
-                if (GameController.isDonePuzzle)
+                if (gameControllerScriptableObject.isDonePuzzle)
                 {
                     HouseDoneNight.SetActive(false);
                     HouseDoneMorning.SetActive(true);
@@ -136,12 +135,12 @@ public class ClockTimer : MonoBehaviour {
         if (Input.GetKey(KeyCode.W))
         {
             timer = 89;
-            isNight = true;
+            gameControllerScriptableObject.isNight = true;
         }
         if (Input.GetKey(KeyCode.A))
         {
             timer = 115;
-            isNight = true;
+            gameControllerScriptableObject.isNight = true;
         }
         if (Input.GetKey(KeyCode.S))
         {

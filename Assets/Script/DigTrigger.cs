@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class DigTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "Dig";
+            gameControllerScriptableObject.btnEvent = "Dig";
         }
     }
 
@@ -16,7 +19,7 @@ public class DigTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

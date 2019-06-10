@@ -6,6 +6,8 @@ public class MainMenu : MonoBehaviour {
 
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     bool isStart;
     bool isSetting;
     public Animator StartAnim;
@@ -20,7 +22,7 @@ public class MainMenu : MonoBehaviour {
             isStart = true;
             mainMenu.SetActive(false);
             gameScene.SetActive(true);
-            GameController.isPause = false;
+            gameControllerScriptableObject.isPause = false;
             StartAnim.SetBool("isStart", true);
             audioScriptableObject.btnSound = true;
         }
@@ -32,7 +34,7 @@ public class MainMenu : MonoBehaviour {
         {
             if (isStart)
             {
-                GameController.isPause = false;
+                gameControllerScriptableObject.isPause = false;
                 mainMenu.SetActive(false);
                 gameScene.SetActive(true);
                 StartAnim.SetBool("isStart", true);

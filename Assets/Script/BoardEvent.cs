@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BoardEvent : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject BoardDestroyable;
 
     public void isBoardEvent()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
-            GameController.isEventOn = true;
-            GameController.btnEvent = "BoardEvent";
-            GameController.isBtnClick = true;
+            gameControllerScriptableObject.isEventOn = true;
+            gameControllerScriptableObject.btnEvent = "BoardEvent";
+            gameControllerScriptableObject.isBtnClick = true;
             Debug.Log("BoardClick");
             Destroy(BoardDestroyable);
         }

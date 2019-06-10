@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BearTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerStay(Collider other)
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "Bear";
+            gameControllerScriptableObject.btnEvent = "Bear";
         }
     }
 
@@ -16,7 +19,7 @@ public class BearTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

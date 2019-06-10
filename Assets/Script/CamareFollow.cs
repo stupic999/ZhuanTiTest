@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class CamareFollow : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject Player;
     public GameObject MainCamare;
 
     void Update()
     {
         float Playerx = Player.transform.position.x;
-        if (GameController.PlayerRoom == "Hospital")
+        if (gameControllerScriptableObject.PlayerRoom == "Hospital")
         {
             if (Playerx > -231.5 && Playerx < -213.5)
             {
                 FollowPlayer();
             }
         }
-        else if (GameController.PlayerRoom == "Park")
+        else if (gameControllerScriptableObject.PlayerRoom == "Park")
         {
             if (Playerx > -109 && Playerx < 109)
             {
                 FollowPlayer();
             }
         }
-        else if (GameController.PlayerRoom == "House")
+        else if (gameControllerScriptableObject.PlayerRoom == "House")
         {
             if (Playerx > 223 && Playerx < 377)
             {

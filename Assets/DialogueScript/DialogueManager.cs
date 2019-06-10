@@ -11,7 +11,8 @@ public class DialogueManager : MonoBehaviour{
     DialogueScriptable puzzleDone2Dialogue;
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
-
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     Queue<string> sentences;
     public Text passwordText;
     public Text dialogueText;
@@ -41,7 +42,7 @@ public class DialogueManager : MonoBehaviour{
     {
         if (anim.GetBool("IsOpen") == true)
         {
-            GameController.isPause = true;
+            gameControllerScriptableObject.isPause = true;
         }
     }
 
@@ -83,9 +84,9 @@ public class DialogueManager : MonoBehaviour{
 
     public void DisplayNextSentence()
     {
-        if (GameController.EventName == "PuzzleEvent")
+        if (gameControllerScriptableObject.EventName == "PuzzleEvent")
         {
-            GameController.isEventOn = false;
+            gameControllerScriptableObject.isEventOn = false;
         }
 
         audioScriptableObject.btnSound = true;
@@ -163,8 +164,8 @@ public class DialogueManager : MonoBehaviour{
     void EndDialogue()
     { 
         anim.SetBool("IsOpen", false);
-        GameController.isPause = false;
-        if (!GameController.isEventOn)
+        gameControllerScriptableObject.isPause = false;
+        if (!gameControllerScriptableObject.isEventOn)
         {
             Player.SetActive(true);
             mainCamera.SetActive(true);
@@ -175,27 +176,27 @@ public class DialogueManager : MonoBehaviour{
             computerUI.SetActive(false);
             computerEvent.SetActive(false);
         }
-        if (GameController.isPuzzleEvent)
+        if (gameControllerScriptableObject.isPuzzleEvent)
         {
             PuzzleYet.SetActive(false);
             PuzzleDone.SetActive(true);
-            GameController.isEventOn = false;
-            GameController.isPause = true;
+            gameControllerScriptableObject.isEventOn = false;
+            gameControllerScriptableObject.isPause = true;
             TriggerDialogue(puzzleDone2Dialogue.dialogue);
-            GameController.isPuzzleEvent = false;
-            GameController.isDonePuzzle  = true;
+            gameControllerScriptableObject.isPuzzleEvent = false;
+            gameControllerScriptableObject.isDonePuzzle  = true;
         }
-        if (GameController.winCount == 1)
+        if (gameControllerScriptableObject.winCount == 1)
         {
-            GameController.winCount++;
+            gameControllerScriptableObject.winCount++;
             EndAnimation.SetActive(true);
             SmallScene.SetActive(false);
         }
-        if (GameController.allDone && GameController.winCount==0)
+        if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount==0)
         {
             TriggerDialogue(firstDoneDialogue.dialogue);
-            GameController.isPause = true;
-            GameController.winCount++;
+            gameControllerScriptableObject.isPause = true;
+            gameControllerScriptableObject.winCount++;
         }
         if (passwordError)
         {

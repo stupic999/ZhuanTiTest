@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class VaseTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isCheckVase)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isCheckVase)
         {
-            GameController.btnEvent = "Vase";
+            gameControllerScriptableObject.btnEvent = "Vase";
         }
     }
 
@@ -16,7 +19,7 @@ public class VaseTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

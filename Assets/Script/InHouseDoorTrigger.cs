@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InHouseDoorTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject doorOpened;
     public GameObject doorClosed;
 
@@ -15,7 +17,7 @@ public class InHouseDoorTrigger : MonoBehaviour {
 
     public void Update()
     {
-        if (GameController.isOpenDoor != false)
+        if (gameControllerScriptableObject.isOpenDoor != false)
         {
             doorClosed.SetActive(false);
             doorOpened.SetActive(true);
@@ -24,9 +26,9 @@ public class InHouseDoorTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isOpenDoor != true)
+        if (other.transform.tag == "Player" && gameControllerScriptableObject.isOpenDoor != true)
         {
-            GameController.btnEvent = "InHouseDoor";
+            gameControllerScriptableObject.btnEvent = "InHouseDoor";
         }
     }
 
@@ -34,7 +36,7 @@ public class InHouseDoorTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

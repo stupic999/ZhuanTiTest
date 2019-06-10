@@ -6,18 +6,20 @@ public class GrassTrigger : MonoBehaviour {
 
     [SerializeField]
     TimerScriptableObject timerScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
 
     private void Update()
     {
-        if (GameController.isPause != true)
+        if (gameControllerScriptableObject.isPause != true)
             timerScriptableObject.grassTimer += Time.deltaTime;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isCheckGrass != true && timerScriptableObject.grassTimer >= 0.5)
+        if (other.transform.tag == "Player" && gameControllerScriptableObject.isCheckGrass != true && timerScriptableObject.grassTimer >= 0.5)
         {
-            GameController.btnEvent = "Grass";
+            gameControllerScriptableObject.btnEvent = "Grass";
             timerScriptableObject.grassTimer = 0;
         }
     }
@@ -26,7 +28,7 @@ public class GrassTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

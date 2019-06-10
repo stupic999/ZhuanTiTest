@@ -7,24 +7,12 @@ public class GameController : MonoBehaviour {
 
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+    int grassNum;
     public BagItem bagItem;
-
-    public static string PlayerRoom = "Hospital";
-    public static string PortalPlace;
-    public static bool isPause;
-    public static bool isEventOn;
-    public static bool isPuzzleEvent;
-    public static bool allDone;
-    public static int winCount;
-
-    public static bool playerDie;
-
     public GameObject mainCamare;
-
     public Text takeItemText;
-
-    public static int MapCount;
-
     public GameObject FishBaitUI;
     public GameObject KeyUI;
     public GameObject BearUI;
@@ -32,7 +20,6 @@ public class GameController : MonoBehaviour {
     public GameObject PuzzleVaseUI;
     public GameObject PuzzleCupBoardUI;
     public GameObject MusicUI;
-
     public GameObject computerUI;
     public GameObject computerEvent;
     public GameObject PuzzleYet;
@@ -54,9 +41,7 @@ public class GameController : MonoBehaviour {
     public GameObject HouseBgLightDone;
     public GameObject HouseBgNightYet;
     public GameObject HouseBgNightDone;
-
     public Dialogue WinDialogue;
-
     public Dialogue BoyDoneDialogue;
     public Dialogue FishBaitStartDialogue;
     public Dialogue PoolStartDialogue;
@@ -71,42 +56,17 @@ public class GameController : MonoBehaviour {
     public Dialogue BoardStartDialogue;
     public Dialogue ComputerStartDialogue;
     public Dialogue BoardHintDone;
-
-    public static string btnEvent;
-    public static string EventName;
-
-    int grassNum;
-
-    public static bool isBtnClick;
-    public static bool isTalkWithBoy;
-    public static bool isSeePaper;
-    public static bool isTakeFishBait;
-    public static bool isCheckPool;
-    public static bool isDigTreasure;
-    public static bool isCheckGrass;
-    public static bool isCheckVase;
-    public static bool isCheckCupBoard;
-    public static bool isDonePuzzle;
-    public static bool isCheckShoes;
-    public static bool isOpenDoor;
-    public static bool isCheckBoard;
-    public static bool isCheckComputer;
-    public static bool isTakeBear;
-    public static bool isBoardHint;
-    public static bool isCheckLadder;
-
     public GameObject Btn;
 
-    private void Start()
+    void Start()
     {
-        btnEvent = "Boy";
-        isBtnClick = true;
-
-        isPause = false;
+        gameControllerScriptableObject.btnEvent = "Boy";
+        gameControllerScriptableObject.isTalkWithBoy = false;
+        gameControllerScriptableObject.isBtnClick = true;
         // 把全部bool设定预设值
     }
 
-    private void Update()
+    void Update()
     {
         // 顯示按鈕
         ShowBtn();
@@ -114,17 +74,17 @@ public class GameController : MonoBehaviour {
         // 按鈕點擊觸發事件
         BtnEvent();
 
-        if (isTakeBear && isDonePuzzle && isCheckComputer && isCheckPool && isDigTreasure && isCheckGrass)
+        if (gameControllerScriptableObject.isTakeBear && gameControllerScriptableObject.isDonePuzzle && gameControllerScriptableObject.isCheckComputer && gameControllerScriptableObject.isCheckPool && gameControllerScriptableObject.isDigTreasure && gameControllerScriptableObject.isCheckGrass)
         {
-            allDone = true;
+            gameControllerScriptableObject.allDone = true;
         }
     }
 
     public void ShowBtn()
     {
-        if (isEventOn != true)
+        if (gameControllerScriptableObject.isEventOn != true)
         {
-            if (btnEvent != "")
+            if (gameControllerScriptableObject.btnEvent != "")
             {
                 Btn.SetActive(true);
             }
@@ -141,11 +101,11 @@ public class GameController : MonoBehaviour {
 
     public void BtnEvent()
     {
-        if (isBtnClick != false)
+        if (gameControllerScriptableObject.isBtnClick != false)
         {
-            if (btnEvent == "")
+            if (gameControllerScriptableObject.btnEvent == "")
             {
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
             }
             BoyEvent();
             PaperEvent();
@@ -163,19 +123,19 @@ public class GameController : MonoBehaviour {
             LadderEvent();
             BoardEventOn();
             BearEvent();
-            btnEvent = "";
-            isBtnClick = false;
+            gameControllerScriptableObject.btnEvent = "";
+            gameControllerScriptableObject.isBtnClick = false;
         }
     }
 
     // 按钮事件
     public void BoyEvent()
     {
-        if (btnEvent == "Boy")
+        if (gameControllerScriptableObject.btnEvent == "Boy")
         {
-            if (!isTalkWithBoy)
+            if (!gameControllerScriptableObject.isTalkWithBoy)
             {
-                isTalkWithBoy = true;
+                gameControllerScriptableObject.isTalkWithBoy = true;
                 Debug.Log("BoyDone");
                 TriggerDialogue(BoyDoneDialogue);
             }
@@ -184,30 +144,30 @@ public class GameController : MonoBehaviour {
 
     public void PaperEvent()
     {
-        if (btnEvent == "Paper" && !isCheckPool)
+        if (gameControllerScriptableObject.btnEvent == "Paper" && !gameControllerScriptableObject.isCheckPool)
         {
-            isSeePaper = true;
+            gameControllerScriptableObject.isSeePaper = true;
             MapUI.SetActive(true);
-            MapCount = 1;
+            gameControllerScriptableObject.MapCount = 1;
             Debug.Log("PaperDone");
-            MapEvent.MapOpen = true;
+            gameControllerScriptableObject.MapOpen = true;
         }
     }
 
     public void FishBaitEvent()
     {
-        if (btnEvent == "FishBait")
+        if (gameControllerScriptableObject.btnEvent == "FishBait")
         {
-            if (isSeePaper)
+            if (gameControllerScriptableObject.isSeePaper)
             {
-                isTakeFishBait = true;
+                gameControllerScriptableObject.isTakeFishBait = true;
                 Debug.Log("FishBaitDone");
                 Destroy(FishBait);
                 bagItem.AddItem("FishBait");
                 FishBaitUI.SetActive(true);
                 audioScriptableObject.takeItem = true;
                 takeItemText.text = "獲得麵包";
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
             }
             else
             {
@@ -219,23 +179,23 @@ public class GameController : MonoBehaviour {
 
     public void PoolEvent()
     {
-        if (btnEvent == "Pool")
+        if (gameControllerScriptableObject.btnEvent == "Pool")
         {
-            if (isTakeFishBait)
+            if (gameControllerScriptableObject.isTakeFishBait)
             {
-                isCheckPool = true;
+                gameControllerScriptableObject.isCheckPool = true;
                 bagItem.RemoveItem("FishBait");
                 bagItem.AddItem("Music");
                 MusicUI.SetActive(true);
                 Debug.Log("PoolDone");
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
                 audioScriptableObject.takeItem = true;
                 takeItemText.text = "獲得樂器";
-                if (allDone && winCount == 0)
+                if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
                 {
                     TriggerDialogue(WinDialogue);
-                    winCount++;
-                    isPause = true;
+                    gameControllerScriptableObject.winCount++;
+                    gameControllerScriptableObject.isPause = true;
                 }
             }
             else 
@@ -248,10 +208,10 @@ public class GameController : MonoBehaviour {
 
     public void DigEvent()
     {
-        if (btnEvent == "Dig")
-        {            
-            isDigTreasure = true;
-            EventName = "Dig";
+        if (gameControllerScriptableObject.btnEvent == "Dig")
+        {
+            gameControllerScriptableObject.isDigTreasure = true;
+            gameControllerScriptableObject.EventName = "Dig";
             Debug.Log("DigDone");
             audioScriptableObject.digSand = true;
         }
@@ -259,7 +219,7 @@ public class GameController : MonoBehaviour {
 
     public void GrassEvent()
     {
-        if (btnEvent == "Grass")
+        if (gameControllerScriptableObject.btnEvent == "Grass")
         {
             if (grassNum < 3)
             {
@@ -283,18 +243,18 @@ public class GameController : MonoBehaviour {
             }
             else
             {
-                isCheckGrass = true;
+                gameControllerScriptableObject.isCheckGrass = true;
                 Debug.Log("GrassDone");
                 bagItem.AddItem("Clown");
                 ClownUI.SetActive(true);
                 audioScriptableObject.takeItem = true;
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
                 takeItemText.text = "獲得驚嚇箱";
-                if (allDone && winCount == 0)
+                if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
                 {
                     TriggerDialogue(WinDialogue);
-                    winCount++;
-                    isPause = true;
+                    gameControllerScriptableObject.winCount++;
+                    gameControllerScriptableObject.isPause = true;
                 }
             }
         }
@@ -302,13 +262,13 @@ public class GameController : MonoBehaviour {
 
     public void VaseEvent()
     {
-        if (btnEvent == "Vase")
+        if (gameControllerScriptableObject.btnEvent == "Vase")
         {
-            isCheckVase = true;
+            gameControllerScriptableObject.isCheckVase = true;
             Debug.Log("VaseInDone");
             bagItem.AddItem("PuzzleVase");
             PuzzleVaseUI.SetActive(true);
-            isPause = false;
+            gameControllerScriptableObject.isPause = false;
             audioScriptableObject.takeItem = true;
             takeItemText.text = "獲得拼圖(下)";
         }
@@ -316,16 +276,16 @@ public class GameController : MonoBehaviour {
 
     public void CupBoardEvent()
     {
-        if (btnEvent == "CupBoard")
+        if (gameControllerScriptableObject.btnEvent == "CupBoard")
         {
-            if (!isCheckCupBoard)
+            if (!gameControllerScriptableObject.isCheckCupBoard)
             {
-                isCheckCupBoard = true;
+                gameControllerScriptableObject.isCheckCupBoard = true;
                 Debug.Log("CupBoardDone");
                 bagItem.AddItem("PuzzleCupBoard");
                 PuzzleCupBoardUI.SetActive(true);
                 audioScriptableObject.takeItem = true;
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
                 takeItemText.text = "獲得拼圖(上)";
             }
         }
@@ -333,16 +293,16 @@ public class GameController : MonoBehaviour {
 
     public void ShoesEvent()
     {
-        if (btnEvent == "Shoes")
+        if (gameControllerScriptableObject.btnEvent == "Shoes")
         {
-            if (!isCheckShoes)
+            if (!gameControllerScriptableObject.isCheckShoes)
             {
-                isCheckShoes = true;
+                gameControllerScriptableObject.isCheckShoes = true;
                 Debug.Log("ShoesDone");
                 bagItem.AddItem("Key");
                 KeyUI.SetActive(true);
                 audioScriptableObject.takeItem = true;
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
                 takeItemText.text = "獲得門鑰匙";
             }
         }
@@ -350,16 +310,16 @@ public class GameController : MonoBehaviour {
 
     public void InHouseDoorEvent()
     {
-        if (btnEvent == "InHouseDoor")
+        if (gameControllerScriptableObject.btnEvent == "InHouseDoor")
         {
-            if (isCheckShoes)
+            if (gameControllerScriptableObject.isCheckShoes)
             {
-                isOpenDoor = true;
+                gameControllerScriptableObject.isOpenDoor = true;
                 InHouseDoorBlock.SetActive(false);
                 Debug.Log("DoorDone");
                 bagItem.RemoveItem("Key");
                 audioScriptableObject.openDoor = true;
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
             }
             else
             {
@@ -371,14 +331,14 @@ public class GameController : MonoBehaviour {
 
     public void BoardEvent()
     {
-        if (btnEvent == "Board")
+        if (gameControllerScriptableObject.btnEvent == "Board")
         {
-            if (!isCheckBoard)
+            if (!gameControllerScriptableObject.isCheckBoard)
             {
-                isCheckBoard = true;
+                gameControllerScriptableObject.isCheckBoard = true;
                 Debug.Log("BoardStart");
                 TriggerDialogue(BoardStartDialogue);
-                EventName = "BoardEvent";
+                gameControllerScriptableObject.EventName = "BoardEvent";
                 EventOn();
             }
         }
@@ -386,10 +346,10 @@ public class GameController : MonoBehaviour {
 
     public void BoardEventOn()
     {
-        if (btnEvent == "BoardEvent")
+        if (gameControllerScriptableObject.btnEvent == "BoardEvent")
         {
             EventOff();
-            isBoardHint = true;
+            gameControllerScriptableObject.isBoardHint = true;
             Debug.Log("BoardDone2");
             TriggerDialogue(BoardHintDone);
         }
@@ -398,15 +358,15 @@ public class GameController : MonoBehaviour {
 
     public void PuzzleEvent()
     {
-        if (btnEvent == "Puzzle")
+        if (gameControllerScriptableObject.btnEvent == "Puzzle")
         {
-            EventName = "PuzzleEvent";
+            gameControllerScriptableObject.EventName = "PuzzleEvent";
             EventOn();
 
-            if (isCheckCupBoard && isCheckVase)
+            if (gameControllerScriptableObject.isCheckCupBoard && gameControllerScriptableObject.isCheckVase)
             {
-                EventName = "PuzzleEvent2";
-                if (ClockTimer.isNight)
+                gameControllerScriptableObject.EventName = "PuzzleEvent2";
+                if (gameControllerScriptableObject.isNight)
                 {
                     HouseBgNightDone.SetActive(true);
                     HouseBgNightYet.SetActive(false);
@@ -416,14 +376,14 @@ public class GameController : MonoBehaviour {
                     HouseBgLightDone.SetActive(true);
                     HouseBgLightYet.SetActive(false);
                 }
-                isPuzzleEvent = true;
+                gameControllerScriptableObject.isPuzzleEvent = true;
                 Debug.Log("PuzzleDone");
                 bagItem.RemoveItem("PuzzleVase");
                 bagItem.RemoveItem("PuzzleCupBoard");
                 TriggerDialogue(PuzzleDoneDialogue);
                 audioScriptableObject.takeItem = true;
             }
-            else if (isCheckCupBoard || isCheckVase)
+            else if (gameControllerScriptableObject.isCheckCupBoard || gameControllerScriptableObject.isCheckVase)
             {
                 Debug.Log("PuzzleHalf");
                 TriggerDialogue(PuzzleHalfDialogue);
@@ -438,15 +398,15 @@ public class GameController : MonoBehaviour {
 
     public void ComputerEvent()
     {
-        if (btnEvent == "Computer")
+        if (gameControllerScriptableObject.btnEvent == "Computer")
         {
-            if (isCheckBoard)
+            if (gameControllerScriptableObject.isCheckBoard)
             {
-                EventName = "ComputerEvent";
+                gameControllerScriptableObject.EventName = "ComputerEvent";
                 Debug.Log("ComputerEvent");
                 EventOn();
                 audioScriptableObject.openComputer = true;
-                isPause = false;
+                gameControllerScriptableObject.isPause = false;
             }
             else
             {
@@ -458,7 +418,7 @@ public class GameController : MonoBehaviour {
 
     public void CloseComputer()
     {
-        if (!isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             computerUI.SetActive(false);
             computerEvent.SetActive(false);
@@ -469,31 +429,31 @@ public class GameController : MonoBehaviour {
 
     public void BearEvent()
     {
-        if (btnEvent == "Bear")
+        if (gameControllerScriptableObject.btnEvent == "Bear")
         {
             Debug.Log("BearDone");
-            isTakeBear = true;
+            gameControllerScriptableObject.isTakeBear = true;
             bagItem.AddItem("Bear");
             BearUI.SetActive(true);
             Destroy(Bear);
             audioScriptableObject.takeItem = true;
-            isPause = false;
+            gameControllerScriptableObject.isPause = false;
             takeItemText.text = "獲得小熊玩偶";
-            if (allDone && winCount == 0)
+            if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
             {
                 TriggerDialogue(WinDialogue);
-                winCount++;
-                isPause = true;
+                gameControllerScriptableObject.winCount++;
+                gameControllerScriptableObject.isPause = true;
             }
         }
     }
 
     public void LadderEvent()
     {
-        if (btnEvent == "Ladder")
+        if (gameControllerScriptableObject.btnEvent == "Ladder")
         {
             Debug.Log("LadderDone");
-            isCheckLadder = true;
+            gameControllerScriptableObject.isCheckLadder = true;
             TriggerDialogue(LadderFailDialogue);
         }
     }
@@ -506,19 +466,19 @@ public class GameController : MonoBehaviour {
     public void EventOn()
     {
         mainCamare.SetActive(false);
-        isEventOn = true;
+        gameControllerScriptableObject.isEventOn = true;
         Player.SetActive(false);
         
-        if (EventName == "BoardEvent")
+        if (gameControllerScriptableObject.EventName == "BoardEvent")
         {
             BoardBtn.SetActive(true);
             BoardCamare.SetActive(true);
             BoardPaper.SetActive(false);
         }
-        if (EventName == "PuzzleEvent")
+        if (gameControllerScriptableObject.EventName == "PuzzleEvent")
         {
             PuzzleCamare.SetActive(true);
-            if (isDonePuzzle)
+            if (gameControllerScriptableObject.isDonePuzzle)
             {
                 PuzzleDone.SetActive(true);
             }
@@ -527,7 +487,7 @@ public class GameController : MonoBehaviour {
                 PuzzleYet.SetActive(true);
             }
         }
-        if (EventName == "ComputerEvent")
+        if (gameControllerScriptableObject.EventName == "ComputerEvent")
         {
             computerEvent.SetActive(true);
             computerUI.SetActive(true);            
@@ -536,6 +496,6 @@ public class GameController : MonoBehaviour {
 
     public void EventOff()
     {
-        isEventOn = false;
+        gameControllerScriptableObject.isEventOn = false;
     }
 }

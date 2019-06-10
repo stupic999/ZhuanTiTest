@@ -11,6 +11,8 @@ public class KeyBoard : MonoBehaviour
     DialogueScriptable passwordFailDialogue;
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
 
     int Count;
     List<string> Password = new List<string>();
@@ -23,21 +25,21 @@ public class KeyBoard : MonoBehaviour
         {
             if (PasswordText.text == "0522")
             {
-                GameController.isPause = true;
+                gameControllerScriptableObject.isPause = true;
                 Count = 0;
-                GameController.isCheckComputer = true;                
+                gameControllerScriptableObject.isCheckComputer = true;                
                 Password.Clear();
-                GameController.btnEvent = "ComputerEvent";
-                GameController.isBtnClick = true;
+                gameControllerScriptableObject.btnEvent = "ComputerEvent";
+                gameControllerScriptableObject.isBtnClick = true;
                 Debug.Log("ComputerDonePassword");
-                GameController.isEventOn = false;
+                gameControllerScriptableObject.isEventOn = false;
                 TriggerDialogue(passwordDoneDialogue.dialogue);
             }
             else
             {
                 Debug.Log("ComputerPasswordWrong");
                 audioScriptableObject.error = true;
-                GameController.isPause = true;
+                gameControllerScriptableObject.isPause = true;
                 Count = 0;
                 DialogueManager.passwordError = true;
                 TriggerDialogue(passwordFailDialogue.dialogue);
@@ -53,7 +55,7 @@ public class KeyBoard : MonoBehaviour
 
     public void Click9()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "9";
@@ -63,7 +65,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click8()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "8";
@@ -73,7 +75,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click7()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "7";
@@ -83,7 +85,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click6()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "6";
@@ -93,7 +95,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click5()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "5";
@@ -103,7 +105,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click4()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "4";
@@ -113,7 +115,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click3()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "3";
@@ -123,7 +125,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click2()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "2";
@@ -133,7 +135,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click1()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "1";
@@ -143,7 +145,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void Click0()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count++;
             PasswordText.text = PasswordText.text + "0";
@@ -153,7 +155,7 @@ public class KeyBoard : MonoBehaviour
     }
     public void ClickDel()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             audioScriptableObject.btnSound = true;
             if (Count > 0)
@@ -170,14 +172,14 @@ public class KeyBoard : MonoBehaviour
     }
     public void CloseComputer()
     {
-        if (!GameController.isPause)
+        if (!gameControllerScriptableObject.isPause)
         {
             Count = 0;
             Password.Clear();
             PasswordText.text = "";
             audioScriptableObject.btnSound = true;
-            GameController.isPause = false;
-            GameController.isEventOn = false;
+            gameControllerScriptableObject.isPause = false;
+            gameControllerScriptableObject.isEventOn = false;
             mainCamare.SetActive(true);
         }
     }

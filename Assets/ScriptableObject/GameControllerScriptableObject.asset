@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc2bd449f9748e47b6f80603efedd40, type: 3}
+  m_Name: GameControllerScriptableObject
+  m_EditorClassIdentifier: 
+  winCount: 0
+  MapCount: 0
+  MapOpen: 0
+  isPause: 1
+  isEventOn: 0
+  isPuzzleEvent: 0
+  allDone: 0
+  playerDie: 0
+  isBtnClick: 0
+  isTalkWithBoy: 1
+  isSeePaper: 0
+  isTakeFishBait: 0
+  isCheckPool: 0
+  isDigTreasure: 0
+  isCheckGrass: 0
+  isCheckVase: 0
+  isCheckCupBoard: 0
+  isDonePuzzle: 0
+  isCheckShoes: 0
+  isOpenDoor: 0
+  isCheckBoard: 0
+  isCheckComputer: 0
+  isTakeBear: 0
+  isBoardHint: 0
+  isCheckLadder: 0
+  isNight: 0
+  isGhost: 0
+  ghostDie: 0
+  btnEvent: 
+  EventName: 
+  PlayerRoom: Hospital
+  PortalPlace: 

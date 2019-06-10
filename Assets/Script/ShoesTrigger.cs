@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ShoesTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isCheckShoes)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isCheckShoes)
         {
-            GameController.btnEvent = "Shoes";
+            gameControllerScriptableObject.btnEvent = "Shoes";
         }
     }
 
@@ -16,7 +19,7 @@ public class ShoesTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

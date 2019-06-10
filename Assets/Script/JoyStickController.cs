@@ -6,14 +6,16 @@ using UnityEngine.EventSystems;
 
 public class JoyStickController : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDragHandler
 {
-    public Image Bg;
-    public Image Frn;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     Vector2 touchData;
     Vector3 inputForce;
+    public Image Bg;
+    public Image Frn;
 
     public void Update()
     {
-        if (GameController.isPause || FairyMovement.isOpenLight)
+        if (gameControllerScriptableObject.isPause || FairyMovement.isOpenLight)
         {
             Frn.rectTransform.anchoredPosition = new Vector2(0, 0);
             inputForce.Set(0, 0, 0);

@@ -8,6 +8,8 @@ public class Portal : MonoBehaviour {
     DialogueScriptable dayTeach;
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     bool isTeach;
     public Animator DialogueAnim;
     public GameObject Player;
@@ -21,41 +23,41 @@ public class Portal : MonoBehaviour {
     public void GoToWhr()
     {
         audioScriptableObject.btnSound = true;
-        if (GameController.PortalPlace == "GoToHospital")
+        if (gameControllerScriptableObject.PortalPlace == "GoToHospital")
         {
             Debug.Log("GoToHospital");
-            GameController.PlayerRoom = "Hospital";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "Hospital";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = HospitalPortal.transform.position;
             MainCamare.transform.position = new Vector3(-213.5f, 0, MainCamare.transform.position.z);
         }
-        else if (GameController.PortalPlace == "GoToPark")
+        else if (gameControllerScriptableObject.PortalPlace == "GoToPark")
         {
             Debug.Log("GoToPark");
-            GameController.PlayerRoom = "Park";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "Park";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = ParkPortal.transform.position;
             MainCamare.transform.position = new Vector3(-109, 0, MainCamare.transform.position.z);
             if (!isTeach)
             {
                 isTeach = true;
                 TriggerDialogue(dayTeach.dialogue);
-                GameController.isPause = true;
+                gameControllerScriptableObject.isPause = true;
             }
         }
-        else if (GameController.PortalPlace == "GoToPark2")
+        else if (gameControllerScriptableObject.PortalPlace == "GoToPark2")
         {
             Debug.Log("GoToPark2");
-            GameController.PlayerRoom = "Park";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "Park";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = Park2Portal.transform.position;
             MainCamare.transform.position = new Vector3(109, 0, MainCamare.transform.position.z);
         }
-        else if (GameController.PortalPlace == "GoToHouse")
+        else if (gameControllerScriptableObject.PortalPlace == "GoToHouse")
         {
             Debug.Log("GoToHouse");
-            GameController.PlayerRoom = "House";
-            GameController.PortalPlace = "";
+            gameControllerScriptableObject.PlayerRoom = "House";
+            gameControllerScriptableObject.PortalPlace = "";
             Player.transform.position = HousePortal.transform.position;
             MainCamare.transform.position = new Vector3(223, 0, MainCamare.transform.position.z);
         }
@@ -63,9 +65,9 @@ public class Portal : MonoBehaviour {
 
     public void DontGo()
     {
-        GameController.isPause = false;
+        gameControllerScriptableObject.isPause = false;
         audioScriptableObject.btnSound = true;
-        GameController.PortalPlace = "";
+        gameControllerScriptableObject.PortalPlace = "";
         YesOrNo.SetActive(false);
         DialogueAnim.SetBool("IsOpen", false);        
     }

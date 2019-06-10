@@ -6,8 +6,9 @@ public class MapEvent : MonoBehaviour {
 
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject CloseItem;
-    public static bool MapOpen;
 
     public GameObject LeftBtn;
     public GameObject RightBtn;
@@ -19,29 +20,29 @@ public class MapEvent : MonoBehaviour {
 
     private void Update()
     {
-        if (MapOpen != false)
-            GameController.isPause = true;
+        if (gameControllerScriptableObject.MapOpen != false)
+            gameControllerScriptableObject.isPause = true;
         else
-            GameController.isPause = false;
+            gameControllerScriptableObject.isPause = false;
 
-        if (GameController.MapCount == 1)
+        if (gameControllerScriptableObject.MapCount == 1)
         {
             Map1.SetActive(true);
             Map2.SetActive(false);
         }
-        else if (GameController.MapCount == 2)
+        else if (gameControllerScriptableObject.MapCount == 2)
         {
             Map1.SetActive(false);
             Map2.SetActive(true);
             Map3.SetActive(false);
         }
-        else if (GameController.MapCount == 3)
+        else if (gameControllerScriptableObject.MapCount == 3)
         {
             Map2.SetActive(false);
             Map3.SetActive(true);
             Map4.SetActive(false);
         }
-        else if (GameController.MapCount == 4)
+        else if (gameControllerScriptableObject.MapCount == 4)
         {
             Map3.SetActive(false);
             Map4.SetActive(true);
@@ -54,7 +55,7 @@ public class MapEvent : MonoBehaviour {
             Map4.SetActive(false);
         }
 
-        if (GameController.MapCount > 1 && GameController.MapCount<=4)
+        if (gameControllerScriptableObject.MapCount > 1 && gameControllerScriptableObject.MapCount<=4)
         {
             LeftBtn.SetActive(true);
         }
@@ -63,7 +64,7 @@ public class MapEvent : MonoBehaviour {
             LeftBtn.SetActive(false);
         }
 
-        if (GameController.MapCount < 4 && GameController.MapCount >=1)
+        if (gameControllerScriptableObject.MapCount < 4 && gameControllerScriptableObject.MapCount >=1)
         {
             RightBtn.SetActive(true);
         }
@@ -76,24 +77,24 @@ public class MapEvent : MonoBehaviour {
     public void ClickLeftBtn()
     {
         audioScriptableObject.changeMap = true;
-        GameController.MapCount -= 1;
-        Debug.Log(GameController.MapCount);        
+        gameControllerScriptableObject.MapCount -= 1;
+        Debug.Log(gameControllerScriptableObject.MapCount);        
     }
 
     public void ClickRightBtn()
     {
         audioScriptableObject.changeMap = true;
-        GameController.MapCount += 1;
-        Debug.Log(GameController.MapCount);
+        gameControllerScriptableObject.MapCount += 1;
+        Debug.Log(gameControllerScriptableObject.MapCount);
     }
 
     public void isCloseBtn()
     {
-        MapOpen = false;
-        GameController.isPause = false;
+        gameControllerScriptableObject.MapOpen = false;
+        gameControllerScriptableObject.isPause = false;
         CloseItem.SetActive(false);
         audioScriptableObject.btnSound = true;
-        GameController.MapCount = 0;
+        gameControllerScriptableObject.MapCount = 0;
 
         Map1.SetActive(true);
         Map2.SetActive(false);

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FairyMovement : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     float h;
     float v;
     Rigidbody playerRb;
@@ -24,19 +26,19 @@ public class FairyMovement : MonoBehaviour {
 
     public void FixedUpdate()
     {
-        if (!ClockTimer.isNight)
+        if (!gameControllerScriptableObject.isNight)
         {
             isOpenLight = false;
             PlayerAnim.SetBool("isOpenLight", isOpenLight);
             PlayerAnim.SetBool("isNight", false);
         }
 
-        if (GameController.isPause || isOpenLight)
+        if (gameControllerScriptableObject.isPause || isOpenLight)
         {
             h = 0;
             v = 0;
         }
-        if (!GameController.isPause && GameController.isTalkWithBoy)
+        if (!gameControllerScriptableObject.isPause && gameControllerScriptableObject.isTalkWithBoy)
         {
             h = joyStickController.GetHorizontal();
             v = joyStickController.GetVertical();

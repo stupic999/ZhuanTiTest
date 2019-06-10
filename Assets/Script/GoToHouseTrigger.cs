@@ -6,6 +6,8 @@ public class GoToHouseTrigger : MonoBehaviour {
 
     [SerializeField]
     DialogueScriptable goHouseDialogue;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
@@ -13,8 +15,8 @@ public class GoToHouseTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.isPause = true;
-            GameController.PortalPlace = "GoToHouse";
+            gameControllerScriptableObject.isPause = true;
+            gameControllerScriptableObject.PortalPlace = "GoToHouse";
             TriggerDialogue(goHouseDialogue.dialogue);
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);           
@@ -25,7 +27,7 @@ public class GoToHouseTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.isPause = false;
+            gameControllerScriptableObject.isPause = false;
             YesOrNo.SetActive(false);
             ContinueBtn.SetActive(true);
         }

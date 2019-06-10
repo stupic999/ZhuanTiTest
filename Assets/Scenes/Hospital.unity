@@ -297,6 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceeefa2c8f448ee41b22492cb80a6f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   moveHSpd: 0
   moveVSpd: 0
   PlayerAnim: {fileID: 625705224}
@@ -799,6 +801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c2404655a1934d8d5028a0ba1d756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &181765871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d772685825feced4b9d8c2843f45af33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   Player: {fileID: 51514748}
   MainCamare: {fileID: 1454465252}
   HospitalPortal: {fileID: 1815780401}
@@ -1398,6 +1404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goHospitalDialogue: {fileID: 11400000, guid: 9ff2e978f09a4014c8791f2af4417ea6, type: 2}
   cantGo: {fileID: 11400000, guid: 5dd23feb33a435f4fb91a89bfc4c74b0, type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!65 &252627700
@@ -1748,6 +1756,8 @@ MonoBehaviour:
     type: 2}
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
     type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   PasswordText: {fileID: 115784568}
   mainCamare: {fileID: 1454465252}
 --- !u!1 &308960030
@@ -1985,6 +1995,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goHouseDialogue: {fileID: 11400000, guid: d29a84a5058db784db2dd86918405df3, type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!1 &370587192
@@ -2178,6 +2190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerScriptableObject: {fileID: 11400000, guid: 39e59c40b16f8194384ab41f390528f5,
     type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &387048078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,6 +2219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3ce749378841c4098e95b7d4b1a05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!4 &387048080
 Transform:
   m_ObjectHideFlags: 0
@@ -2637,7 +2653,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c968230b407b3c04eb91ead04670be50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioScriptableObject: {fileID: 0}
+  audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
+    type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   StartAnim: {fileID: 420991864}
   mainMenu: {fileID: 1332368661}
   gameScene: {fileID: 1634470920}
@@ -3515,6 +3534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7675e582ae3f72446b82a21910c3ee49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &643155570
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,6 +3712,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goParkDialogue: {fileID: 11400000, guid: 4f7e57c8ebcb181459d51b1752450c10, type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!1 &648072812
@@ -4268,6 +4291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbb6b2fa54e7b541a93a24c1c933a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   BoardDestroyable: {fileID: 730019768}
 --- !u!114 &730019771
 MonoBehaviour:
@@ -4587,8 +4612,8 @@ GameObject:
   - component: {fileID: 742351445}
   - component: {fileID: 742351447}
   - component: {fileID: 742351446}
-  - component: {fileID: 742351448}
   - component: {fileID: 742351449}
+  - component: {fileID: 742351448}
   m_Layer: 5
   m_Name: LightBtn
   m_TagString: Untagged
@@ -4659,6 +4684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1ba5dd2aa760b4f8a344b6c46c37e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   PlayerLight: {fileID: 605080063}
   PlayerAnim: {fileID: 625705224}
   MoveUI: {fileID: 1170609373}
@@ -5493,6 +5520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d53fbdc551f6194b810de5edbc5fbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &865773408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5735,6 +5764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f3a540bf087a14f8e67be1ab65c2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   doorOpened: {fileID: 2025478765}
   doorClosed: {fileID: 1682604442}
 --- !u!1 &924693982
@@ -6707,7 +6738,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teach: {fileID: 11400000, guid: c637bb615e3231e48ab15489841bbab2, type: 2}
-  audioScriptableObject: {fileID: 0}
+  audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
+    type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   ParkMorning: {fileID: 1756940626}
   ParkNight: {fileID: 992253144}
   HouseYetMorning: {fileID: 1896749287}
@@ -7576,6 +7610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2039922dfeee1f24c8a453126dc1159f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &1134697142
 GameObject:
   m_ObjectHideFlags: 0
@@ -8588,6 +8624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37919b0254e995e4682c4db4f4fd9b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!65 &1270973737
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9719,6 +9757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goParkDialogue: {fileID: 11400000, guid: 4f7e57c8ebcb181459d51b1752450c10, type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   YesOrNo: {fileID: 1695528027}
   ContinueBtn: {fileID: 1347553108}
 --- !u!65 &1420815443
@@ -9904,6 +9944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f772d09ab4b864ba61e6df3754e5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   Player: {fileID: 51514748}
   MainCamare: {fileID: 1454465252}
 --- !u!1 &1458514952
@@ -10023,7 +10065,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b3ace58f205f94f88336f42756322c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioScriptableObject: {fileID: 0}
+  audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
+    type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   bagItem: {fileID: 1733801084}
   mainCamare: {fileID: 1454465252}
   takeItemText: {fileID: 1867590645}
@@ -10136,6 +10181,8 @@ MonoBehaviour:
     type: 2}
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
     type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   bagItem: {fileID: 1733801084}
   DigAnim: {fileID: 1014573798}
   takeItemText: {fileID: 1867590645}
@@ -10152,6 +10199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5238154f398a73a458d10262805afb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   MoveUI: {fileID: 1170609373}
   ClockUI: {fileID: 1018524026}
   LightUI: {fileID: 742351444}
@@ -10704,6 +10753,8 @@ MonoBehaviour:
     type: 2}
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
     type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   passwordText: {fileID: 115784568}
   dialogueText: {fileID: 50023505}
   anim: {fileID: 370587193}
@@ -10862,6 +10913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1afdfb16ee06b4e9cb42472e0a7a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &1618215896
 GameObject:
   m_ObjectHideFlags: 0
@@ -10916,6 +10969,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feae7d665a919214287f7142971d9597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &1634470920
 GameObject:
   m_ObjectHideFlags: 0
@@ -11563,6 +11618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191a0d8eb9d8ed64cae7fd09898b8aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &1682604442
 GameObject:
   m_ObjectHideFlags: 0
@@ -12291,6 +12348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
+    type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
     type: 2}
   Bag: []
   BagAnim: {fileID: 1894806368}
@@ -14035,6 +14094,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a9f0b6ceb7f5d4fa67b458e3a10170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!65 &1898747637
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14575,6 +14636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e5200ef3646248a45154381faf478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &1961778454
 GameObject:
   m_ObjectHideFlags: 0
@@ -14671,6 +14734,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21197c1b0d3dc1348b8ddb63ffb4338f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   Bg: {fileID: 1170609375}
   Frn: {fileID: 394537662}
 --- !u!224 &1967690697
@@ -15026,6 +15091,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
+    type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
     type: 2}
   MainMenu: {fileID: 1332368661}
   settingUI: {fileID: 1983354288}
@@ -15546,6 +15613,8 @@ MonoBehaviour:
   dayTeach: {fileID: 11400000, guid: 9bb37d229a7621f4eb8bab28b700c806, type: 2}
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
     type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
   DialogueAnim: {fileID: 370587193}
   Player: {fileID: 51514748}
   HospitalPortal: {fileID: 1815780401}
@@ -15789,6 +15858,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
+    type: 2}
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
     type: 2}
   CloseItem: {fileID: 2086463555}
   LeftBtn: {fileID: 2135490902}
@@ -16041,6 +16112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075cd028b9fde3e4cb2af874908fc145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &2115536134
 GameObject:
   m_ObjectHideFlags: 0
@@ -16419,6 +16492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8393e7a279310409d8ad726fbbbbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
 --- !u!1 &2147098414
 GameObject:
   m_ObjectHideFlags: 0

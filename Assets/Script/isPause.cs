@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class IsPause : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject MoveUI;
     public GameObject ClockUI;
     public GameObject LightUI;
@@ -11,7 +13,7 @@ public class IsPause : MonoBehaviour {
 
     private void Update()
     {
-        if (GameController.isPause)
+        if (gameControllerScriptableObject.isPause)
         {
             MoveUI.SetActive(false);
             SettingUI.SetActive(false);
@@ -23,7 +25,7 @@ public class IsPause : MonoBehaviour {
             SettingUI.SetActive(true);
             ClockUI.SetActive(true);
         }
-        if (ClockTimer.isNight && !GameController.isPause)
+        if (gameControllerScriptableObject.isNight && !gameControllerScriptableObject.isPause)
         {
             LightUI.SetActive(true);
         }

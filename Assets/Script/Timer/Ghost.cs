@@ -8,24 +8,23 @@ public class Ghost : MonoBehaviour {
     TimerScriptableObject timerScriptableObject;
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+    [SerializeField]
+    DialogueScriptable playerDie;
     string GhostFace;
     int ghostCount;
     SpriteRenderer ghostSprite;
     AudioSource ghostAudio;
     Animator GhostAnim;
-
-    [SerializeField]
-    DialogueScriptable playerDie;
-
-    public GameObject ghostRoot;
-    public static bool ghostDie;
     public Transform playerTransform;
     public GameObject Player;
     public GameObject MainCamera;
+    public GameObject ghostRoot;
 
     private void Start()
     {
-        ghostDie = false;
+        gameControllerScriptableObject.ghostDie = false;
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         Player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = Player.transform;
@@ -48,7 +47,7 @@ public class Ghost : MonoBehaviour {
             transform.eulerAngles = new Vector3(0, 0, 0);
             transform.position = new Vector3(playerTransform.position.x + 60, playerTransform.position.y, playerTransform.position.z);
         }
-        if (ghostDie)
+        if (gameControllerScriptableObject.ghostDie)
         {
             timerScriptableObject.ghostTimer += Time.deltaTime;
             if (timerScriptableObject.ghostTimer >= 5)
@@ -60,7 +59,7 @@ public class Ghost : MonoBehaviour {
 
     private void Update()
     {
-        if (!GameController.isPause && !ghostDie && !GameController.isEventOn)
+        if (!gameControllerScriptableObject.isPause && !gameControllerScriptableObject.ghostDie && !gameControllerScriptableObject.isEventOn)
         {
             timerScriptableObject.ghostTimer += Time.deltaTime;
             if (timerScriptableObject.ghostTimer >= 0.12)
@@ -80,15 +79,15 @@ public class Ghost : MonoBehaviour {
                 }
             }
         }
-        if (!GameController.isPause && !GameController.isEventOn)
+        if (!gameControllerScriptableObject.isPause && !gameControllerScriptableObject.isEventOn)
         {
-            if (ghostDie)
+            if (gameControllerScriptableObject.ghostDie)
             {
                 timerScriptableObject.ghostTimer += Time.deltaTime;
                 if (timerScriptableObject.ghostTimer >= 4.9f)
                 {
                     Destroy(ghostRoot);
-                    ClockTimer.isGhost = false;
+                    gameControllerScriptableObject.isGhost = false;
                 }
             }
         }
@@ -96,29 +95,29 @@ public class Ghost : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!ghostDie)
+        if (!gameControllerScriptableObject.ghostDie)
         {
             if (other.tag == "Light")
             {
                 audioScriptableObject.ghostDie = true;
                 timerScriptableObject.ghostTimer = 0;
                 GhostAnim.enabled = true;
-                ghostDie = true;
+                gameControllerScriptableObject.ghostDie = true;
                 Debug.Log("Die");
                 ghostAudio.volume = 0;
             }
             else if (other.tag == "Player")
             {
                 audioScriptableObject.playerDie = true;
-                GameController.playerDie = true;
+                gameControllerScriptableObject.playerDie = true;
                 Destroy(ghostRoot);
-                GameController.PlayerRoom = "Hospital";
+                gameControllerScriptableObject.PlayerRoom = "Hospital";
                 Player.transform.position = new Vector3(-231.81f, 1.29f, 0);
                 Player.transform.eulerAngles = new Vector3(0, 0, 0);
                 MainCamera.transform.position = new Vector3(-231.5f, 0, MainCamera.transform.position.z);
-                ClockTimer.isGhost = false;
+                gameControllerScriptableObject.isGhost = false;
                 TriggerDialogue(playerDie.dialogue);
-                ClockTimer.isNight = false;
+                gameControllerScriptableObject.isNight = false;
             }
         }
     }

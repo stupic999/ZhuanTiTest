@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject self;
     public GameObject player;
     public GameObject gameController;
@@ -13,7 +15,7 @@ public class SceneManagement : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            if (self.name == "HospitalDoor" && GameController.isTalkWithBoy)
+            if (self.name == "HospitalDoor" && gameControllerScriptableObject.isTalkWithBoy)
             {
                 GoToScenePark();
             }

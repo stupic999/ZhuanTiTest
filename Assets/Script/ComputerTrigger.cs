@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ComputerTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isCheckComputer)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isCheckComputer)
         {
-            GameController.btnEvent = "Computer";
+            gameControllerScriptableObject.btnEvent = "Computer";
         }
     }
 
@@ -16,7 +19,7 @@ public class ComputerTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

@@ -6,15 +6,17 @@ public class GoToParkTrigger : MonoBehaviour {
 
     [SerializeField]
     DialogueScriptable goParkDialogue;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && GameController.isTalkWithBoy == true)
+        if (other.transform.tag == "Player" && gameControllerScriptableObject.isTalkWithBoy == true)
         {
-            GameController.isPause = true;
-            GameController.PortalPlace = "GoToPark";
+            gameControllerScriptableObject.isPause = true;
+            gameControllerScriptableObject.PortalPlace = "GoToPark";
             TriggerDialogue(goParkDialogue.dialogue);
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);           
@@ -25,7 +27,7 @@ public class GoToParkTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.isPause = false;
+            gameControllerScriptableObject.isPause = false;
             YesOrNo.SetActive(false);
             ContinueBtn.SetActive(true);
         }

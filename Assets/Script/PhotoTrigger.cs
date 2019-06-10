@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PhotoTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "Photo";
+            gameControllerScriptableObject.btnEvent = "Photo";
         }
     }
 
@@ -16,7 +19,7 @@ public class PhotoTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

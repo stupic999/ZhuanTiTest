@@ -9,6 +9,8 @@ public class DigEvent : MonoBehaviour {
     TimerScriptableObject timerScriptableObject;
     [SerializeField]
     AudioScriptableObject audioScriptableObject;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public BagItem bagItem;
     public Animator DigAnim;
     public Text takeItemText;
@@ -18,23 +20,23 @@ public class DigEvent : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (GameController.EventName == "Dig" && timerScriptableObject.digEventTimer < 3)
+        if (gameControllerScriptableObject.EventName == "Dig" && timerScriptableObject.digEventTimer < 3)
         {
             DigAnim.SetBool("isDig", true);
             timerScriptableObject.digEventTimer += Time.deltaTime;
-            GameController.isPause = true;
+            gameControllerScriptableObject.isPause = true;
         }
-        else if (timerScriptableObject.digEventTimer > 3 && GameController.EventName == "Dig")
+        else if (timerScriptableObject.digEventTimer > 3 && gameControllerScriptableObject.EventName == "Dig")
         {
             Destroy(DigPic);
             takeItemText.text = "獲得玩具車";
             audioScriptableObject.takeItem = true;
-            GameController.EventName = "";
+            gameControllerScriptableObject.EventName = "";
             timerScriptableObject.digEventTimer = 0;
             bagItem.AddItem("Cars");
             BagItem.isItem = true;
             CarsUI.SetActive(true);
-            GameController.isPause = false;
+            gameControllerScriptableObject.isPause = false;
         }
     }
 }

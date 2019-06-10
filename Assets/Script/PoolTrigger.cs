@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PoolTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isCheckPool)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isCheckPool)
         {
-            GameController.btnEvent = "Pool";
+            gameControllerScriptableObject.btnEvent = "Pool";
         }
     }
 
@@ -16,7 +19,7 @@ public class PoolTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

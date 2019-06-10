@@ -6,6 +6,8 @@ public class GoToPark2Trigger : MonoBehaviour {
 
     [SerializeField]
     DialogueScriptable goParkDialogue;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
@@ -13,8 +15,8 @@ public class GoToPark2Trigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.isPause = true;
-            GameController.PortalPlace = "GoToPark2";
+            gameControllerScriptableObject.isPause = true;
+            gameControllerScriptableObject.PortalPlace = "GoToPark2";
             TriggerDialogue(goParkDialogue.dialogue);
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);
@@ -25,7 +27,7 @@ public class GoToPark2Trigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.isPause = false;
+            gameControllerScriptableObject.isPause = false;
             YesOrNo.SetActive(false);
             ContinueBtn.SetActive(true);
         }

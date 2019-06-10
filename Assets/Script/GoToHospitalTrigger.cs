@@ -8,22 +8,24 @@ public class GoToHospitalTrigger : MonoBehaviour {
     DialogueScriptable goHospitalDialogue;
     [SerializeField]
     DialogueScriptable cantGo;
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     public GameObject YesOrNo;
     public GameObject ContinueBtn;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !ClockTimer.isNight)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isNight)
         {
-            GameController.isPause = true;
-            GameController.PortalPlace = "GoToHospital";
+            gameControllerScriptableObject.isPause = true;
+            gameControllerScriptableObject.PortalPlace = "GoToHospital";
             YesOrNo.SetActive(true);
             ContinueBtn.SetActive(false);
             TriggerDialogue(goHospitalDialogue.dialogue);
         }
-        else if (other.transform.tag == "Player" &&  ClockTimer.isNight)
+        else if (other.transform.tag == "Player" && gameControllerScriptableObject.isNight)
         {
-            GameController.isPause=true;
+            gameControllerScriptableObject.isPause=true;
             TriggerDialogue(cantGo.dialogue);
         }
     }
@@ -32,7 +34,7 @@ public class GoToHospitalTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.isPause = false;
+            gameControllerScriptableObject.isPause = false;
             YesOrNo.SetActive(false);
             ContinueBtn.SetActive(true);
         }

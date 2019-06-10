@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PuzzleTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isDonePuzzle)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isDonePuzzle)
         {
-            GameController.btnEvent = "Puzzle";
+            gameControllerScriptableObject.btnEvent = "Puzzle";
         }
     }
 
@@ -16,7 +19,7 @@ public class PuzzleTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

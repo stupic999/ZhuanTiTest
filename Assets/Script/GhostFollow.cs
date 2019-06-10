@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GhostFollow : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
     Vector3 offset;
     public Transform target;    
 
@@ -15,7 +17,7 @@ public class GhostFollow : MonoBehaviour {
 
     void Update()
     {
-        if(!Ghost.ghostDie)
+        if(!gameControllerScriptableObject.ghostDie)
         transform.position = target.position - offset;
     }
 }

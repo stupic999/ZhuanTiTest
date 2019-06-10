@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BoyTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isTalkWithBoy)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isTalkWithBoy)
         {
-            GameController.btnEvent = "Boy";
+            gameControllerScriptableObject.btnEvent = "Boy";
         }
     }
 
@@ -16,7 +19,7 @@ public class BoyTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PaperTrigger : MonoBehaviour {
 
+    [SerializeField]
+    GameControllerScriptableObject gameControllerScriptableObject;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player" && !GameController.isCheckPool)
+        if (other.transform.tag == "Player" && !gameControllerScriptableObject.isCheckPool)
         {
-            GameController.btnEvent = "Paper";
+            gameControllerScriptableObject.btnEvent = "Paper";
         }
     }
 
@@ -16,7 +19,7 @@ public class PaperTrigger : MonoBehaviour {
     {
         if (other.transform.tag == "Player")
         {
-            GameController.btnEvent = "";
+            gameControllerScriptableObject.btnEvent = "";
         }
     }
 }
