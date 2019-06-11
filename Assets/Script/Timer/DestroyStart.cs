@@ -7,9 +7,15 @@ public class DestroyStart : MonoBehaviour {
     [SerializeField]
     TimerScriptableObject timerScriptableObject;
     Animator StartAnim;
-    public GameObject gameScene;
+    public GameObject gameSmallScene;
     public GameObject Self;
     public GameObject Skip;
+
+    private void Awake()
+    {
+        timerScriptableObject.startTimer = 0f;
+        gameSmallScene.SetActive(true);
+    }
 
     // Use this for initialization
     void Start () {
@@ -19,13 +25,13 @@ public class DestroyStart : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timerScriptableObject.startTimer += Time.deltaTime;
-        if (timerScriptableObject.startTimer > 30)
-        {
-            StartAnim.SetBool("Stop", true);
-        }
-        if (timerScriptableObject.startTimer > 32.30f)
+        if (timerScriptableObject.startTimer >= 32.30f)
         {
             Begin();
+        }
+        else if (timerScriptableObject.startTimer > 30)
+        {
+            StartAnim.SetBool("Stop", true);
         }
 	}
 
@@ -36,7 +42,7 @@ public class DestroyStart : MonoBehaviour {
 
     public void Begin()
     {
-        gameScene.SetActive(true);
+        gameSmallScene.SetActive(true);
         Destroy(Self);
     }
 }

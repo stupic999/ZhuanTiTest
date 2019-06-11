@@ -24,6 +24,7 @@ public class Ghost : MonoBehaviour {
 
     private void Start()
     {
+        timerScriptableObject.ghostTimer = 0;
         gameControllerScriptableObject.ghostDie = false;
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         Player = GameObject.FindGameObjectWithTag("Player");

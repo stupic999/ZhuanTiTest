@@ -8,11 +8,17 @@ public class ItemShow : MonoBehaviour {
     TimerScriptableObject timerScriptableObject;
     public GameObject Self;
 
+    private void Awake()
+    {
+        timerScriptableObject.itemShowTimer = 0;
+    }
+
     public void Update()
     {
         timerScriptableObject.itemShowTimer += Time.deltaTime;
         if (timerScriptableObject.itemShowTimer >= 3.5f)
         {
+            timerScriptableObject.itemShowTimer = 0;
             Destroy(Self);
         }
     }

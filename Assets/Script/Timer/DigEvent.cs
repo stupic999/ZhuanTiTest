@@ -17,6 +17,11 @@ public class DigEvent : MonoBehaviour {
     public GameObject DigPic;
     public GameObject CarsUI;
 
+    private void Awake()
+    {
+        timerScriptableObject.digEventTimer = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {

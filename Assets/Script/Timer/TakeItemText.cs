@@ -9,13 +9,13 @@ public class TakeItemText : MonoBehaviour {
     TimerScriptableObject timerScriptableObject;
     Text takeItemText;
 
-	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         takeItemText = GetComponent<Text>();
         takeItemText.text = "";
-	}
-	
-	// Update is called once per frame
+        timerScriptableObject.takeItemTimer = 0;
+    }
+
 	void Update () {
         if (takeItemText.text != "")
         {
