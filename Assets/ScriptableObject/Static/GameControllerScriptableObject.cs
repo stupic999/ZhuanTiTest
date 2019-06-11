@@ -33,8 +33,10 @@ public class GameControllerScriptableObject : ScriptableObject
     public bool isNight;
     public bool isGhost;
     public bool ghostDie;
+    public bool isOpenLight;
     public string btnEvent;
     public string EventName;
     public string PlayerRoom = "Hospital";
     public string PortalPlace;
+    public string PlayerFace = "L";
 }

@@ -107,11 +107,13 @@ public class GameController : MonoBehaviour {
         gameControllerScriptableObject.isNight = false;
         gameControllerScriptableObject.isGhost = false;
         gameControllerScriptableObject.ghostDie = false;
+        gameControllerScriptableObject.isOpenLight = false;
         gameControllerScriptableObject.btnEvent = "";
         gameControllerScriptableObject.EventName = "";
         gameControllerScriptableObject.PlayerRoom = "Hospital";
         gameControllerScriptableObject.PortalPlace = "";
-}
+        gameControllerScriptableObject.PlayerFace = "L";
+    }
 
     void Start()
     {

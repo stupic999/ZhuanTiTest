@@ -15,7 +15,7 @@ public class JoyStickController : MonoBehaviour,IPointerDownHandler,IPointerUpHa
 
     public void Update()
     {
-        if (gameControllerScriptableObject.isPause || FairyMovement.isOpenLight)
+        if (gameControllerScriptableObject.isPause || gameControllerScriptableObject.isOpenLight)
         {
             Frn.rectTransform.anchoredPosition = new Vector2(0, 0);
             inputForce.Set(0, 0, 0);

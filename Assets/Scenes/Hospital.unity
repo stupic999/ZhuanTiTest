@@ -10718,8 +10718,8 @@ MonoBehaviour:
   PuzzleCamere: {fileID: 1238228526}
   PuzzleYet: {fileID: 889430615}
   PuzzleDone: {fileID: 989172964}
-  computerUI: {fileID: 175076763}
-  computerEvent: {fileID: 303921400}
+  computerUI: {fileID: 303921400}
+  computerEvent: {fileID: 175076763}
   normalDialogueBox: {fileID: 396795251}
   boyDialogueBox: {fileID: 964831382}
   fairyDialogueBox: {fileID: 229463398}

@@ -9,7 +9,7 @@ public class BtnEvent : MonoBehaviour {
 
     public void isBtnEvent()
     {
-        if(!FairyMovement.isOpenLight)
+        if(!gameControllerScriptableObject.isOpenLight)
             gameControllerScriptableObject.isBtnClick = true;
     }
 }

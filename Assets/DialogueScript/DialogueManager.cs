@@ -36,7 +36,22 @@ public class DialogueManager : MonoBehaviour{
 
     void Awake () {
         sentences = new Queue<string>();
-	}
+        passwordText.text = "";
+        dialogueText.text = "";
+        mainCamera.SetActive(true);
+        Player.SetActive(true);
+        BoardCamere.SetActive(false);
+        PuzzleCamere.SetActive(false);
+        PuzzleYet.SetActive(true);
+        PuzzleDone.SetActive(false);
+        computerUI.SetActive(false);
+        computerEvent.SetActive(false);
+        SmallScene.SetActive(false);
+        EndAnimation.SetActive(false);
+        sentenceCount = 0;
+        talkingPerson = "";
+        passwordError = false;
+    }
 
     void Update()
     {

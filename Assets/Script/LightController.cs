@@ -17,22 +17,24 @@ public class LightController : MonoBehaviour {
         LightImage = GetComponent<Image>();
         LightImage.sprite = Resources.Load<Sprite>("LightOff");
         PlayerLight.SetActive(false);
+        gameControllerScriptableObject.isOpenLight = false;
+        PlayerAnim.SetBool("isOpenLight", gameControllerScriptableObject.isOpenLight);
     }
 
     void Update()
     {
-        if (FairyMovement.isOpenLight)
+        if (gameControllerScriptableObject.isOpenLight)
         {
             LightImage.sprite = Resources.Load<Sprite>("LightOn");
             PlayerLight.SetActive(true);
-            PlayerAnim.SetBool("isOpenLight", FairyMovement.isOpenLight);
+            PlayerAnim.SetBool("isOpenLight", gameControllerScriptableObject.isOpenLight);
             MoveUI.SetActive(false);
         }
         else
         {
             LightImage.sprite = Resources.Load<Sprite>("LightOff");
             PlayerLight.SetActive(false);
-            PlayerAnim.SetBool("isOpenLight", FairyMovement.isOpenLight);
+            PlayerAnim.SetBool("isOpenLight", gameControllerScriptableObject.isOpenLight);
             MoveUI.SetActive(true);
         }
     }
@@ -41,7 +43,7 @@ public class LightController : MonoBehaviour {
     {
         if (!gameControllerScriptableObject.isPause)
         {
-            FairyMovement.isOpenLight = !FairyMovement.isOpenLight;
+            gameControllerScriptableObject.isOpenLight = !gameControllerScriptableObject.isOpenLight;
         }
     }
 }

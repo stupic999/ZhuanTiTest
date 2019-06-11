@@ -9,9 +9,6 @@ public class FairyMovement : MonoBehaviour {
     float h;
     float v;
     Rigidbody playerRb;
-
-    public static string PlayerFace = "L";
-    public static bool isOpenLight;
     public float moveHSpd;
     public float moveVSpd;
     public Animator PlayerAnim;
@@ -28,12 +25,12 @@ public class FairyMovement : MonoBehaviour {
     {
         if (!gameControllerScriptableObject.isNight)
         {
-            isOpenLight = false;
-            PlayerAnim.SetBool("isOpenLight", isOpenLight);
+            gameControllerScriptableObject.isOpenLight = false;
+            PlayerAnim.SetBool("isOpenLight", gameControllerScriptableObject.isOpenLight);
             PlayerAnim.SetBool("isNight", false);
         }
 
-        if (gameControllerScriptableObject.isPause || isOpenLight)
+        if (gameControllerScriptableObject.isPause || gameControllerScriptableObject.isOpenLight)
         {
             h = 0;
             v = 0;
@@ -46,14 +43,14 @@ public class FairyMovement : MonoBehaviour {
             // Player面向
             if (h > 0)
             {
-                PlayerFace = "R";
+                gameControllerScriptableObject.PlayerFace = "R";
             }
             else if (h < 0)
             {
-                PlayerFace = "L";
+                gameControllerScriptableObject.PlayerFace = "L";
             }
 
-            if (PlayerFace == "L")
+            if (gameControllerScriptableObject.PlayerFace == "L")
             {
                 Player.transform.eulerAngles = new Vector3(0, 0, 0);
             }
