@@ -8,7 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ed3a15241b7b74b94f8feeebf735a7, type: 3}
-  m_Name: Timer
+  m_Script: {fileID: 11500000, guid: b0856779eb303b744a8134e79bb71fb2, type: 3}
+  m_Name: BoardStartDialogue
   m_EditorClassIdentifier: 
-  startTimer: 0
+  dialogue:
+    name: 
+    sentences:
+    - "\u8FD9\u5F20\u7EB8\u4E0B\u9762\u597D\u50CF\u5199\u4E86\u4EC0\u4E48"

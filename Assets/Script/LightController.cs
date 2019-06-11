@@ -12,16 +12,15 @@ public class LightController : MonoBehaviour {
     public Animator PlayerAnim;
     public GameObject MoveUI;
 
-    private void Awake()
+    void Awake()
     {
         LightImage = GetComponent<Image>();
         LightImage.sprite = Resources.Load<Sprite>("LightOff");
         PlayerLight.SetActive(false);
     }
 
-    public void Update()
+    void Update()
     {
-
         if (FairyMovement.isOpenLight)
         {
             LightImage.sprite = Resources.Load<Sprite>("LightOn");

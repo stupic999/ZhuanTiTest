@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0856779eb303b744a8134e79bb71fb2, type: 3}
+  m_Name: BoyDone
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: BothBoyNow
+    sentences:
+    - "\u8FD9\u91CC\u662F...\uFF1F\n"
+    - "\u4F60\u9192\u5566\uFF01\u8FD9\u91CC\u662F\u533B\u9662\u54E6\u3002"
+    - "\u4F60\u6709\u770B\u5230\u6211\u7684\u7238\u7238\u5988\u5988\u5417\uFF1F\n"
+    - "\u6211\u6765\u7684\u65F6\u5019\u5C31\u53EA\u6709\u4F60\u4E00\u4E2A\u4EBA\u4E86"
+    - "\u6211\u53EF\u4EE5\u51FA\u53BB\u5417\uFF1F\u597D\u65E0\u804A\u54E6\uFF0C\u6211\u60F3\u53BB\u627E\u7238\u7238\u5988\u5988\u3002"
+    - "\u4E0D\u884C\u54E6\uFF01\u8981\u7B49\u5230\u75C5\u597D\u4E86\u4F60\u624D\u80FD\u51FA\u53BB\u54E6\uFF01\u65E0\u804A\u7684\u8BDD\uFF0C\u6211\u53BB\u5E2E\u4F60\u627E\u73A9\u5177\u5427\u3002"

@@ -6,13 +6,43 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField]
+    DialogueScriptable winDialogue;
+    [SerializeField]
+    DialogueScriptable boyDoneDialogue;
+    [SerializeField]
+    DialogueScriptable fishBaitStartDialogue;
+    [SerializeField]
+    DialogueScriptable poolStartDialogue;
+    [SerializeField]
+    DialogueScriptable grass1Dialogue;
+    [SerializeField]
+    DialogueScriptable grass2Dialogue;
+    [SerializeField]
+    DialogueScriptable grass3Dialogue;
+    [SerializeField]
+    DialogueScriptable ladderFailDialogue;
+    [SerializeField]
+    DialogueScriptable puzzleDoneDialogue;
+    [SerializeField]
+    DialogueScriptable puzzleHalfDialogue;
+    [SerializeField]
+    DialogueScriptable puzzleStartDialogue;
+    [SerializeField]
+    DialogueScriptable inHouseFailDoorDialogue;
+    [SerializeField]
+    DialogueScriptable boardStartDialogue;
+    [SerializeField]
+    DialogueScriptable computerStartDialogue;
+    [SerializeField]
+    DialogueScriptable boardHintDone;
+    [SerializeField]
     AudioScriptableObject audioScriptableObject;
     [SerializeField]
     GameControllerScriptableObject gameControllerScriptableObject;
     int grassNum;
     public BagItem bagItem;
-    public GameObject mainCamare;
     public Text takeItemText;
+    public GameObject mainCamare;
     public GameObject FishBaitUI;
     public GameObject KeyUI;
     public GameObject BearUI;
@@ -41,29 +71,52 @@ public class GameController : MonoBehaviour {
     public GameObject HouseBgLightDone;
     public GameObject HouseBgNightYet;
     public GameObject HouseBgNightDone;
-    public Dialogue WinDialogue;
-    public Dialogue BoyDoneDialogue;
-    public Dialogue FishBaitStartDialogue;
-    public Dialogue PoolStartDialogue;
-    public Dialogue Grass1Dialogue;
-    public Dialogue Grass2Dialogue;
-    public Dialogue Grass3Dialogue;
-    public Dialogue LadderFailDialogue;
-    public Dialogue PuzzleDoneDialogue;
-    public Dialogue PuzzleHalfDialogue;
-    public Dialogue PuzzleStartDialogue;
-    public Dialogue InHouseFailDoorDialogue;
-    public Dialogue BoardStartDialogue;
-    public Dialogue ComputerStartDialogue;
-    public Dialogue BoardHintDone;
     public GameObject Btn;
+
+    private void Awake()
+    {
+        grassNum = 0;
+        takeItemText.text = "";
+
+        // GameControllerScriptObject的預設值
+        gameControllerScriptableObject.winCount = 0 ;
+        gameControllerScriptableObject.MapCount=0;
+        gameControllerScriptableObject.MapOpen=false;
+        gameControllerScriptableObject.isPause=false;
+        gameControllerScriptableObject.isEventOn = false;
+        gameControllerScriptableObject.isPuzzleEvent = false;
+        gameControllerScriptableObject.allDone = false;
+        gameControllerScriptableObject.playerDie = false;
+        gameControllerScriptableObject.isBtnClick = false;
+        gameControllerScriptableObject.isTalkWithBoy = false;
+        gameControllerScriptableObject.isSeePaper = false;
+        gameControllerScriptableObject.isTakeFishBait = false;
+        gameControllerScriptableObject.isCheckPool = false;
+        gameControllerScriptableObject.isDigTreasure = false;
+        gameControllerScriptableObject.isCheckGrass = false;
+        gameControllerScriptableObject.isCheckVase = false;
+        gameControllerScriptableObject.isCheckCupBoard = false;
+        gameControllerScriptableObject.isDonePuzzle = false;
+        gameControllerScriptableObject.isCheckShoes = false;
+        gameControllerScriptableObject.isOpenDoor = false;
+        gameControllerScriptableObject.isCheckBoard = false;
+        gameControllerScriptableObject.isCheckComputer = false;
+        gameControllerScriptableObject.isTakeBear = false;
+        gameControllerScriptableObject.isBoardHint = false;
+        gameControllerScriptableObject.isCheckLadder = false;
+        gameControllerScriptableObject.isNight = false;
+        gameControllerScriptableObject.isGhost = false;
+        gameControllerScriptableObject.ghostDie = false;
+        gameControllerScriptableObject.btnEvent = "";
+        gameControllerScriptableObject.EventName = "";
+        gameControllerScriptableObject.PlayerRoom = "Hospital";
+        gameControllerScriptableObject.PortalPlace = "";
+}
 
     void Start()
     {
         gameControllerScriptableObject.btnEvent = "Boy";
-        gameControllerScriptableObject.isTalkWithBoy = false;
         gameControllerScriptableObject.isBtnClick = true;
-        // 把全部bool设定预设值
     }
 
     void Update()
@@ -137,7 +190,7 @@ public class GameController : MonoBehaviour {
             {
                 gameControllerScriptableObject.isTalkWithBoy = true;
                 Debug.Log("BoyDone");
-                TriggerDialogue(BoyDoneDialogue);
+                TriggerDialogue(boyDoneDialogue.dialogue);
             }
         }
     }
@@ -172,7 +225,7 @@ public class GameController : MonoBehaviour {
             else
             {
                 Debug.Log("FishBaitStart");
-                TriggerDialogue(FishBaitStartDialogue);
+                TriggerDialogue(fishBaitStartDialogue.dialogue);
             }
         }        
     }
@@ -193,7 +246,7 @@ public class GameController : MonoBehaviour {
                 takeItemText.text = "獲得樂器";
                 if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
                 {
-                    TriggerDialogue(WinDialogue);
+                    TriggerDialogue(winDialogue.dialogue);
                     gameControllerScriptableObject.winCount++;
                     gameControllerScriptableObject.isPause = true;
                 }
@@ -201,7 +254,7 @@ public class GameController : MonoBehaviour {
             else 
             {
                 Debug.Log("PoolStart");
-                TriggerDialogue(PoolStartDialogue);
+                TriggerDialogue(poolStartDialogue.dialogue);
             }
         }
     }
@@ -227,17 +280,17 @@ public class GameController : MonoBehaviour {
                 Debug.Log("GrassNum " + grassNum);
                 if (grassNum == 1)
                 {
-                    TriggerDialogue(Grass1Dialogue);
+                    TriggerDialogue(grass1Dialogue.dialogue);
                     Grass1.transform.position = new Vector3(Grass1.transform.position.x -2, Grass1.transform.position.y, Grass1.transform.position.z);
                 }
                 else if (grassNum == 2)
                 {
-                    TriggerDialogue(Grass2Dialogue);
+                    TriggerDialogue(grass2Dialogue.dialogue);
                     Grass2.transform.position = new Vector3(Grass2.transform.position.x -2, Grass2.transform.position.y, Grass2.transform.position.z);
                 }
                 else
                 {
-                    TriggerDialogue(Grass3Dialogue);
+                    TriggerDialogue(grass3Dialogue.dialogue);
                     Grass3.transform.position = new Vector3(Grass3.transform.position.x +2, Grass3.transform.position.y, Grass3.transform.position.z);
                 }
             }
@@ -252,7 +305,7 @@ public class GameController : MonoBehaviour {
                 takeItemText.text = "獲得驚嚇箱";
                 if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
                 {
-                    TriggerDialogue(WinDialogue);
+                    TriggerDialogue(winDialogue.dialogue);
                     gameControllerScriptableObject.winCount++;
                     gameControllerScriptableObject.isPause = true;
                 }
@@ -324,7 +377,7 @@ public class GameController : MonoBehaviour {
             else
             {
                 Debug.Log("DoorFail");
-                TriggerDialogue(InHouseFailDoorDialogue);
+                TriggerDialogue(inHouseFailDoorDialogue.dialogue);
             }
         }
     }
@@ -337,7 +390,7 @@ public class GameController : MonoBehaviour {
             {
                 gameControllerScriptableObject.isCheckBoard = true;
                 Debug.Log("BoardStart");
-                TriggerDialogue(BoardStartDialogue);
+                TriggerDialogue(boardStartDialogue.dialogue);
                 gameControllerScriptableObject.EventName = "BoardEvent";
                 EventOn();
             }
@@ -351,7 +404,7 @@ public class GameController : MonoBehaviour {
             EventOff();
             gameControllerScriptableObject.isBoardHint = true;
             Debug.Log("BoardDone2");
-            TriggerDialogue(BoardHintDone);
+            TriggerDialogue(boardHintDone.dialogue);
         }
     }
 
@@ -380,18 +433,18 @@ public class GameController : MonoBehaviour {
                 Debug.Log("PuzzleDone");
                 bagItem.RemoveItem("PuzzleVase");
                 bagItem.RemoveItem("PuzzleCupBoard");
-                TriggerDialogue(PuzzleDoneDialogue);
+                TriggerDialogue(puzzleDoneDialogue.dialogue);
                 audioScriptableObject.takeItem = true;
             }
             else if (gameControllerScriptableObject.isCheckCupBoard || gameControllerScriptableObject.isCheckVase)
             {
                 Debug.Log("PuzzleHalf");
-                TriggerDialogue(PuzzleHalfDialogue);
+                TriggerDialogue(puzzleHalfDialogue.dialogue);
             }
             else
             {
                 Debug.Log("PuzzleStart");
-                TriggerDialogue(PuzzleStartDialogue);
+                TriggerDialogue(puzzleStartDialogue.dialogue);
             }
         }
     }
@@ -411,7 +464,7 @@ public class GameController : MonoBehaviour {
             else
             {
                 Debug.Log("ComputerStart");
-                TriggerDialogue(ComputerStartDialogue);
+                TriggerDialogue(computerStartDialogue.dialogue);
             }         
         }
     }
@@ -441,7 +494,7 @@ public class GameController : MonoBehaviour {
             takeItemText.text = "獲得小熊玩偶";
             if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
             {
-                TriggerDialogue(WinDialogue);
+                TriggerDialogue(winDialogue.dialogue);
                 gameControllerScriptableObject.winCount++;
                 gameControllerScriptableObject.isPause = true;
             }
@@ -454,7 +507,7 @@ public class GameController : MonoBehaviour {
         {
             Debug.Log("LadderDone");
             gameControllerScriptableObject.isCheckLadder = true;
-            TriggerDialogue(LadderFailDialogue);
+            TriggerDialogue(ladderFailDialogue.dialogue);
         }
     }
 
