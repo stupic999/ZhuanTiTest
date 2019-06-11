@@ -20,6 +20,11 @@ public class Portal : MonoBehaviour {
     public GameObject MainCamare;
     public GameObject YesOrNo;
 
+    public void Awake()
+    {
+        isTeach = false;
+    }
+
     public void GoToWhr()
     {
         audioScriptableObject.btnSound = true;

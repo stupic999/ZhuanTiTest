@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class JoyStickController : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDragHandler
+public class JoyStickController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     [SerializeField]
     GameControllerScriptableObject gameControllerScriptableObject;
@@ -13,7 +13,13 @@ public class JoyStickController : MonoBehaviour,IPointerDownHandler,IPointerUpHa
     public Image Bg;
     public Image Frn;
 
-    public void Update()
+    void Start()
+    {
+        touchData.Set(0, 0);
+        inputForce.Set(0, 0, 0);
+    }
+
+    void Update()
     {
         if (gameControllerScriptableObject.isPause || gameControllerScriptableObject.isOpenLight)
         {

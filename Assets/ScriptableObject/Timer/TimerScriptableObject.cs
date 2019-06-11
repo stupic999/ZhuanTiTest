@@ -11,4 +11,6 @@ public class TimerScriptableObject : ScriptableObject
     public float grassTimer;
     public float itemShowTimer;
     public float takeItemTimer;
+    public float clockTimer;
+    public float bellTimer=2;
 }

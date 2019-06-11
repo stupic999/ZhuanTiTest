@@ -15,6 +15,16 @@ public class MainMenu : MonoBehaviour {
     public GameObject gameScene;
     public GameObject SoundSettingUI;
 
+    public void Awake()
+    {
+        isStart = false;
+        isSetting = false;
+        StartAnim.SetBool("isStart", false);
+        mainMenu.SetActive(true);
+        gameScene.SetActive(false);
+        SoundSettingUI.SetActive(false);
+    }
+
     public void StartGame()
     {
         if (!isSetting)

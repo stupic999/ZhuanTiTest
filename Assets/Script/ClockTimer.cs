@@ -10,10 +10,10 @@ public class ClockTimer : MonoBehaviour {
     AudioScriptableObject audioScriptableObject;
     [SerializeField]
     GameControllerScriptableObject gameControllerScriptableObject;
-    float timer;
+    [SerializeField]
+    TimerScriptableObject timerScriptableObject;
     bool once;
     int bellCount;
-    float bellTimer = 2f;
     int changeMusicNight;
     public GameObject ParkMorning;
     public GameObject ParkNight;
@@ -30,35 +30,39 @@ public class ClockTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        timer = 0;
-	}
+        timerScriptableObject.clockTimer = 0;
+        timerScriptableObject.bellTimer = 2;
+        once = false;
+        bellCount = 0;
+        changeMusicNight = 0;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        clockArrowRoot.transform.eulerAngles = new Vector3(0, 0, -timer * 3);
+        clockArrowRoot.transform.eulerAngles = new Vector3(0, 0, -timerScriptableObject.clockTimer * 3);
 
         if (gameControllerScriptableObject.playerDie)
         {
-            timer = 89.9f;
+            timerScriptableObject.clockTimer = 89.9f;
             gameControllerScriptableObject.playerDie = false;
         }
 
         if (gameControllerScriptableObject.isNight && bellCount < 3)
         {
-            bellTimer += Time.deltaTime;
-            if (bellTimer >= 2f)
+            timerScriptableObject.bellTimer += Time.deltaTime;
+            if (timerScriptableObject.bellTimer >= 2f)
             {
                 bellCount++;
                 audioScriptableObject.bell = true;
-                bellTimer = 0;
+                timerScriptableObject.bellTimer = 0;
             }
         }
         if (gameControllerScriptableObject.PlayerRoom != "Hospital" && !gameControllerScriptableObject.isPause)
         {
-            timer += Time.deltaTime;
+            timerScriptableObject.clockTimer += Time.deltaTime;
             
             // 晚上
-            if (timer >= 90 && timer < 120)
+            if (timerScriptableObject.clockTimer >= 90 && timerScriptableObject.clockTimer < 120)
             {
                 gameControllerScriptableObject.isNight = true;
                 PlayerAnim.SetBool("isNight", gameControllerScriptableObject.isNight);
@@ -103,13 +107,13 @@ public class ClockTimer : MonoBehaviour {
             }
 
             // 早上
-            if (timer >= 120)
+            if (timerScriptableObject.clockTimer >= 120)
             {
                 changeMusicNight=0;
                 BgMusic.clip = Morning;
                 BgMusic.Play();
                 gameControllerScriptableObject.isNight = false;
-                timer = 0;
+                timerScriptableObject.clockTimer = 0;
                 PlayerAnim.SetBool("isNight", gameControllerScriptableObject.isNight);
                 Debug.Log("isMorning");
                 bellCount = 0;
@@ -134,17 +138,17 @@ public class ClockTimer : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.W))
         {
-            timer = 89;
+            timerScriptableObject.clockTimer = 89;
             gameControllerScriptableObject.isNight = true;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            timer = 115;
+            timerScriptableObject.clockTimer = 115;
             gameControllerScriptableObject.isNight = true;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            timer = 119;
+            timerScriptableObject.clockTimer = 119;
         }
     }
 

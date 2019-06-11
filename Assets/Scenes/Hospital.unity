@@ -299,8 +299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
     type: 2}
-  moveHSpd: 0
-  moveVSpd: 0
   PlayerAnim: {fileID: 625705224}
   Player: {fileID: 2129437906}
   joyStickController: {fileID: 1967690696}
@@ -6741,6 +6739,8 @@ MonoBehaviour:
   audioScriptableObject: {fileID: 11400000, guid: 544fc634f5b670c4d978df495f7b37df,
     type: 2}
   gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
+    type: 2}
+  timerScriptableObject: {fileID: 11400000, guid: 39e59c40b16f8194384ab41f390528f5,
     type: 2}
   ParkMorning: {fileID: 1756940626}
   ParkNight: {fileID: 992253144}

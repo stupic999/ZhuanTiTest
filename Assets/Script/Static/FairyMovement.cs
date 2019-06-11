@@ -9,8 +9,6 @@ public class FairyMovement : MonoBehaviour {
     float h;
     float v;
     Rigidbody playerRb;
-    public float moveHSpd;
-    public float moveVSpd;
     public Animator PlayerAnim;
     public GameObject Player;
     public JoyStickController joyStickController;
@@ -18,6 +16,8 @@ public class FairyMovement : MonoBehaviour {
 
     public void Start()
     {
+        h = 0;
+        v = 0;
         playerRb = GetComponent<Rigidbody>();
     }
 
