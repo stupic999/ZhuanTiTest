@@ -128,11 +128,7 @@ public class GameController : MonoBehaviour {
 
         // 按鈕點擊觸發事件
         BtnEvent();
-
-        if (gameControllerScriptableObject.isTakeBear && gameControllerScriptableObject.isDonePuzzle && gameControllerScriptableObject.isCheckComputer && gameControllerScriptableObject.isCheckPool && gameControllerScriptableObject.isDigTreasure && gameControllerScriptableObject.isCheckGrass)
-        {
-            gameControllerScriptableObject.allDone = true;
-        }
+        Win();
     }
 
     public void ShowBtn()
@@ -246,12 +242,7 @@ public class GameController : MonoBehaviour {
                 gameControllerScriptableObject.isPause = false;
                 audioScriptableObject.takeItem = true;
                 takeItemText.text = "獲得樂器";
-                if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
-                {
-                    TriggerDialogue(winDialogue.dialogue);
-                    gameControllerScriptableObject.winCount++;
-                    gameControllerScriptableObject.isPause = true;
-                }
+                Win();
             }
             else 
             {
@@ -305,12 +296,7 @@ public class GameController : MonoBehaviour {
                 audioScriptableObject.takeItem = true;
                 gameControllerScriptableObject.isPause = false;
                 takeItemText.text = "獲得驚嚇箱";
-                if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
-                {
-                    TriggerDialogue(winDialogue.dialogue);
-                    gameControllerScriptableObject.winCount++;
-                    gameControllerScriptableObject.isPause = true;
-                }
+                Win();
             }
         }
     }
@@ -494,12 +480,7 @@ public class GameController : MonoBehaviour {
             audioScriptableObject.takeItem = true;
             gameControllerScriptableObject.isPause = false;
             takeItemText.text = "獲得小熊玩偶";
-            if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount == 0)
-            {
-                TriggerDialogue(winDialogue.dialogue);
-                gameControllerScriptableObject.winCount++;
-                gameControllerScriptableObject.isPause = true;
-            }
+            Win();
         }
     }
 
@@ -552,5 +533,19 @@ public class GameController : MonoBehaviour {
     public void EventOff()
     {
         gameControllerScriptableObject.isEventOn = false;
+    }
+
+    public void Win()
+    {
+        if (gameControllerScriptableObject.isTakeBear && gameControllerScriptableObject.isDonePuzzle && gameControllerScriptableObject.isCheckComputer && gameControllerScriptableObject.isCheckPool && gameControllerScriptableObject.isDigTreasure && gameControllerScriptableObject.isCheckGrass)
+        {
+            gameControllerScriptableObject.allDone = true;
+        }
+        if (gameControllerScriptableObject.allDone && gameControllerScriptableObject.winCount==0)
+        {
+            TriggerDialogue(winDialogue.dialogue);
+            gameControllerScriptableObject.winCount++;
+            gameControllerScriptableObject.isPause = true;
+        }
     }
 }

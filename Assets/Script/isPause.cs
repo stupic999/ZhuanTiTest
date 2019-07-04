@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class IsPause : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class IsPause : MonoBehaviour {
     public GameObject ClockUI;
     public GameObject LightUI;
     public GameObject SettingUI;
+    public AudioMixerSnapshot pausedAudio;
+    public AudioMixerSnapshot unpausedAudio;
 
     private void Update()
     {
@@ -18,12 +21,16 @@ public class IsPause : MonoBehaviour {
             MoveUI.SetActive(false);
             SettingUI.SetActive(false);
             ClockUI.SetActive(false);
+            pausedAudio.TransitionTo(.01f);
+            Debug.Log("111");
         }
         else
         {
             MoveUI.SetActive(true);
             SettingUI.SetActive(true);
-            ClockUI.SetActive(true);
+            ClockUI.SetActive(true);            
+            unpausedAudio.TransitionTo(.01f);
+            Debug.Log("222");
         }
         if (gameControllerScriptableObject.isNight && !gameControllerScriptableObject.isPause)
         {

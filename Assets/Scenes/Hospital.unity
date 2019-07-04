@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1.5
+  m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -5048,6 +5048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5370fef2affff3141873cc53e9efaf1e, type: 2}
+  audioVol: 0
 --- !u!114 &788325135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6283,6 +6284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5370fef2affff3141873cc53e9efaf1e, type: 2}
+  audioVol: 0
 --- !u!1 &989172964
 GameObject:
   m_ObjectHideFlags: 0
@@ -6982,7 +6984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1.5
+  m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -7721,6 +7723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5370fef2affff3141873cc53e9efaf1e, type: 2}
+  audioVol: 0
 --- !u!1 &1139826956
 GameObject:
   m_ObjectHideFlags: 0
@@ -8454,6 +8457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5370fef2affff3141873cc53e9efaf1e, type: 2}
+  audioVol: 0
 --- !u!114 &1254973846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10159,6 +10163,9 @@ MonoBehaviour:
   ClockUI: {fileID: 1018524026}
   LightUI: {fileID: 742351444}
   SettingUI: {fileID: 1830884066}
+  pausedAudio: {fileID: 24500006, guid: 5370fef2affff3141873cc53e9efaf1e, type: 2}
+  unpausedAudio: {fileID: 245462462375451326, guid: 5370fef2affff3141873cc53e9efaf1e,
+    type: 2}
 --- !u!1 &1464253689
 GameObject:
   m_ObjectHideFlags: 0
@@ -11896,7 +11903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1.5
+  m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -13581,6 +13588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5370fef2affff3141873cc53e9efaf1e, type: 2}
+  audioVol: 0
 --- !u!1 &1852529037
 GameObject:
   m_ObjectHideFlags: 0
@@ -14437,6 +14445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5370fef2affff3141873cc53e9efaf1e, type: 2}
+  audioVol: 0
 --- !u!1 &1946913698
 GameObject:
   m_ObjectHideFlags: 0
