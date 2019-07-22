@@ -22,7 +22,6 @@ public class IsPause : MonoBehaviour {
             SettingUI.SetActive(false);
             ClockUI.SetActive(false);
             pausedAudio.TransitionTo(.01f);
-            Debug.Log("111");
         }
         else
         {
@@ -30,7 +29,6 @@ public class IsPause : MonoBehaviour {
             SettingUI.SetActive(true);
             ClockUI.SetActive(true);            
             unpausedAudio.TransitionTo(.01f);
-            Debug.Log("222");
         }
         if (gameControllerScriptableObject.isNight && !gameControllerScriptableObject.isPause)
         {
