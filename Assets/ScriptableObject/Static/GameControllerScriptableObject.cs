@@ -15,6 +15,7 @@ public class GameControllerScriptableObject : ScriptableObject
     public bool playerDie;
     public bool isBtnClick;
     public bool isTalkWithBoy;
+    public bool isSeeBread;
     public bool isSeePaper;
     public bool isTakeFishBait;
     public bool isCheckPool;

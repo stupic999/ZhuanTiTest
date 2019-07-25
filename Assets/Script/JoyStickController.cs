@@ -11,7 +11,8 @@ public class JoyStickController : MonoBehaviour, IPointerDownHandler, IPointerUp
     Vector2 touchData;
     Vector3 inputForce;
     public Image Bg;
-    public Image Frn;
+    public Image FrnMove;
+    public Image FrnStay;
     public Image MoveBg;
 
     void Start()
@@ -24,7 +25,8 @@ public class JoyStickController : MonoBehaviour, IPointerDownHandler, IPointerUp
     {
         if (gameControllerScriptableObject.isPause || gameControllerScriptableObject.isOpenLight)
         {
-            Frn.rectTransform.anchoredPosition = new Vector2(0, 0);
+            FrnMove.rectTransform.anchoredPosition = new Vector2(0, 0);
+            FrnStay.rectTransform.anchoredPosition = new Vector2(0, 0);
             inputForce.Set(0, 0, 0);
         }
     }
@@ -48,7 +50,8 @@ public class JoyStickController : MonoBehaviour, IPointerDownHandler, IPointerUp
                 inputForce.Normalize();
             }
             Debug.Log(inputForce);
-            Frn.rectTransform.anchoredPosition = new Vector2(inputForce.x * (Frn.rectTransform.sizeDelta.x) / 2, inputForce.y * (Frn.rectTransform.sizeDelta.y) / 2);
+            FrnMove.rectTransform.anchoredPosition = new Vector2(inputForce.x * (FrnMove.rectTransform.sizeDelta.x) / 2, inputForce.y * (FrnMove.rectTransform.sizeDelta.y) / 2);
+            FrnStay.rectTransform.anchoredPosition = new Vector2(inputForce.x * (FrnStay.rectTransform.sizeDelta.x) / 2, inputForce.y * (FrnStay.rectTransform.sizeDelta.y) / 2);
         }
     }
 
@@ -62,7 +65,8 @@ public class JoyStickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Frn.rectTransform.anchoredPosition = new Vector2(0, 0);
+        FrnMove.rectTransform.anchoredPosition = new Vector2(0, 0);
+        FrnStay.rectTransform.anchoredPosition = new Vector2(0, 0);
         Bg.rectTransform.anchoredPosition = new Vector2(50, 50);
         inputForce.Set(0, 0, 0);
     }

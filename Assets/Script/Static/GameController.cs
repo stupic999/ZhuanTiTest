@@ -89,6 +89,7 @@ public class GameController : MonoBehaviour {
         gameControllerScriptableObject.playerDie = false;
         gameControllerScriptableObject.isBtnClick = false;
         gameControllerScriptableObject.isTalkWithBoy = false;
+        gameControllerScriptableObject.isSeeBread = false;
         gameControllerScriptableObject.isSeePaper = false;
         gameControllerScriptableObject.isTakeFishBait = false;
         gameControllerScriptableObject.isCheckPool = false;
@@ -223,6 +224,7 @@ public class GameController : MonoBehaviour {
             else
             {
                 Debug.Log("FishBaitStart");
+                gameControllerScriptableObject.isSeeBread = true;
                 TriggerDialogue(fishBaitStartDialogue.dialogue);
             }
         }        

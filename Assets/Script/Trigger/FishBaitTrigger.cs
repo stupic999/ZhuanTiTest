@@ -9,7 +9,7 @@ public class FishBaitTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player") 
+        if (other.transform.tag == "Player" && gameControllerScriptableObject.isSeeBread != true) 
         {
             gameControllerScriptableObject.btnEvent = "FishBait";
         }
