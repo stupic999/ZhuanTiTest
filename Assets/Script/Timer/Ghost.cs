@@ -26,7 +26,7 @@ public class Ghost : MonoBehaviour {
         gameControllerScriptableObject.ghostDie = false;
         Player = GameObject.FindGameObjectWithTag("Player");
         fairyDead = Player.GetComponent<FairyDead>();
-playerTransform = Player.transform;
+        playerTransform = Player.transform;
         GhostAnim =GetComponent<Animator>();
         GhostAnim.enabled = false;
         ghostSprite=GetComponent<SpriteRenderer>();

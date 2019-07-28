@@ -6804,7 +6804,7 @@ MonoBehaviour:
   HouseYetNight: {fileID: 924693982}
   HouseDoneMorning: {fileID: 1288996905}
   HouseDoneNight: {fileID: 2009058125}
-  ghost: {fileID: 1830808459521316, guid: 81f741e88c080d946aee3e80d1df3242, type: 2}
+  ghost: {fileID: 1830808459521316, guid: 33be959258b1cec45a390f0425423a23, type: 2}
   clockArrowRoot: {fileID: 1852529037}
   PlayerAnim: {fileID: 625705224}
   BgMusic: {fileID: 1634470922}
