@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830808459521316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 590, y: 310, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4119306314033358}
   m_Father: {fileID: 0}
@@ -314,10 +314,9 @@ MonoBehaviour:
     type: 2}
   gameControllerScriptableObject: {fileID: 11400000, guid: 931e2c5d3ec005a45872ec7381289cfc,
     type: 2}
-  playerDie: {fileID: 11400000, guid: 654d2f145b23d4545a50ee9a2dffa91f, type: 2}
+  fairyDead: {fileID: 0}
   playerTransform: {fileID: 0}
   Player: {fileID: 0}
-  MainCamera: {fileID: 0}
   ghostRoot: {fileID: 1830808459521316}
 --- !u!114 &114954612657058318
 MonoBehaviour:

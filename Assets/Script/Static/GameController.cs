@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField]
+    DialogueScriptable playerDie;
+    [SerializeField]
     DialogueScriptable winDialogue;
     [SerializeField]
     DialogueScriptable boyDoneDialogue;
@@ -109,6 +111,7 @@ public class GameController : MonoBehaviour {
         gameControllerScriptableObject.isGhost = false;
         gameControllerScriptableObject.ghostDie = false;
         gameControllerScriptableObject.isOpenLight = false;
+        gameControllerScriptableObject.playerDie = false;
         gameControllerScriptableObject.btnEvent = "";
         gameControllerScriptableObject.EventName = "";
         gameControllerScriptableObject.PlayerRoom = "Hospital";
@@ -130,6 +133,11 @@ public class GameController : MonoBehaviour {
         // 按鈕點擊觸發事件
         BtnEvent();
         Win();
+
+        if (gameControllerScriptableObject.playerDie != false && Input.GetMouseButtonDown(0))
+        {
+            PlayerDead();
+        }
     }
 
     public void ShowBtn()
@@ -535,6 +543,18 @@ public class GameController : MonoBehaviour {
     public void EventOff()
     {
         gameControllerScriptableObject.isEventOn = false;
+    }
+
+    public void PlayerDead()
+    {
+        gameControllerScriptableObject.PlayerRoom = "Hospital";
+        Player.transform.position = new Vector3(-231.81f, 1.29f, 0);
+        Player.transform.eulerAngles = new Vector3(0, 0, 0);
+        mainCamare.transform.position = new Vector3(-231.5f, 0, mainCamare.transform.position.z);
+        gameControllerScriptableObject.isGhost = false;
+        TriggerDialogue(playerDie.dialogue);
+        gameControllerScriptableObject.isNight = false;
+        gameControllerScriptableObject.isPause = false;
     }
 
     public void Win()

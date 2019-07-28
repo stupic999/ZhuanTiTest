@@ -44,7 +44,7 @@ public class ClockTimer : MonoBehaviour {
         if (gameControllerScriptableObject.playerDie)
         {
             timerScriptableObject.clockTimer = 89.9f;
-            gameControllerScriptableObject.playerDie = false;
+            // gameControllerScriptableObject.playerDie = false;
         }
 
         if (gameControllerScriptableObject.isNight && bellCount < 3)

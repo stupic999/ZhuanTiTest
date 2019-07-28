@@ -10,8 +10,7 @@ public class Ghost : MonoBehaviour {
     AudioScriptableObject audioScriptableObject;
     [SerializeField]
     GameControllerScriptableObject gameControllerScriptableObject;
-    [SerializeField]
-    DialogueScriptable playerDie;
+    FairyDead fairyDead;
     string GhostFace;
     int ghostCount;
     SpriteRenderer ghostSprite;
@@ -19,16 +18,15 @@ public class Ghost : MonoBehaviour {
     Animator GhostAnim;
     public Transform playerTransform;
     public GameObject Player;
-    public GameObject MainCamera;
     public GameObject ghostRoot;
 
     private void Start()
     {
         timerScriptableObject.ghostTimer = 0;
         gameControllerScriptableObject.ghostDie = false;
-        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         Player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = Player.transform;
+        fairyDead = Player.GetComponent<FairyDead>();
+playerTransform = Player.transform;
         GhostAnim =GetComponent<Animator>();
         GhostAnim.enabled = false;
         ghostSprite=GetComponent<SpriteRenderer>();
@@ -109,16 +107,7 @@ public class Ghost : MonoBehaviour {
             }
             else if (other.tag == "Player")
             {
-                audioScriptableObject.playerDie = true;
-                gameControllerScriptableObject.playerDie = true;
-                Destroy(ghostRoot);
-                gameControllerScriptableObject.PlayerRoom = "Hospital";
-                Player.transform.position = new Vector3(-231.81f, 1.29f, 0);
-                Player.transform.eulerAngles = new Vector3(0, 0, 0);
-                MainCamera.transform.position = new Vector3(-231.5f, 0, MainCamera.transform.position.z);
-                gameControllerScriptableObject.isGhost = false;
-                TriggerDialogue(playerDie.dialogue);
-                gameControllerScriptableObject.isNight = false;
+                FairyDead();
             }
         }
     }
@@ -126,5 +115,11 @@ public class Ghost : MonoBehaviour {
         public void TriggerDialogue(Dialogue dialogue)
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
+
+    public void FairyDead()
+    {
+        fairyDead.FairyRIP();
+        Destroy(ghostRoot);
     }
 }
