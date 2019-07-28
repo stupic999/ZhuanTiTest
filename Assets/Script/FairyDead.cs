@@ -11,40 +11,28 @@ public class FairyDead : MonoBehaviour {
     AudioScriptableObject audioScriptableObject;
     [SerializeField]
     GameControllerScriptableObject gameControllerScriptableObject;
-    public SpriteRenderer deadBg;
-    float deadBgColorA;
-    
+    public Animator fairyDeadAnim;
+    //float timer;
 
-    // Use this for initialization
-    void Awake () {
-        deadBgColorA = 0;
-        deadBg.color = new Color(255, 255, 255, deadBgColorA);
-    }
-	
-	// Update is called once per frame
-	void Update () {
+    void Update () {
+        //if (gameControllerScriptableObject.playerDie != false)
+        //{
+        //    timer+= Time.deltaTime;
+        //    if (timer <= 4.5)
+        //    {
+        //        timer = 0;
+        //        fairyDeadAnim.SetBool("FairyDead", false);             
+        //    }
+        //}
         if (Input.GetKeyDown(KeyCode.Space))
         {
             FairyRIP();
-        }
-        
-        if (gameControllerScriptableObject.playerDie != false)
-        {
-            deadBgColorA += 0.0005f;
-        }
-        else
-        {
-            deadBgColorA = 0;
-        }
-
-        if (gameControllerScriptableObject.playerDie != false && deadBg.color.a < 1) 
-        {
-            deadBg.color += new Color(255, 255, 255, deadBgColorA);
         }
 	}
 
     public void FairyRIP()
     {
+        fairyDeadAnim.SetBool("FairyDead", true);
         camreShakeTest.FairyRipShake();
         audioScriptableObject.playerDie = true;
         gameControllerScriptableObject.playerDie = true;
